@@ -95,11 +95,12 @@ h1,h2,h3,h4,p{margin-top:0}
 .header{height:82px;border-bottom:1px solid rgba(15,15,20,.07);background:rgba(255,255,255,.9);backdrop-filter:blur(18px);position:sticky;top:0;z-index:100}
 .header-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
 .logo{width:174px;height:auto;display:block}
-.nav{height:100%;display:flex;align-items:center;gap:34px;font-size:14px;font-weight:500}
+.nav{height:100%;display:flex;align-items:center;gap:30px;font-size:14px;font-weight:500}
+.login + .nav-login{margin-left:-18px}
 .nav-link{height:100%;display:flex;align-items:center;position:relative;background:none;border:0;padding:0;color:inherit}
 .nav-link:hover,.nav-link.active{color:var(--purple)}
 .nav-link.active:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--purple)}
-.login{padding:12px 27px;border-radius:24px;background:var(--purple);color:#fff;font-weight:700;transition:background .2s,transform .2s}
+.login{padding:12px 26px;border-radius:24px;background:var(--purple);color:#fff;font-size:14px;font-weight:700;letter-spacing:-.01em;transition:background .2s,transform .2s}
 .login:hover{background:var(--purple-deep);transform:translateY(-1px)}
 .menu-button{display:none;border:0;background:none;padding:8px;font-size:22px;line-height:1}
 
@@ -574,8 +575,15 @@ a.industry-item:hover{padding-left:6px;color:var(--purple)}
 .hero-actions{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
 .industry-page .product-hero h1{font-size:clamp(38px,4.4vw,58px);letter-spacing:-.042em;max-width:15ch}
 .product-hero .answer{padding-left:20px;border-left:3px solid var(--purple)}
-.nav-login{font-size:14px;font-weight:500;color:var(--muted)}
-.nav-login:hover{color:var(--ink)}
+/* Login is a returning-customer utility, so it gets a visible outlined pill
+   rather than grey text - present without outranking the sales CTA. */
+.nav-login{
+  display:inline-flex;align-items:center;padding:11px 22px;border-radius:24px;
+  border:1.5px solid var(--line);background:#fff;
+  font-size:14px;font-weight:600;color:var(--ink);letter-spacing:-.01em;
+  transition:border-color .2s,color .2s,background .2s,transform .2s;
+}
+.nav-login:hover{border-color:var(--purple);color:var(--purple-deep);background:#fdf9fd;transform:translateY(-1px)}
 
 /* ============================ Footer ============================ */
 .current-footer{position:relative;padding:58px 0 82px;background:#fff;border-top:1px solid var(--line)}
@@ -817,11 +825,10 @@ body.viewing-product .page{display:none}
         </div>
       </div>
 
-      <a class="nav-link" href="#contact">Contact Us</a>
       <!-- CTA 1 of 2 required by the doc: Contact Us in the top nav.
            Login is a returning-customer utility, not the page's job. -->
-      <a class="nav-login" href="https://portal2.xilnex.com/">Login</a>
       <a class="login" href="#contact">Talk to our team</a>
+      <a class="nav-login" href="https://portal2.xilnex.com/">Login</a>
     </nav>
 
     <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">☰</button>
