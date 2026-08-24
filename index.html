@@ -424,7 +424,7 @@ h1,h2,h3,h4,p{margin-top:0}
   --cf-border:#E5D8E8; --cf-b500:#A13B91; --cf-b700:#633A82;
   --cf-grad:linear-gradient(135deg,#633A82 0%,#7A4B9E 45%,#B13F9A 100%);
   --cf-soft:linear-gradient(135deg,#fff 0%,#FCF8FC 55%,#F7EDF7 100%);
-  width:100%;max-width:960px;margin:0 auto;color:var(--cf-ink);text-align:left;
+  width:100%;max-width:none;margin:0;color:var(--cf-ink);text-align:left;
 }
 
 /* ---- progress bar above the card ---- */
@@ -455,6 +455,28 @@ h1,h2,h3,h4,p{margin-top:0}
 .cf-hero p{margin:0;max-width:38ch;color:rgba(255,255,255,.92);font-size:14.5px;line-height:1.62}
 .cf-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
 .cf-pills span{font-size:10.5px;font-weight:600;letter-spacing:.02em;padding:6px 11px;border:1px solid rgba(255,255,255,.34);border-radius:20px}
+
+/* ---- Office column, on the white page beside the card ----
+   The card is centred and narrower than the wrap, which left dead space to its
+   left. This fills it with the thing people reach for when they do not want a
+   form: an address and a phone number. */
+.cf-layout{display:grid;grid-template-columns:minmax(240px,.78fr) minmax(0,2.22fr);
+  gap:clamp(30px,3.6vw,56px);align-items:start}
+.cf-contactinfo{padding-top:30px}
+.cf-ci-label{margin:0 0 20px;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.cf-ci-office{padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.cf-ci-office h4{margin:0 0 9px;font-size:19px;font-weight:700;letter-spacing:-.03em;color:var(--ink)}
+.cf-ci-office h4 em{font-style:normal;color:var(--purple)}
+.cf-ci-office p{margin:0;font-size:13.5px;line-height:1.65;color:var(--muted)}
+.cf-ci-tel{display:inline-flex;align-items:center;gap:9px;margin-top:12px;
+  font-size:15px;font-weight:700;letter-spacing:-.015em;color:var(--ink);transition:color .18s}
+.cf-ci-tel svg{width:17px;height:17px;flex-shrink:0;color:var(--purple)}
+.cf-ci-tel:hover{color:var(--purple-deep)}
+.cf-ci-map{display:block;margin-top:8px;font-size:12.5px;font-weight:600;color:var(--purple);
+  border-bottom:1px solid transparent;width:max-content}
+.cf-ci-map:hover{border-color:var(--purple)}
+.cf-ci-mail{font-size:13.5px;font-weight:600;color:var(--purple);border-bottom:1px solid #e6c9dc}
+.cf-ci-mail:hover{border-color:var(--purple)}
 .cf-arcs{position:absolute;width:650px;height:650px;right:-270px;bottom:-440px;border:1px solid rgba(255,255,255,.24);
   border-radius:50%;box-shadow:0 0 0 52px rgba(255,255,255,.035),0 0 0 105px rgba(255,255,255,.025);pointer-events:none}
 .cf-arcs:before{content:"";position:absolute;width:530px;height:530px;left:59px;top:59px;border:1px solid rgba(255,255,255,.12);border-radius:50%}
@@ -658,6 +680,11 @@ body.viewing-product .page{display:none}
   .res-feature-body{order:2}
   .res-grid{grid-template-columns:repeat(2,1fr)}
   .cf-split{grid-template-columns:1fr;min-height:0}
+  .cf-layout{grid-template-columns:1fr;gap:34px}
+  /* form first on small screens - it is the thing the section is for */
+  .cf-contactinfo{order:2;padding-top:0}
+  .cf-app{order:1}
+  .cf-ci-office:last-of-type{border-bottom:0}
 }
 @media(max-width:900px){
   .industry-photo-collage{height:360px}
@@ -1241,7 +1268,37 @@ body.viewing-product .page{display:none}
   </section>
 
   <section class="section contact-section" id="contact">
-    <div class="wrap">
+    <div class="wrap cf-layout">
+
+      <!-- Offices sit on the page, not inside the card. Some people would
+           rather phone than fill in a form, and this uses the white space the
+           centred card was leaving empty. -->
+      <aside class="cf-contactinfo">
+        <p class="cf-ci-label">Visit or call us</p>
+
+        <div class="cf-ci-office">
+          <h4>Xilnex <em>HQ</em></h4>
+          <p>1A-21-01 &amp; 02, Lilitan Sungai Tiram,<br>GBS @ Penang Airport,<br>11900 Bayan Lepas, Penang.</p>
+          <a class="cf-ci-tel" href="tel:+6046110162">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-1.9 1.1a11 11 0 0 0 5.4 5.4l1.1-1.9 3.8 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            +604 611 0162
+          </a>
+          <a class="cf-ci-map" href="https://www.google.com/maps/search/?api=1&amp;query=GBS%20%40%20Penang%20Airport%2C%2011900%20Bayan%20Lepas%2C%20Penang" target="_blank" rel="noopener">View on Maps</a>
+        </div>
+
+        <div class="cf-ci-office">
+          <h4>Xilnex <em>Regional Office</em></h4>
+          <p>G-21, PJ Midtown, Jalan Kemajuan,<br>Seksyen 13, 46200 Petaling Jaya,<br>Selangor.</p>
+          <a class="cf-ci-tel" href="tel:+60379313266">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-1.9 1.1a11 11 0 0 0 5.4 5.4l1.1-1.9 3.8 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            +603 7931 3266
+          </a>
+          <a class="cf-ci-map" href="https://www.google.com/maps/search/?api=1&amp;query=PJ%20Midtown%2C%20Jalan%20Kemajuan%2C%20Seksyen%2013%2C%2046200%20Petaling%20Jaya%2C%20Selangor" target="_blank" rel="noopener">View on Maps</a>
+        </div>
+
+        <a class="cf-ci-mail" href="mailto:marketing@xilnex.com">marketing@xilnex.com</a>
+      </aside>
+
       <!-- ==================================================================
            Contact flow, matched to the approved reference prototype:
            gradient progress bar above the card; step 1 as a split with the
@@ -1269,7 +1326,7 @@ body.viewing-product .page{display:none}
                   <span>Operating since 2007</span>
                   <span>Reply within 1 working day</span>
                 </div>
-              </div>
+</div>
               <div class="cf-arcs" aria-hidden="true"></div>
             </section>
 
