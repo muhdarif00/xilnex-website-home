@@ -146,11 +146,17 @@ h1,h2,h3,h4,p{margin-top:0}
    No visual. The product carousel immediately below carries the imagery, which
    leaves the direct-answer paragraph as the focus of the first screen and
    removes a whole class of two-column alignment problems. ----------------- */
-.hero{position:relative;overflow:hidden;background:#f6f4f7;text-align:center}
-/* Flat, near-neutral field. Apple's hero has no gradient at all; a single very
-   soft brand tint keeps it from reading as plain grey without adding noise. */
-.hero-bg{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(120% 80% at 50% 0%,rgba(214,150,200,.13),transparent 62%)}
+.hero{position:relative;overflow:hidden;background:#f7f3f9;text-align:center}
+/* Mesh gradient: four brand-coloured blobs pinned to the corners, plus a soft
+   white bloom through the middle. The bloom is the load-bearing part - it keeps
+   the centre light so the black headline holds contrast and the product cut-out
+   sits on near-white rather than on colour. */
+.hero-bg{position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(62% 58% at 10% 6%,rgba(222,132,203,0.18),transparent 70%),
+  radial-gradient(52% 52% at 90% 10%,rgba(159,49,141,0.11),transparent 70%),
+  radial-gradient(58% 62% at 4% 84%,rgba(184,211,247,0.23),transparent 72%),
+  radial-gradient(62% 58% at 96% 90%,rgba(216,133,200,0.15),transparent 72%),
+  radial-gradient(48% 44% at 50% 46%,rgba(255,255,255,.82),transparent 72%)}
 /* Tightened: the eyebrow above the headline is gone, so the hero no longer
    needs padding sized for a label plus a headline. */
 .hero-inner{position:relative;padding:clamp(34px,4.2vw,58px) 0 0}
@@ -241,7 +247,10 @@ h1,h2,h3,h4,p{margin-top:0}
 .gal{--gal-w:min(720px,74vw);--gal-gap:clamp(14px,1.8vw,26px)}
 .gal-track{
   display:flex;gap:var(--gal-gap);list-style:none;margin:0;
-  padding:10px calc(50% - var(--gal-w)/2) 34px;
+  /* overflow-x:auto forces vertical clipping too, so the active slide's shadow
+     (offset 34 + blur 64 - spread 28 = ~70px below the box) has to live inside
+     the scroll box. The bar is pulled back up so the visible gap is unchanged. */
+  padding:10px calc(50% - var(--gal-w)/2) 78px;
   scroll-padding-inline:calc(50% - var(--gal-w)/2);
   overflow-x:auto;overscroll-behavior-x:contain;
   scroll-snap-type:x mandatory;scrollbar-width:none;cursor:grab;
@@ -270,7 +279,7 @@ h1,h2,h3,h4,p{margin-top:0}
 }
 .gal-slide.is-active .gal-chip{opacity:1;transform:none}
 
-.gal-bar{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.gal-bar{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-top:-34px}
 .gal-caption{min-width:0;flex:1 1 300px}
 .gal-caption h3{font-size:clamp(21px,2.2vw,28px);letter-spacing:-.035em;line-height:1.2;margin:0 0 6px}
 .gal-caption p{font-size:15px;line-height:1.6;color:var(--muted);margin:0;max-width:46ch}
@@ -320,6 +329,14 @@ h1,h2,h3,h4,p{margin-top:0}
 .industry-photo-label{position:absolute;z-index:2;left:20px;right:20px;bottom:17px;color:#fff}
 .industry-photo-label span{display:block;font-size:9px;font-weight:800;letter-spacing:.15em;color:#f0b7e8;margin-bottom:5px}
 .industry-photo-label b{display:block;font-size:15px;line-height:1.1;letter-spacing:-.02em}
+
+/* A placeholder tile is light, so the dark scrim meant for photography turns it
+   muddy and the label becomes unreadable. Suppress the scrim, put the label back
+   to dark text, and stop .photo-todo's uppercase leaking into it. */
+.industry-photo.photo-todo:after{display:none}
+.industry-photo.photo-todo .industry-photo-label{text-transform:none;color:var(--ink)}
+.industry-photo.photo-todo .industry-photo-label span{color:var(--purple)}
+.industry-photo.photo-todo .industry-photo-label b{font-size:14px;line-height:1.25}
 
 /* ============================ Behind ============================ */
 .behind{background:var(--soft)}
@@ -970,7 +987,7 @@ body.viewing-product .page{display:none}
     <div class="gal reveal">
       <ul class="gal-track" id="galTrack" tabindex="0" role="region" aria-label="Xilnex product gallery">
         <li class="gal-slide" data-title="POS for Retail" data-desc="Checkout, inventory and CRM on one terminal.">
-          <div class="gal-media"><img src="https://liveorder.xilnex.com/hs-fs/hubfs/Xilnex-Go.png?height=1000&amp;name=Xilnex-Go.png&amp;width=1000" alt="Xilnex POS terminal at a retail counter" loading="lazy" width="1200" height="800"><span class="gal-chip">Point of Sale</span></div>
+          <div class="gal-media"><div class="photo-todo"><span>POS for Retail counter shot<br>1200&times;800</span></div><span class="gal-chip">Point of Sale</span></div>
         </li>
         <li class="gal-slide" data-title="POS for F&amp;B" data-desc="Dine-in, takeaway and counter service on one screen.">
           <div class="gal-media"><div class="photo-todo"><span>POS for F&amp;B counter shot<br>1200&times;800</span></div><span class="gal-chip">Point of Sale</span></div>
@@ -1049,8 +1066,7 @@ body.viewing-product .page{display:none}
   <section class="section industries" id="industries">
     <div class="wrap industry-layout">
       <div class="industry-visual industry-photo-collage reveal">
-        <div class="industry-photo industry-photo-retail">
-          <img src="https://liveorder.xilnex.com/hs-fs/hubfs/Xilnex-Go.png?height=1000&amp;name=Xilnex-Go.png&amp;width=1000" alt="Xilnex point-of-sale terminal in a retail environment" loading="lazy" width="1000" height="1000">
+        <div class="industry-photo industry-photo-retail photo-todo">
           <div class="industry-photo-label"><span>RETAIL</span><b>Built for every checkout.</b></div>
         </div>
         <div class="industry-photo industry-photo-fnb photo-todo">
