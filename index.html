@@ -1787,6 +1787,122 @@ body.viewing-product .page{display:none}
   }
 }
 
+
+/* ======================== HERO FIBER-OPTIC STRANDS ======================== */
+.hero{
+  background:#fbfafc!important;
+}
+.hero-fiber-field{
+  position:absolute!important;
+  inset:-16% -10% -16% -6%!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  overflow:hidden!important;
+}
+.hero-fiber-svg{
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+}
+.hero-fiber-svg use{
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.fiber-bundle use{
+  stroke:url(#fiberColorA);
+  stroke-width:.75;
+  opacity:.46;
+}
+.bundle-b use{
+  stroke:url(#fiberColorB);
+  stroke-width:.68;
+  opacity:.34;
+}
+.fiber-fine use{
+  stroke:url(#fiberColorA);
+  stroke-width:.42;
+  opacity:.28;
+}
+.fiber-highlight use{
+  stroke:#E5B6E0;
+  stroke-width:1.05;
+  opacity:.38;
+}
+.fiber-haze{
+  fill:none;
+  stroke:#B75AAE;
+  stroke-width:75;
+  opacity:.08;
+  filter:url(#fiberGlowSoft);
+}
+.haze-b{
+  stroke:#7C6BC0;
+  opacity:.06;
+}
+
+.fiber-bundle{animation:heroFiberFloatA 11s ease-in-out infinite alternate}
+.bundle-b{animation:heroFiberFloatB 13s ease-in-out infinite alternate}
+.fiber-fine{animation:heroFiberFloatC 9s ease-in-out infinite alternate}
+.fiber-highlight{animation:heroFiberHighlight 7s ease-in-out infinite alternate}
+.haze-a{animation:heroFiberHazeA 12s ease-in-out infinite alternate}
+.haze-b{animation:heroFiberHazeB 14s ease-in-out infinite alternate}
+
+@keyframes heroFiberFloatA{
+  from{transform:translate3d(-.8%,0,0) rotate(-.5deg)}
+  to{transform:translate3d(1.5%,1.8%,0) rotate(.7deg)}
+}
+@keyframes heroFiberFloatB{
+  from{transform:translate3d(.6%,-.5%,0) rotate(.5deg)}
+  to{transform:translate3d(-1.4%,1.4%,0) rotate(-.8deg)}
+}
+@keyframes heroFiberFloatC{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(1.5%,1.8%,0)}
+}
+@keyframes heroFiberHighlight{
+  from{transform:translate3d(-.4%,0,0)}
+  to{transform:translate3d(1.5%,1.2%,0)}
+}
+@keyframes heroFiberHazeA{
+  from{transform:translate3d(-1%,0,0) scale(1)}
+  to{transform:translate3d(2%,2%,0) scale(1.06)}
+}
+@keyframes heroFiberHazeB{
+  from{transform:translate3d(1%,-1%,0) scale(1)}
+  to{transform:translate3d(-2%,2%,0) scale(1.05)}
+}
+
+/* Hide every old hero background visual; keep hero content and text untouched. */
+.hero .hero-bg,
+.hero .hero-spot{
+  display:none!important;
+}
+.hero .hero-inner{
+  position:relative!important;
+  z-index:3!important;
+}
+.hero .hero-copy,
+.hero h1,
+.hero .hero-sub,
+.hero .ctas,
+.hero .hero-media{
+  position:relative!important;
+  z-index:4!important;
+}
+
+@media(max-width:900px){
+  .hero-fiber-field{inset:-20% -28% -14% -20%!important}
+  .fiber-bundle use{stroke-width:.62}
+  .bundle-b use{stroke-width:.56}
+  .fiber-fine use{stroke-width:.34}
+}
+@media(prefers-reduced-motion:reduce){
+  .fiber-bundle,.bundle-b,.fiber-fine,.fiber-highlight,.fiber-haze{
+    animation:none!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1905,11 +2021,73 @@ body.viewing-product .page{display:none}
     <!-- Animated mesh: four blobs drift on their own long, mismatched cycles so
          the pattern never visibly repeats. The bloom on top is static and holds
          the centre light, or the headline loses contrast as blobs pass under it. -->
-    <div class="hero-bg" aria-hidden="true">
-      <i class="hb1"></i><i class="hb2"></i><i class="hb3"></i><i class="hb4"></i>
-      <span class="hb-bloom"></span>
-    </div>
-    <div class="hero-spot" aria-hidden="true"></div>
+    <div class="hero-fiber-field" aria-hidden="true">
+  <svg class="hero-fiber-svg" viewBox="0 0 1600 760" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="fiberColorA" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#8C3D91" stop-opacity="0"/>
+        <stop offset="28%" stop-color="#9F318D" stop-opacity=".40"/>
+        <stop offset="55%" stop-color="#C95BA8" stop-opacity=".96"/>
+        <stop offset="82%" stop-color="#8C6BC5" stop-opacity=".74"/>
+        <stop offset="100%" stop-color="#B9D3F7" stop-opacity=".04"/>
+      </linearGradient>
+      <linearGradient id="fiberColorB" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#B9D3F7" stop-opacity="0"/>
+        <stop offset="33%" stop-color="#7563B7" stop-opacity=".30"/>
+        <stop offset="66%" stop-color="#C95BA8" stop-opacity=".78"/>
+        <stop offset="100%" stop-color="#9F318D" stop-opacity=".16"/>
+      </linearGradient>
+      <filter id="fiberGlowSoft" x="-20%" y="-30%" width="140%" height="160%">
+        <feGaussianBlur stdDeviation="7"/>
+      </filter>
+      <filter id="fiberGlow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="2.4"/>
+      </filter>
+      <path id="heroFiberA" d="M250 -80 C560 20 700 180 900 290 C1130 418 1300 540 1710 820"/>
+      <path id="heroFiberB" d="M470 -70 C760 60 820 190 1040 305 C1260 420 1370 480 1715 255"/>
+      <path id="heroFiberC" d="M350 35 C700 140 810 270 1040 400 C1250 525 1390 660 1710 840"/>
+      <path id="heroFiberD" d="M620 -40 C870 85 980 230 1150 335 C1320 430 1460 500 1715 335"/>
+    </defs>
+
+    <use href="#heroFiberA" class="fiber-haze haze-a"/>
+    <use href="#heroFiberB" class="fiber-haze haze-b"/>
+
+    <g class="fiber-bundle bundle-a">
+      <use href="#heroFiberA"/><use href="#heroFiberA" transform="translate(0 5)"/><use href="#heroFiberA" transform="translate(0 10)"/>
+      <use href="#heroFiberA" transform="translate(0 15)"/><use href="#heroFiberA" transform="translate(0 20)"/><use href="#heroFiberA" transform="translate(0 25)"/>
+      <use href="#heroFiberA" transform="translate(0 30)"/><use href="#heroFiberA" transform="translate(0 35)"/><use href="#heroFiberA" transform="translate(0 40)"/>
+      <use href="#heroFiberA" transform="translate(0 45)"/><use href="#heroFiberA" transform="translate(0 50)"/><use href="#heroFiberA" transform="translate(0 55)"/>
+      <use href="#heroFiberA" transform="translate(0 60)"/><use href="#heroFiberA" transform="translate(0 -5)"/><use href="#heroFiberA" transform="translate(0 -10)"/>
+      <use href="#heroFiberA" transform="translate(0 -15)"/><use href="#heroFiberA" transform="translate(0 -20)"/><use href="#heroFiberA" transform="translate(0 -25)"/>
+      <use href="#heroFiberA" transform="translate(0 -30)"/><use href="#heroFiberA" transform="translate(0 -35)"/><use href="#heroFiberA" transform="translate(0 -40)"/>
+      <use href="#heroFiberA" transform="translate(0 -45)"/><use href="#heroFiberA" transform="translate(0 -50)"/><use href="#heroFiberA" transform="translate(0 -55)"/>
+      <use href="#heroFiberA" transform="translate(0 -60)"/>
+    </g>
+
+    <g class="fiber-bundle bundle-b">
+      <use href="#heroFiberB"/><use href="#heroFiberB" transform="translate(0 6)"/><use href="#heroFiberB" transform="translate(0 12)"/>
+      <use href="#heroFiberB" transform="translate(0 18)"/><use href="#heroFiberB" transform="translate(0 24)"/><use href="#heroFiberB" transform="translate(0 30)"/>
+      <use href="#heroFiberB" transform="translate(0 36)"/><use href="#heroFiberB" transform="translate(0 42)"/><use href="#heroFiberB" transform="translate(0 -6)"/>
+      <use href="#heroFiberB" transform="translate(0 -12)"/><use href="#heroFiberB" transform="translate(0 -18)"/><use href="#heroFiberB" transform="translate(0 -24)"/>
+      <use href="#heroFiberB" transform="translate(0 -30)"/><use href="#heroFiberB" transform="translate(0 -36)"/><use href="#heroFiberB" transform="translate(0 -42)"/>
+    </g>
+
+    <g class="fiber-fine">
+      <use href="#heroFiberC" transform="translate(0 18)"/><use href="#heroFiberC" transform="translate(0 -18)"/>
+      <use href="#heroFiberC" transform="translate(0 36)"/><use href="#heroFiberC" transform="translate(0 -36)"/>
+      <use href="#heroFiberD" transform="translate(0 15)"/><use href="#heroFiberD" transform="translate(0 -15)"/>
+      <use href="#heroFiberD" transform="translate(0 30)"/><use href="#heroFiberD" transform="translate(0 -30)"/>
+    </g>
+
+    <g class="fiber-highlight">
+      <use href="#heroFiberA" transform="translate(0 8)"/>
+      <use href="#heroFiberB" transform="translate(0 -7)"/>
+      <use href="#heroFiberC" transform="translate(0 5)"/>
+      <use href="#heroFiberD" transform="translate(0 -4)"/>
+    </g>
+  </svg>
+</div>
+<div class="hero-spot" aria-hidden="true"></div>
     <div class="wrap hero-inner" id="heroInner">
       <div class="hero-copy">
         <div class="hero-eyebrow"><span></span> SOUTHEAST ASIA <i>•</i> CLOUD POS <i>•</i> MULTI-OUTLET OPERATORS</div>
