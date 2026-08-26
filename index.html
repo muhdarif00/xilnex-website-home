@@ -243,15 +243,75 @@ h1,h2,h3,h4,p{margin-top:0}
 /* Icons replace the old 01-04 markers: these four are a set of capabilities,
    not a sequence, so numbering them implied an order that does not exist. */
 .story-points{margin-top:34px;border-top:1px solid var(--line)}
-.story-point{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+/* rows are buttons now, so reset the UA button styling */
+.story-point{display:flex;align-items:center;gap:16px;padding:16px 4px 16px 0;width:100%;text-align:left;
+  background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;
+  transition:padding-left .22s var(--ease),background .22s}
+.story-point:hover{padding-left:8px}
+.story-point[aria-selected="true"]{padding-left:8px}
+.story-point[aria-selected="true"] b{color:var(--purple-deep)}
+.story-point[aria-selected="true"] .story-ico{transform:scale(1.08)}
+.story-ico{transition:transform .22s var(--ease)}
+.story-caret{margin-left:auto;width:7px;height:7px;flex-shrink:0;
+  border-right:2px solid var(--line);border-bottom:2px solid var(--line);transform:rotate(-45deg);
+  transition:border-color .22s,transform .22s var(--ease)}
+.story-point[aria-selected="true"] .story-caret{border-color:var(--purple);transform:rotate(-45deg) translate(2px,-2px)}
+
+/* ---- Reveal panel ----
+   On every change the rules draw left to right, then the text lifts in behind
+   them. Each element carries its own delay so the sequence reads as one motion
+   rather than four things starting at once. */
+.eco-panel{position:relative;padding:34px 40px 34px;background:#fff;border:1px solid var(--line);
+  border-radius:20px;box-shadow:0 26px 50px -34px rgba(40,28,45,.30);min-height:300px}
+/* Solid-shape icons, no disc behind them. Each element carries a motion class
+   and animates from its own origin: bars grow up off the baseline, the dashed
+   rule draws from the left, tiles pop from their centres. transform-box:fill-box
+   is required or an SVG shape transforms about the viewBox origin, not its own. */
+/* viewBox tightened to the artwork bounds (x 8-57, y 8.6-47), so the box no
+   longer carries a third of its height as empty space above and below. */
+.eco-icon{display:block;width:138px;height:110px;margin-bottom:22px;overflow:visible}
+.eco-icon .g-right,.eco-icon .g-up,.eco-icon .g-pop,.eco-icon .g-in{transform-box:fill-box}
+.eco-icon .g-right{transform-origin:left center;transform:scaleX(0)}
+.eco-icon .g-up{transform-origin:bottom center;transform:scaleY(0)}
+.eco-icon .g-pop{transform-origin:center;transform:scale(0)}
+.eco-icon .g-in{opacity:0;transform:translateY(6px)}
+
+.eco-panel.is-in .eco-icon .g-right{transform:none;transition:transform .5s cubic-bezier(.33,1,.68,1)}
+.eco-panel.is-in .eco-icon .g-up{transform:none;transition:transform .55s cubic-bezier(.34,1.25,.64,1)}
+.eco-panel.is-in .eco-icon .g-pop{transform:none;transition:transform .45s cubic-bezier(.34,1.6,.64,1)}
+.eco-panel.is-in .eco-icon .g-in{opacity:1;transform:none;transition:opacity .35s ease,transform .35s var(--ease)}
+.eco-panel.is-in .eco-icon [class^="g-"]:nth-child(2){transition-delay:.10s}
+.eco-panel.is-in .eco-icon [class^="g-"]:nth-child(3){transition-delay:.19s}
+.eco-panel.is-in .eco-icon [class^="g-"]:nth-child(4){transition-delay:.27s}
+.eco-panel.is-in .eco-icon [class^="g-"]:nth-child(5){transition-delay:.34s}
+.eco-panel.is-in .eco-icon [class^="g-"]:nth-child(6){transition-delay:.41s}
+
+.eco-tag,.eco-title,.eco-body,.eco-link{opacity:0;transform:translateY(12px)}
+.eco-tag{display:block;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--purple);margin-bottom:10px}
+.eco-title{font-size:clamp(24px,2.6vw,32px);letter-spacing:-.035em;line-height:1.15;margin:0 0 14px}
+.eco-body{font-size:15.5px;line-height:1.72;color:var(--muted);margin:0;max-width:46ch}
+.eco-link{margin-top:22px}
+
+.eco-panel.is-in .eco-icon-wrap:before{transform:scale(1);opacity:1;
+  transition:transform .55s cubic-bezier(.34,1.4,.64,1),opacity .4s ease}
+.eco-panel.is-in .eco-tag,
+.eco-panel.is-in .eco-title,
+.eco-panel.is-in .eco-body,
+.eco-panel.is-in .eco-link{opacity:1;transform:none;transition:opacity .42s ease,transform .42s cubic-bezier(.33,1,.68,1)}
+.eco-panel.is-in .eco-tag{transition-delay:.36s}
+.eco-panel.is-in .eco-title{transition-delay:.44s}
+.eco-panel.is-in .eco-body{transition-delay:.52s}
+.eco-panel.is-in .eco-link{transition-delay:.60s}
+
+@media (prefers-reduced-motion:reduce){
+  .eco-icon [class^="g-"]{transform:none;opacity:1}
+  .eco-tag,.eco-title,.eco-body,.eco-link{opacity:1;transform:none}
+}
 .story-ico{width:26px;height:26px;flex-shrink:0;color:var(--purple)}
 .story-point b{display:block;font-size:14.5px;font-weight:600;letter-spacing:-.015em}
 .story-point span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
 
-.story-visual{position:relative;aspect-ratio:4/3;max-height:520px}
-.story-photo{position:absolute;inset:0;border-radius:22px;overflow:hidden;background:#f0edf2;
-  box-shadow:0 34px 70px -34px rgba(40,28,45,.42)}
-.story-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.story-visual{position:relative}
 
 /* ---- Focal product carousel ----
    The centred slide sits at full size and full colour; its neighbours scale back
@@ -334,6 +394,106 @@ h1,h2,h3,h4,p{margin-top:0}
 #solutions{padding-bottom:clamp(52px,5.5vw,80px)}
 .photo-todo{display:grid;place-items:center;padding:16px;text-align:center;padding:20px;background:repeating-linear-gradient(45deg,#f4f0f5,#f4f0f5 12px,#efe9f1 12px,#efe9f1 24px);color:#8a8b94;font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;line-height:1.7}
 
+/* ============================ Process strip ============================
+   Modelled on how a technical buyer reads: a numbered sequence they can check,
+   not a claim they have to accept. The rail draws once on entry. */
+.flow{padding-top:clamp(52px,5.5vw,84px);padding-bottom:clamp(56px,6vw,88px);background:var(--soft);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.flow .section-head{margin-bottom:44px}
+.flow-track{position:relative;list-style:none;margin:0;padding:0;display:grid;gap:26px;
+  grid-template-columns:repeat(5,1fr)}
+.flow-rail{position:absolute;left:0;right:0;top:17px;height:2px;background:var(--line);overflow:hidden}
+.flow-rail i{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:left center;
+  background:linear-gradient(90deg,#8E2674,#C95BA8)}
+.flow-track.visible .flow-rail i{transform:scaleX(1);transition:transform 1.5s cubic-bezier(.33,1,.68,1) .1s}
+.flow-step{position:relative;opacity:0;transform:translateY(14px)}
+.flow-track.visible .flow-step{opacity:1;transform:none;transition:opacity .5s ease,transform .5s var(--ease)}
+.flow-track.visible .flow-step:nth-child(2){transition-delay:.14s}
+.flow-track.visible .flow-step:nth-child(3){transition-delay:.40s}
+.flow-track.visible .flow-step:nth-child(4){transition-delay:.66s}
+.flow-track.visible .flow-step:nth-child(5){transition-delay:.92s}
+.flow-track.visible .flow-step:nth-child(6){transition-delay:1.18s}
+.flow-n{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;
+  background:#fff;border:2px solid var(--line);font-size:12px;font-weight:700;
+  letter-spacing:.02em;color:var(--purple);font-variant-numeric:tabular-nums;position:relative;z-index:1}
+.flow-track.visible .flow-step .flow-n{border-color:var(--purple)}
+.flow-body{padding-top:18px}
+.flow-body h3{font-size:17px;line-height:1.25;letter-spacing:-.025em;margin:0 0 8px}
+.flow-body p{font-size:13.5px;line-height:1.68;color:var(--muted);margin:0}
+.flow-foot{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:14px;color:var(--muted)}
+.flow-foot a{color:var(--purple);font-weight:600}
+@media(max-width:1000px){
+  .flow-track{grid-template-columns:repeat(2,1fr);gap:30px}
+  .flow-rail{display:none}
+}
+@media(max-width:620px){.flow-track{grid-template-columns:1fr}}
+
+/* ============================ Outlet sizer ============================
+   The whole band is dark, with the control sitting directly in it rather than
+   on a card. One inverted section in the middle of the page gives the scroll a
+   change of gear, and the section that asks the visitor to do something is the
+   one that gets it. */
+.sizer{position:relative;overflow:hidden;color:#fff;
+  padding-top:clamp(64px,7vw,104px);padding-bottom:clamp(68px,7.5vw,108px);
+  background:radial-gradient(90% 120% at 88% 4%,rgba(236,159,217,.26),transparent 58%),
+             linear-gradient(135deg,#260b22 0%,#551c4c 50%,#8E2674 100%)}
+.sizer:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:48px 48px}
+.sizer > .wrap{position:relative}
+.sizer .section-head{margin-bottom:clamp(38px,4vw,56px)}
+.sizer .section-title{color:#fff}
+.sizer .section-lead{color:rgba(255,255,255,.70)}
+
+/* control sits in the band, no card around it */
+.sizer-box{position:relative;background:none;border:0;border-radius:0;box-shadow:none;padding:0}
+.sizer-head{display:flex;align-items:flex-start;justify-content:space-between;gap:30px;
+  flex-wrap:wrap;margin-bottom:30px}
+.sizer-label{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.60);margin-bottom:12px}
+.sizer-readout{display:flex;align-items:baseline;gap:10px}
+.sizer-num{font-size:clamp(50px,6vw,80px);font-weight:800;letter-spacing:-.05em;line-height:1;
+  font-variant-numeric:tabular-nums}
+.sizer-unit{font-size:15px;font-weight:600;color:rgba(255,255,255,.60)}
+
+.sizer-dots{display:grid;grid-template-columns:repeat(8,11px);gap:8px;align-content:start;padding-top:10px}
+.sizer-dots i{width:11px;height:11px;border-radius:3px;background:rgba(255,255,255,.14);
+  transform:scale(0);transition:transform .3s cubic-bezier(.34,1.6,.64,1),background .3s}
+.sizer-dots i.on{transform:scale(1);background:#EC9FD9}
+.sizer-dots i.more{background:rgba(255,255,255,.5)}
+
+.sizer-control{position:relative;margin-bottom:34px}
+.sizer-range{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:3px;
+  background:linear-gradient(90deg,#EC9FD9 0%,#EC9FD9 var(--fill,33%),rgba(255,255,255,.20) var(--fill,33%));
+  outline:none;cursor:pointer}
+.sizer-range::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;
+  background:#fff;cursor:grab;box-shadow:0 4px 16px rgba(0,0,0,.38);transition:transform .15s var(--ease)}
+.sizer-range::-webkit-slider-thumb:active{cursor:grabbing;transform:scale(1.14)}
+.sizer-range::-moz-range-thumb{width:26px;height:26px;border:0;border-radius:50%;background:#fff;
+  cursor:grab;box-shadow:0 4px 16px rgba(0,0,0,.38)}
+.sizer-range:focus-visible{outline:2px solid #EC9FD9;outline-offset:7px;border-radius:6px}
+.sizer-ticks{display:flex;justify-content:space-between;margin-top:14px}
+.sizer-ticks button{background:none;border:0;padding:6px 2px;cursor:pointer;font:inherit;
+  font-size:13px;font-weight:600;color:rgba(255,255,255,.55);transition:color .18s}
+.sizer-ticks button:hover,.sizer-ticks button[aria-pressed="true"]{color:#fff}
+
+.sizer-out{position:relative;border-top:1px solid rgba(255,255,255,.16);padding-top:30px}
+.sizer-h{font-size:clamp(23px,2.6vw,34px);letter-spacing:-.038em;line-height:1.16;margin:0 0 13px;color:#fff}
+.sizer-lede{font-size:15.5px;line-height:1.72;color:rgba(255,255,255,.76);margin:0 0 16px;max-width:60ch}
+.sizer-breaks{font-size:13.5px;line-height:1.6;color:#fff;margin:0 0 24px;max-width:60ch;
+  padding-left:14px;border-left:2px solid #EC9FD9}
+.sizer-prods{display:flex;flex-wrap:wrap;gap:9px}
+.sizer-prods a{font-size:12.5px;font-weight:600;padding:9px 15px;border-radius:20px;color:#fff;
+  border:1px solid rgba(255,255,255,.30);background:rgba(255,255,255,.06);
+  transition:background .18s,border-color .18s,transform .18s}
+.sizer-prods a:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.62);transform:translateY(-1px)}
+.sizer-out.is-swap .sizer-h,.sizer-out.is-swap .sizer-lede,
+.sizer-out.is-swap .sizer-breaks,.sizer-out.is-swap .sizer-prods{opacity:0;transform:translateY(8px)}
+.sizer-h,.sizer-lede,.sizer-breaks,.sizer-prods{transition:opacity .24s ease,transform .24s var(--ease)}
+@media(max-width:640px){.sizer-dots{grid-template-columns:repeat(6,11px)}.sizer-head{gap:20px}}
+
 /* ============================ Industries ============================ */
 .industries{padding-top:0}
 .industry-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}
@@ -378,6 +538,22 @@ h1,h2,h3,h4,p{margin-top:0}
 .map-panel{position:relative}
 .sea-map{display:block;width:100%;height:auto}
 .map-dots circle{fill:#ded4e4}
+/* ---- Map draw-in ----
+   Dots POP in one by one, radiating from the Malaysia pin. Two things make them
+   read individually rather than as one wash: each dot scales from 0 with a slight
+   overshoot (a fade alone just dissolves), and each dot's own animation is far
+   shorter than the total stagger, so at any instant only a thin band is moving.
+   transform-box:fill-box is required, or an SVG circle scales about the origin of
+   the whole viewBox instead of its own centre. */
+.js .sea-map .map-dots circle{
+  opacity:0;transform:scale(0);transform-box:fill-box;transform-origin:center;
+  transition:opacity .2s ease, transform .3s cubic-bezier(.34,1.7,.64,1);
+}
+.js .sea-map.is-drawn .map-dots circle{opacity:1;transform:scale(1)}
+.js .sea-map .map-pins > *{opacity:0;transition:opacity .45s ease}
+.js .sea-map.is-drawn .map-pins > *{opacity:1}
+.js .sea-map .map-arcs path{stroke-dashoffset:var(--len);transition:stroke-dashoffset 1.1s cubic-bezier(.33,1,.68,1)}
+.js .sea-map.is-drawn .map-arcs path{stroke-dashoffset:0}
 .map-arcs path{fill:none;stroke:#c58fb8;stroke-width:1.2;stroke-dasharray:3 4;opacity:.75}
 .pin-halo{fill:rgba(159,49,141,.14)}
 .map-note{margin-top:8px;font-size:12.5px;line-height:1.6;color:var(--muted);max-width:52ch}
@@ -902,7 +1078,7 @@ body.viewing-product .page{display:none}
         <div class="ctas">
           <!-- CTA 2 of 2: Contact Us leads from the hero. -->
           <a class="btn btn-primary" href="#contact">Talk to our team</a>
-          <a class="btn btn-secondary" href="#industries">See it in your industry</a>
+          <a class="btn btn-secondary" href="#sizer">See where you fit</a>
         </div>
       </div>
 
@@ -946,7 +1122,7 @@ body.viewing-product .page{display:none}
     <div class="wrap">
       <div class="solutions-intro reveal">
         <div>
-          <h2 class="section-title">Everything your<br>operation needs.</h2>
+          <h2 class="section-title">It breaks at the<br>second outlet.</h2>
         </div>
         <!-- Direct-answer paragraph, 47 words. Relocated here from the hero when the
              hero sub was shortened. This is the block AI engines lift verbatim -
@@ -1100,60 +1276,143 @@ body.viewing-product .page{display:none}
       <div class="story-copy reveal">
         <h2 class="section-title">One ecosystem.<br>Every outlet.</h2>
         <p class="section-lead">Most growing operators end up running three systems that don&rsquo;t talk to each other. Xilnex keeps checkout, customers, reporting and staff in one.</p>
-        <div class="story-points">
-          <div class="story-point">
+        <div class="story-points" role="tablist" aria-label="What the ecosystem covers">
+          <button type="button" class="story-point" role="tab" aria-selected="true" aria-controls="ecoPanel" data-i="0">
             <svg class="story-ico" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="20" height="13" rx="2.5"/><path d="M3 11h20M9 22h8"/><circle cx="18" cy="15" r="1.4" fill="currentColor" stroke="none"/></svg>
             <div><b>Sell with confidence</b><span>Point of sale</span></div>
-          </div>
-          <div class="story-point">
+            <i class="story-caret" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="story-point" role="tab" aria-selected="false" aria-controls="ecoPanel" data-i="1">
             <svg class="story-ico" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="9" r="3.8"/><path d="M3 20c0-3.6 3.1-5.8 7-5.8 1.3 0 2.5.25 3.5.7"/><path d="M18.4 13.2c1.3-1.2 3.4-.5 3.4 1.3 0 2-3.4 4.3-3.4 4.3s-3.4-2.3-3.4-4.3c0-1.8 2.1-2.5 3.4-1.3z"/></svg>
             <div><b>Build customer relationships</b><span>Loyalty and engagement</span></div>
-          </div>
-          <div class="story-point">
+            <i class="story-caret" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="story-point" role="tab" aria-selected="false" aria-controls="ecoPanel" data-i="2">
             <svg class="story-ico" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V13M10 21V6M16 21V10M22 21V3"/></svg>
             <div><b>Make decisions from data</b><span>Business intelligence</span></div>
-          </div>
-          <div class="story-point">
+            <i class="story-caret" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="story-point" role="tab" aria-selected="false" aria-controls="ecoPanel" data-i="3">
             <svg class="story-ico" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.6"/><rect x="15" y="3" width="8" height="8" rx="1.6"/><rect x="3" y="15" width="8" height="8" rx="1.6"/><rect x="15" y="15" width="8" height="8" rx="1.6"/></svg>
             <div><b>Operate consistently at scale</b><span>Every outlet, one standard</span></div>
-          </div>
+            <i class="story-caret" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
+
+      <!-- Panel content is data-driven, so adding a fifth point means adding one
+           button and one entry - no fifth markup block to keep in sync. -->
       <div class="story-visual reveal">
-        <!-- PHOTO SLOT. Replace the placeholder div with:
-             <img src="..." alt="Staff serving a customer at a Xilnex point-of-sale counter"
-                  loading="lazy" width="1200" height="900">
-             Shot: staff and customer either side of the counter, terminal in frame,
-                   shot slightly wide so the outlet is readable as a real place.
-             Size: 1200x900 (4:3), WebP or JPG, under 200 KB -->
-        <div class="story-photo photo-todo">
-          <span>People using the POS at the counter<br>1200&times;900</span>
+        <div class="eco-panel" id="ecoPanel" role="tabpanel" aria-live="polite">
+          <svg class="eco-icon" viewBox="8 8 49 39" aria-hidden="true">
+            <defs><linearGradient id="ecoG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#A13E88"/><stop offset="1" stop-color="#7E2C6C"/>
+            </linearGradient></defs>
+            <g class="eco-icon-g"></g>
+          </svg>
+          <span class="eco-tag"></span>
+          <h3 class="eco-title"></h3>
+          <p class="eco-body"></p>
+          <a class="arrow-link eco-link" href="#"><span class="eco-link-t"></span> <span>&rarr;</span></a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section industries" id="industries">
-    <div class="wrap industry-layout">
-      <div class="industry-visual industry-photo-collage reveal">
-        <div class="industry-photo industry-photo-retail photo-todo">
-          <div class="industry-photo-label"><span>RETAIL</span><b>Built for every checkout.</b></div>
+  <section class="section flow" id="flow">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <h2 class="section-title">One sale, counter<br>to head office.</h2>
         </div>
-        <div class="industry-photo industry-photo-fnb photo-todo">
-          <div class="industry-photo-label"><span>F&amp;B</span><b>Built for every service.</b></div>
-        </div>
+        <p class="section-lead">The offline claim is the one most operators have been burned on before. This is exactly what happens, in order.</p>
       </div>
 
-      <div class="reveal">
-        <h2 class="section-title">Built for multi-outlet businesses.</h2>
-        <p class="section-lead">The problems change once you pass your third outlet. Pick the operation closest to yours and see what it usually runs on.</p>
-        <!-- These were plain divs with arrows that went nowhere. Now linked to
-             the four Industries pages. -->
-        <div class="industry-list">
-          <a class="industry-item" href="#view-retail-chains-franchises"><b>Retail Chains &amp; Franchises</b><span>→</span></a>
-          <a class="industry-item" href="#view-restaurant-cafe-chains"><b>Restaurant &amp; Cafe Chains</b><span>→</span></a>
-          <a class="industry-item" href="#view-convenience-store-chains"><b>Convenience Store Chains</b><span>→</span></a>
-          <a class="industry-item" href="#view-food-courts-mixed-fnb"><b>Food Courts &amp; Mixed F&amp;B Operators</b><span>→</span></a>
+      <!-- Process strip. The rail draws as the section scrolls into view and each
+           step lifts in behind it, so the sequence reads left to right rather
+           than as five parallel boxes. -->
+      <ol class="flow-track reveal">
+        <span class="flow-rail" aria-hidden="true"><i></i></span>
+        <li class="flow-step">
+          <span class="flow-n">01</span>
+          <div class="flow-body">
+            <h3>At the till</h3>
+            <p>A sale is rung up on the terminal. Stock moves, the member is recognised, the receipt prints. Under two seconds, whether the line is up or down.</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="flow-n">02</span>
+          <div class="flow-body">
+            <h3>If the line drops</h3>
+            <p>The terminal keeps trading. Transactions queue locally instead of failing, so the counter never stops because the internet did.</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="flow-n">03</span>
+          <div class="flow-body">
+            <h3>On reconnect</h3>
+            <p>The queue syncs in order. No re-keying, no reconciling two sets of numbers at close, no gap in the day&rsquo;s figures.</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="flow-n">04</span>
+          <div class="flow-body">
+            <h3>At head office</h3>
+            <p>Every outlet lands in one back office. Pricing, promotions and product data are set once here and pushed back down.</p>
+          </div>
+        </li>
+        <li class="flow-step">
+          <span class="flow-n">05</span>
+          <div class="flow-body">
+            <h3>In Insights</h3>
+            <p>Outlet against outlet, daily. Variance and shrinkage surface while you can still do something about them.</p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="flow-foot">Steps 02 and 03 are the difference between a bad afternoon and a lost one. <a href="#contact">Ask us how it behaves on your connection &rarr;</a></p>
+    </div>
+  </section>
+
+  <section class="section sizer" id="sizer">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <h2 class="section-title">What changes as<br>you add outlets.</h2>
+        </div>
+        <p class="section-lead">Drag the scale. The system is the same one throughout &mdash; what changes is which part of it starts carrying the weight.</p>
+      </div>
+
+      <!-- Outlet-count configurator. A native range input, so keyboard and screen
+           reader support come for free; the buttons below it are the same control
+           by another route for anyone who would rather click than drag. -->
+      <div class="sizer-box reveal">
+        <div class="sizer-head">
+          <div>
+            <label class="sizer-label" for="sizerRange">How many outlets do you run?</label>
+            <div class="sizer-readout" aria-hidden="true"><b class="sizer-num"></b><span class="sizer-unit">outlets</span></div>
+          </div>
+          <!-- Dots stand in for outlets, so dragging has a visible consequence
+               beyond the words changing. -->
+          <div class="sizer-dots" id="sizerDots" aria-hidden="true"></div>
+        </div>
+
+        <div class="sizer-control">
+          <input class="sizer-range" id="sizerRange" type="range" min="0" max="3" step="1" value="1"
+                 aria-describedby="sizerOut">
+          <div class="sizer-ticks" role="group" aria-label="Outlet count">
+            <button type="button" data-i="0">1</button>
+            <button type="button" data-i="1">2&ndash;5</button>
+            <button type="button" data-i="2">6&ndash;20</button>
+            <button type="button" data-i="3">20+</button>
+          </div>
+        </div>
+
+        <div class="sizer-out" id="sizerOut" aria-live="polite">
+          <h3 class="sizer-h"></h3>
+          <p class="sizer-lede"></p>
+          <p class="sizer-breaks"></p>
+          <div class="sizer-prods"></div>
         </div>
       </div>
     </div>
@@ -1162,7 +1421,7 @@ body.viewing-product .page{display:none}
   <section class="section behind" id="behind">
     <div class="wrap behind-grid">
       <div class="reveal">
-        <h2 class="section-title">Why Xilnex.</h2>
+        <h2 class="section-title">Nineteen years,<br>one problem.</h2>
         <p class="section-lead">Nineteen years in market, 30,000+ installations, and information security held to an internationally accredited standard.</p>
 
         <div class="why-copy">
@@ -1209,7 +1468,7 @@ body.viewing-product .page{display:none}
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <h2 class="section-title">Answers that help<br>operators move.</h2>
+          <h2 class="section-title">For the ones<br>still deciding.</h2>
         </div>
         <p class="section-lead">Guides, comparisons and customer stories written for operators still deciding, not for the ones who already signed.</p>
       </div>
@@ -1273,7 +1532,7 @@ body.viewing-product .page{display:none}
            large empty column on the right. Now a two-column layout: the heading
            sticks on the left while the accordion scrolls beside it. -->
       <div class="faq-intro reveal">
-        <h2 class="section-title">Straight answers.</h2>
+        <h2 class="section-title">Asked before<br>the first call.</h2>
         <p class="section-lead">The questions operators ask before the first call, answered in plain language.</p>
         <a class="arrow-link" href="#contact">Ask us something else <span>&rarr;</span></a>
       </div>
@@ -2032,6 +2291,156 @@ showStep(1);
       setTimeout(function(){ if(vid && vid.paused) vid.currentTime = 0; }, 350);
     });
   });
+})();
+
+/* ---------------- Outlet sizer ----------------
+   The range input is the control; the tick buttons write to it and dispatch
+   input, so there is one source of truth and keyboard support comes free. */
+(function(){
+  var TIERS = [{"k": "1 outlet", "h": "One counter, one back office.", "lede": "Everything runs on a single terminal: checkout, stock, members and staff clocking. Nothing to reconcile because there is nothing to reconcile against.", "breaks": "What usually breaks first: nothing yet. This is the easy part.", "prods": [["POS for Retail", "#view-pos-retail"], ["POS for F&amp;B", "#view-pos-fnb"], ["Loyalty Programmes", "#view-loyalty-programmes"]]}, {"k": "2 to 5", "h": "The first time you need one version of the truth.", "lede": "Two tills means two sets of numbers unless something joins them. Pricing gets set once at head office, and the day&rsquo;s figures arrive consolidated instead of in a spreadsheet each evening.", "breaks": "What usually breaks first: promotions. One outlet runs last month&rsquo;s price because nobody told the till.", "prods": [["POS for Retail", "#view-pos-retail"], ["Xilnex Insights", "#view-xilnex-insights"], ["Xilnex Mobility", "#view-xilnex-mobility"]]}, {"k": "6 to 20", "h": "Standardisation starts to pay for itself.", "lede": "At this size the cost of every outlet doing it slightly differently is measurable. Central product data, stock moving between branches, and clocking that a supervisor can check from the floor.", "breaks": "What usually breaks first: stock. Variance shows up at the stocktake, weeks after you could have acted on it.", "prods": [["Xilnex Insights", "#view-xilnex-insights"], ["Kitchen Display System", "#view-kitchen-display-system"], ["Self-Order Kiosk", "#view-self-order-kiosk"]]}, {"k": "20+", "h": "Franchise territory.", "lede": "Roles and permissions per outlet, open APIs into the finance system you already run, and a rollout process that does not need a Xilnex engineer in every new branch.", "breaks": "What usually breaks first: people. Onboarding a new outlet takes longer than opening it.", "prods": [["Xilnex Insights", "#view-xilnex-insights"], ["Online Ordering", "#view-online-ordering"], ["Retail Chains &amp; Franchises", "#view-retail-chains-franchises"]]}];
+  var r = document.getElementById('sizerRange');
+  var out = document.getElementById('sizerOut');
+  if(!r || !out) return;
+  var ticks = [].slice.call(document.querySelectorAll('.sizer-ticks button'));
+  var q = function(s){ return out.querySelector(s); };
+  var cur = -1;
+
+  var COUNT = [1, 5, 20, 24];            /* dots per tier; 24 reads as "many" */
+  var LABEL = ['1', '2\u20135', '6\u201320', '20+'];
+  var dots = document.getElementById('sizerDots');
+  var num = document.querySelector('.sizer-num');
+  var unit = document.querySelector('.sizer-unit');
+  for(var n = 0; n < 24; n++) dots.appendChild(document.createElement('i'));
+  var cells = [].slice.call(dots.children);
+
+  function paint(i, animate){
+    r.style.setProperty('--fill', (i/3*100) + '%');
+    ticks.forEach(function(b,n){ b.setAttribute('aria-pressed', n===i ? 'true':'false'); });
+    num.textContent = LABEL[i];
+    unit.textContent = i === 0 ? 'outlet' : 'outlets';
+    cells.forEach(function(el, n){
+      var on = n < COUNT[i];
+      /* stagger only what is switching on, so the row fills instead of blinking */
+      el.style.transitionDelay = (on && animate ? Math.min(n,12) * 22 : 0) + 'ms';
+      el.classList.toggle('on', on);
+      el.classList.toggle('more', on && i === 3 && n >= 20);
+    });
+    if(i === cur) return;
+    cur = i;
+    var t = TIERS[i];
+    var write = function(){
+      q('.sizer-h').textContent = t.h;
+      q('.sizer-lede').innerHTML = t.lede;
+      q('.sizer-breaks').innerHTML = t.breaks;
+      q('.sizer-prods').innerHTML = t.prods.map(function(p){
+        return '<a href="' + p[1] + '">' + p[0] + '</a>';
+      }).join('');
+      out.classList.remove('is-swap');
+    };
+    if(!animate){ write(); return; }
+    out.classList.add('is-swap');
+    setTimeout(write, 210);
+  }
+
+  r.addEventListener('input', function(){ paint(+r.value, true); });
+  ticks.forEach(function(b,i){
+    b.addEventListener('click', function(){ r.value = i; paint(i, true); });
+  });
+  paint(+r.value, false);
+})();
+
+/* ---------------- Ecosystem panel ----------------
+   Clicking a point re-runs the reveal. Restarting a CSS transition needs the
+   class removed, a forced reflow, then the class re-added - without the reflow
+   the browser batches both changes and nothing animates on the second click. */
+(function(){
+  var ECO = [{"t": "Sell with confidence", "s": "Point of sale", "body": "Every terminal keeps taking payments through an outage and syncs the queue back to head office the moment the line returns. No re-keying at the till, no gap in the day&rsquo;s figures.", "link": "POS for Retail", "href": "#view-pos-retail", "tag": "Offline capable", "icon": "<rect class=\"g-up\" x=\"12\" y=\"10.0\" width=\"28\" height=\"20\" rx=\"4\" fill=\"url(#ecoG)\"/><rect class=\"g-in\" x=\"22\" y=\"30.0\" width=\"8\" height=\"6\" fill=\"#dcbfd6\"/><rect class=\"g-in\" x=\"11\" y=\"36.0\" width=\"30\" height=\"4.5\" rx=\"2.2\" fill=\"#c9a3c2\"/><rect class=\"g-pop\" x=\"45\" y=\"21.0\" width=\"12\" height=\"9\" rx=\"2\" fill=\"#e7c8e0\"/><path d=\"M8 46h48\" stroke=\"#e6dcea\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>"}, {"t": "Build customer relationships", "s": "Loyalty and engagement", "body": "One membership works across every branch, with points applied at the till rather than on a card someone forgot to bring. You can see who is coming back and who has stopped.", "link": "Loyalty Programmes", "href": "#view-loyalty-programmes", "tag": "One card, every branch", "icon": "<rect class=\"g-up\" x=\"8\" y=\"13.0\" width=\"38\" height=\"25\" rx=\"4\" fill=\"url(#ecoG)\"/><rect class=\"g-in\" x=\"8\" y=\"19.0\" width=\"38\" height=\"5\" fill=\"#8E2674\" opacity=\".55\"/><rect class=\"g-in\" x=\"13\" y=\"30.0\" width=\"13\" height=\"3\" rx=\"1.5\" fill=\"#fff\" opacity=\".8\"/><path class=\"g-pop\" d=\"M50 10c2.6-2.6 7-1.3 7 2.3 0 4-7 8.2-7 8.2s-7-4.2-7-8.2c0-3.6 4.4-4.9 7-2.3z\" fill=\"#C95BA8\"/><path d=\"M8 47h48\" stroke=\"#e6dcea\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>"}, {"t": "Make decisions from data", "s": "Business intelligence", "body": "Compare outlet against outlet without exporting anything first. Variance and shrinkage show up daily rather than surfacing weeks later in a stocktake.", "link": "Xilnex Insights", "href": "#view-xilnex-insights", "tag": "Daily, not monthly", "icon": "<rect class=\"g-up\" x=\"13\" y=\"18.0\" width=\"10\" height=\"24\" rx=\"3\" fill=\"url(#ecoG)\"/><rect class=\"g-up\" x=\"27\" y=\"12.0\" width=\"10\" height=\"30\" rx=\"3\" fill=\"url(#ecoG)\"/><rect class=\"g-up\" x=\"41\" y=\"15.0\" width=\"10\" height=\"27\" rx=\"3\" fill=\"url(#ecoG)\"/><path d=\"M8 45h48\" stroke=\"#e6dcea\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>"}, {"t": "Operate consistently at scale", "s": "Every outlet, one standard", "body": "Set a price or a promotion once at head office and push it to every branch in a single action, then see which terminals have applied it.", "link": "POS for Retail", "href": "#view-retail-chains-franchises", "tag": "One action, every outlet", "icon": "<rect class=\"g-pop\" x=\"12\" y=\"10.0\" width=\"16\" height=\"14\" rx=\"3\" fill=\"url(#ecoG)\"/><rect class=\"g-pop\" x=\"36\" y=\"10.0\" width=\"16\" height=\"14\" rx=\"3\" fill=\"url(#ecoG)\"/><rect class=\"g-pop\" x=\"12\" y=\"28.0\" width=\"16\" height=\"14\" rx=\"3\" fill=\"#dcbfd6\"/><rect class=\"g-pop\" x=\"36\" y=\"28.0\" width=\"16\" height=\"14\" rx=\"3\" fill=\"#dcbfd6\"/><path d=\"M8 47h48\" stroke=\"#e6dcea\" stroke-width=\"1.6\" stroke-linecap=\"round\"/>"}];
+  var tabs = [].slice.call(document.querySelectorAll('.story-point'));
+  var panel = document.getElementById('ecoPanel');
+  if(!tabs.length || !panel) return;
+  var q = function(s){ return panel.querySelector(s); };
+
+  function show(i, animate){
+    var d = ECO[i];
+    tabs.forEach(function(t,n){ t.setAttribute('aria-selected', n===i ? 'true':'false'); });
+    /* rebuilt on every switch so the stroke animation starts from zero */
+    q('.eco-icon-g').innerHTML = d.icon;   /* rebuilt so the motion restarts */
+    q('.eco-tag').textContent = d.tag;
+    q('.eco-title').textContent = d.t;
+    q('.eco-body').innerHTML = d.body;
+    q('.eco-link-t').textContent = d.link;
+    q('.eco-link').setAttribute('href', d.href);
+    if(!animate){ panel.classList.add('is-in'); return; }
+    panel.classList.remove('is-in');
+    void panel.offsetWidth;                    /* forced reflow - see note above */
+    panel.classList.add('is-in');
+  }
+
+  tabs.forEach(function(t,i){
+    t.addEventListener('click', function(){ show(i, true); });
+    t.addEventListener('keydown', function(e){
+      var d = e.key==='ArrowDown'?1 : e.key==='ArrowUp'?-1 : 0;
+      if(!d) return; e.preventDefault();
+      var n=(i+d+tabs.length)%tabs.length; show(n,true); tabs[n].focus();
+    });
+  });
+
+  show(0, false);
+  /* run the reveal the first time the section is reached, not on page load */
+  if('IntersectionObserver' in window){
+    panel.classList.remove('is-in');
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(e){ if(e.isIntersecting){ show(0,true); io.disconnect(); } });
+    },{threshold:.3});
+    io.observe(panel);
+  }
+})();
+
+/* ---------------- Map draw-in ----------------
+   Delays are computed from each element's distance to the HQ pin, so the ripple
+   is driven by the geometry rather than by hand-tuned per-element values. */
+(function(){
+  var svg = document.querySelector('.sea-map');
+  if(!svg) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ svg.classList.add('is-drawn'); return; }
+
+  var HQ = {x:117.6, y:288.4};                 /* the Malaysia pin, in viewBox units */
+  var far = 0, dots = [].slice.call(svg.querySelectorAll('.map-dots circle'));
+
+  function dist(el){
+    var x = parseFloat(el.getAttribute('cx') || el.getAttribute('x') || 0);
+    var y = parseFloat(el.getAttribute('cy') || el.getAttribute('y') || 0);
+    return Math.hypot(x - HQ.x, y - HQ.y);
+  }
+  dots.forEach(function(d){ far = Math.max(far, dist(d)); });
+
+  /* Stagger over ~1.6s while each dot animates in 0.3s: the ratio is what makes
+     the ripple legible. A little jitter stops it looking like a machine sweep. */
+  dots.forEach(function(d){
+    var t = dist(d) / far * 1600 + Math.random() * 110;
+    d.style.transitionDelay = t.toFixed(0) + 'ms';
+  });
+
+  /* each arc animates along its own length, so long and short routes draw at the
+     same apparent speed rather than the same duration */
+  [].forEach.call(svg.querySelectorAll('.map-arcs path'), function(p){
+    var len = p.getTotalLength();
+    p.style.setProperty('--len', len);
+    p.style.strokeDasharray = len;
+    p.style.transitionDelay = '1150ms';
+  });
+
+  [].forEach.call(svg.querySelectorAll('.map-pins > *'), function(el){
+    var d = dist(el);
+    el.style.transitionDelay = (d < 8 ? 260 : 1750 + d / far * 300).toFixed(0) + 'ms';
+  });
+
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(e){ if(e.isIntersecting){ svg.classList.add('is-drawn'); io.disconnect(); } });
+    }, {threshold:.25});
+    io.observe(svg);
+  } else { svg.classList.add('is-drawn'); }
 })();
 
 /* ---------------- Count-up stats ----------------
