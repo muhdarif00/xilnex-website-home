@@ -196,7 +196,21 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
 .footer-socials{display:flex;gap:10px}
 .footer-socials a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#8e2d7f;color:#fff}
 .footer-socials svg{width:18px;height:18px;display:block}
-.footer-top{position:absolute;right:64px;bottom:18px;width:44px;height:44px;border:0;border-radius:6px;background:#a24796;color:#fff;font-size:25px;line-height:1;transition:transform .2s}
+.footer-top{
+  position:absolute;right:64px;bottom:18px;
+  width:44px;height:44px;border:0;border-radius:6px;
+  background:#a24796;color:#fff;font-size:0;line-height:1;
+  display:grid;place-items:center;
+  transition:transform .2s;
+}
+.footer-top:before{
+  content:"";
+  width:9px;height:9px;
+  border-left:2px solid #fff;
+  border-top:2px solid #fff;
+  transform:rotate(45deg) translate(1px,1px);
+  transform-origin:center;
+}
 .footer-top:hover{transform:translateY(-2px)}
 
 @media(max-width:960px){
@@ -701,7 +715,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
       </div>
     </div>
   </div>
-  <button class="footer-top" type="button" id="backToTop" aria-label="Back to top">⌃</button>
+  <button class="footer-top" type="button" id="backToTop" aria-label="Back to top"></button>
 </footer>
 
 <script>
