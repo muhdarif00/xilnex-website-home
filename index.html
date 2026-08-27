@@ -158,48 +158,49 @@ h1,h2,h3,h4,p{margin-top:0}
 .hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .hero-bg i{position:absolute;display:block;border-radius:50%;will-change:transform}
 .hero-bg .hb1{width:70vw;height:70vw;left:-18vw;top:-24vw;
-  background:radial-gradient(circle,rgba(222,132,203,.30) 0%,transparent 68%);
-  animation:hbDrift1 23s ease-in-out infinite alternate}
+  background:radial-gradient(circle,rgba(222,132,203,.44) 0%,transparent 68%);
+  animation:hbDrift1 15s cubic-bezier(.37,0,.63,1) infinite alternate}
 .hero-bg .hb2{width:58vw;height:58vw;right:-14vw;top:-18vw;
-  background:radial-gradient(circle,rgba(159,49,141,.20) 0%,transparent 68%);
-  animation:hbDrift2 29s ease-in-out infinite alternate}
+  background:radial-gradient(circle,rgba(159,49,141,.32) 0%,transparent 68%);
+  animation:hbDrift2 18s cubic-bezier(.37,0,.63,1) infinite alternate}
 .hero-bg .hb3{width:64vw;height:64vw;left:-16vw;bottom:-26vw;
-  background:radial-gradient(circle,rgba(184,211,247,.36) 0%,transparent 70%);
-  animation:hbDrift3 31s ease-in-out infinite alternate}
+  background:radial-gradient(circle,rgba(184,211,247,.46) 0%,transparent 70%);
+  animation:hbDrift3 21s cubic-bezier(.37,0,.63,1) infinite alternate}
 .hero-bg .hb4{width:66vw;height:66vw;right:-18vw;bottom:-24vw;
-  background:radial-gradient(circle,rgba(216,133,200,.26) 0%,transparent 70%);
-  animation:hbDrift4 37s ease-in-out infinite alternate}
+  background:radial-gradient(circle,rgba(216,133,200,.38) 0%,transparent 70%);
+  animation:hbDrift4 24s cubic-bezier(.37,0,.63,1) infinite alternate}
 .hero-bg .hb-bloom{position:absolute;inset:0;
   background:radial-gradient(48% 44% at 50% 46%,rgba(255,255,255,.82),transparent 72%)}
 /* More obvious flowing hero motion */
 .hero-bg:after{content:"";position:absolute;inset:-18%;pointer-events:none;
   background:
-    radial-gradient(34% 28% at 18% 38%,rgba(159,49,141,.28),transparent 72%),
-    radial-gradient(28% 36% at 78% 24%,rgba(220,127,199,.34),transparent 70%),
-    radial-gradient(32% 30% at 62% 78%,rgba(185,211,247,.32),transparent 72%),
+    radial-gradient(34% 28% at 18% 38%,rgba(159,49,141,.40),transparent 72%),
+    radial-gradient(28% 36% at 78% 24%,rgba(220,127,199,.48),transparent 70%),
+    radial-gradient(32% 30% at 62% 78%,rgba(185,211,247,.42),transparent 72%),
     linear-gradient(115deg,rgba(159,49,141,.05),rgba(220,127,199,.03) 48%,rgba(185,211,247,.06));
-  filter:blur(22px);transform:translate3d(-6%,0,0) scale(1.08);
-  animation:heroFlowObvious 12s ease-in-out infinite alternate;
+  filter:blur(20px);transform:translate3d(-10%,0,0) scale(1.08);
+  animation:heroFlowObvious 8s cubic-bezier(.37,0,.63,1) infinite alternate;
 }
 @keyframes heroFlowObvious{
-  0%{transform:translate3d(-7%,-2%,0) scale(1.08) rotate(-1deg);}
-  33%{transform:translate3d(5%,4%,0) scale(1.15) rotate(2deg);}
-  66%{transform:translate3d(-1%,8%,0) scale(1.10) rotate(-2deg);}
-  100%{transform:translate3d(8%,-4%,0) scale(1.18) rotate(1deg);}
+  0%{transform:translate3d(-20%,-3%,0) scale(1.10,1.02) rotate(-5deg) skewX(-6deg);}
+  25%{transform:translate3d(13%,4%,0) scale(1.24,1.08) rotate(4deg) skewX(5deg);}
+  50%{transform:translate3d(-10%,10%,0) scale(1.16,1.12) rotate(-6deg) skewX(-7deg);}
+  75%{transform:translate3d(18%,-4%,0) scale(1.28,1.06) rotate(5deg) skewX(6deg);}
+  100%{transform:translate3d(-15%,3%,0) scale(1.20,1.12) rotate(-4deg) skewX(-5deg);}
 }
 @media(prefers-reduced-motion:reduce){.hero-bg:after{animation:none;transform:none}}
 
-@keyframes hbDrift1{to{transform:translate3d(14vw,8vw,0) scale(1.16)}}
-@keyframes hbDrift2{to{transform:translate3d(-11vw,10vw,0) scale(1.22)}}
-@keyframes hbDrift3{to{transform:translate3d(13vw,-9vw,0) scale(1.12)}}
-@keyframes hbDrift4{to{transform:translate3d(-15vw,-7vw,0) scale(1.18)}}
+@keyframes hbDrift1{to{transform:translate3d(27vw,5vw,0) scale(1.24,1.10) skewX(-5deg)}}
+@keyframes hbDrift2{to{transform:translate3d(-25vw,6vw,0) scale(1.30,1.12) skewX(6deg)}}
+@keyframes hbDrift3{to{transform:translate3d(24vw,-6vw,0) scale(1.20,1.10) skewX(-4deg)}}
+@keyframes hbDrift4{to{transform:translate3d(-28vw,-5vw,0) scale(1.26,1.12) skewX(5deg)}}
 @media (prefers-reduced-motion:reduce){.hero-bg i{animation:none}}
 
 /* ---- Flowing ambient motion ---- */
 .hero-bg:before,.hero-bg:after{
   content:"";position:absolute;inset:-18%;pointer-events:none;
   border-radius:46% 54% 58% 42% / 44% 42% 58% 56%;
-  filter:blur(28px);opacity:.5;will-change:transform,background-position;
+  filter:blur(28px);opacity:.64;will-change:transform,background-position;
   mix-blend-mode:multiply;
 }
 .hero-bg:before{
@@ -207,25 +208,25 @@ h1,h2,h3,h4,p{margin-top:0}
     radial-gradient(38% 46% at 20% 32%,rgba(181,91,170,.34),transparent 72%),
     radial-gradient(34% 40% at 78% 28%,rgba(214,129,198,.28),transparent 72%),
     radial-gradient(30% 44% at 56% 76%,rgba(148,177,228,.26),transparent 72%);
-  animation:heroFlowA 20s ease-in-out infinite alternate;
+  animation:heroFlowA 12s cubic-bezier(.37,0,.63,1) infinite alternate;
 }
 .hero-bg:after{
   inset:-24%;opacity:.34;
   background:
     conic-gradient(from 210deg at 48% 50%,rgba(159,49,141,.18),rgba(197,104,181,.04),rgba(185,211,247,.18),rgba(159,49,141,.10),rgba(159,49,141,.18));
-  animation:heroFlowB 28s ease-in-out infinite alternate;
+  animation:heroFlowB 16s cubic-bezier(.37,0,.63,1) infinite alternate;
 }
 .hero-bg .hb-bloom{z-index:2}
 .hero-bg i{z-index:1}
 @keyframes heroFlowA{
-  0%{transform:translate3d(-3%,-2%,0) scale(1) rotate(0deg);}
-  50%{transform:translate3d(2%,3%,0) scale(1.08) rotate(3deg);}
-  100%{transform:translate3d(-1%,1%,0) scale(1.12) rotate(-2deg);}
+  0%{transform:translate3d(-14%,-3%,0) scale(1.02,1) rotate(-4deg) skewX(-5deg);}
+  50%{transform:translate3d(11%,5%,0) scale(1.16,1.08) rotate(5deg) skewX(6deg);}
+  100%{transform:translate3d(-9%,2%,0) scale(1.22,1.06) rotate(-5deg) skewX(-6deg);}
 }
 @keyframes heroFlowB{
-  0%{transform:translate3d(4%,-2%,0) scale(.98) rotate(-8deg);}
-  50%{transform:translate3d(-2%,4%,0) scale(1.08) rotate(3deg);}
-  100%{transform:translate3d(3%,1%,0) scale(1.14) rotate(10deg);}
+  0%{transform:translate3d(15%,-3%,0) scale(.98,1.02) rotate(-10deg) skewX(6deg);}
+  50%{transform:translate3d(-12%,5%,0) scale(1.16,1.10) rotate(6deg) skewX(-7deg);}
+  100%{transform:translate3d(14%,2%,0) scale(1.24,1.06) rotate(12deg) skewX(5deg);}
 }
 @media (prefers-reduced-motion:reduce){
   .hero-bg:before,.hero-bg:after{animation:none}
@@ -1048,7 +1049,7 @@ h1,h2,h3,h4,p{margin-top:0}
   place-items:center;
   width:28px;
   height:28px;
-  border:1px solid rgba(159,49,141,.20);
+  border:1px solid rgba(159,49,141,.32);
   border-radius:50%;
   background:rgba(255,255,255,.72);
   box-shadow:0 6px 16px -10px rgba(84,30,77,.5);
@@ -1806,121 +1807,26 @@ body.viewing-product .page{display:none}
 }
 
 
-/* ======================== HERO FIBER-OPTIC STRANDS ======================== */
-.hero{
-  background:#fbfafc!important;
-}
-.hero-fiber-field{
-  position:absolute!important;
-  inset:-16% -10% -16% -6%!important;
-  z-index:0!important;
-  pointer-events:none!important;
-  overflow:hidden!important;
-}
-.hero-fiber-svg{
-  width:100%!important;
-  height:100%!important;
-  display:block!important;
-}
-.hero-fiber-svg use{
-  fill:none;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-.fiber-bundle use{
-  stroke:url(#fiberColorA);
-  stroke-width:.75;
-  opacity:.46;
-}
-.bundle-b use{
-  stroke:url(#fiberColorB);
-  stroke-width:.68;
-  opacity:.34;
-}
-.fiber-fine use{
-  stroke:url(#fiberColorA);
-  stroke-width:.42;
-  opacity:.28;
-}
-.fiber-highlight use{
-  stroke:#E5B6E0;
-  stroke-width:1.05;
-  opacity:.38;
-}
-.fiber-haze{
-  fill:none;
-  stroke:#B75AAE;
-  stroke-width:75;
-  opacity:.08;
-  filter:url(#fiberGlowSoft);
-}
-.haze-b{
-  stroke:#7C6BC0;
-  opacity:.06;
-}
-
-.fiber-bundle{animation:heroFiberFloatA 11s ease-in-out infinite alternate}
-.bundle-b{animation:heroFiberFloatB 13s ease-in-out infinite alternate}
-.fiber-fine{animation:heroFiberFloatC 9s ease-in-out infinite alternate}
-.fiber-highlight{animation:heroFiberHighlight 7s ease-in-out infinite alternate}
-.haze-a{animation:heroFiberHazeA 12s ease-in-out infinite alternate}
-.haze-b{animation:heroFiberHazeB 14s ease-in-out infinite alternate}
-
-@keyframes heroFiberFloatA{
-  from{transform:translate3d(-.8%,0,0) rotate(-.5deg)}
-  to{transform:translate3d(1.5%,1.8%,0) rotate(.7deg)}
-}
-@keyframes heroFiberFloatB{
-  from{transform:translate3d(.6%,-.5%,0) rotate(.5deg)}
-  to{transform:translate3d(-1.4%,1.4%,0) rotate(-.8deg)}
-}
-@keyframes heroFiberFloatC{
-  from{transform:translate3d(0,0,0)}
-  to{transform:translate3d(1.5%,1.8%,0)}
-}
-@keyframes heroFiberHighlight{
-  from{transform:translate3d(-.4%,0,0)}
-  to{transform:translate3d(1.5%,1.2%,0)}
-}
-@keyframes heroFiberHazeA{
-  from{transform:translate3d(-1%,0,0) scale(1)}
-  to{transform:translate3d(2%,2%,0) scale(1.06)}
-}
-@keyframes heroFiberHazeB{
-  from{transform:translate3d(1%,-1%,0) scale(1)}
-  to{transform:translate3d(-2%,2%,0) scale(1.05)}
-}
-
-/* Hide every old hero background visual; keep hero content and text untouched. */
-.hero .hero-bg,
-.hero .hero-spot{
-  display:none!important;
-}
-.hero .hero-inner{
-  position:relative!important;
-  z-index:3!important;
-}
-.hero .hero-copy,
-.hero h1,
-.hero .hero-sub,
-.hero .ctas,
-.hero .hero-media{
-  position:relative!important;
-  z-index:4!important;
-}
-
-@media(max-width:900px){
-  .hero-fiber-field{inset:-20% -28% -14% -20%!important}
-  .fiber-bundle use{stroke-width:.62}
-  .bundle-b use{stroke-width:.56}
-  .fiber-fine use{stroke-width:.34}
-}
-@media(prefers-reduced-motion:reduce){
-  .fiber-bundle,.bundle-b,.fiber-fine,.fiber-highlight,.fiber-haze{
-    animation:none!important;
-  }
-}
-
+/* ======================== HERO FIBER-OPTIC X ======================== */
+.hero{background:#fbfafc!important}
+.hero-fiber-field{position:absolute!important;inset:-16% -44% -16% 40%!important;z-index:0!important;pointer-events:none!important;overflow:hidden!important}
+.hero-fiber-svg{width:100%!important;height:100%!important;display:block!important;overflow:visible}
+.hero-fiber-svg use,.hero-fiber-svg path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.fiber-bundle use{stroke:url(#fiberColorA);stroke-width:.72;opacity:.30}
+.bundle-b use{stroke:url(#fiberColorB);stroke-width:.70;opacity:.25}
+.fiber-haze{fill:none;stroke:#B75AAE;stroke-width:62;opacity:.055;filter:url(#fiberGlowSoft)}
+.haze-b{stroke:#7C6BC0;opacity:.04}
+.fiber-bundle{animation:heroXFloatA 11s ease-in-out infinite alternate}
+.bundle-b{animation:heroXFloatB 13s ease-in-out infinite alternate}
+.haze-a{animation:heroXFloatA 13s ease-in-out infinite alternate}
+.haze-b{animation:heroXFloatB 15s ease-in-out infinite alternate}
+@keyframes heroXFloatA{from{transform:translate3d(-1.5%,0,0) scaleX(1)}to{transform:translate3d(3%,1.2%,0) scaleX(1.035)}}
+@keyframes heroXFloatB{from{transform:translate3d(1.5%,0,0) scaleX(1)}to{transform:translate3d(-3%,1.5%,0) scaleX(1.04)}}
+.hero .hero-bg,.hero .hero-spot{display:none!important}
+.hero .hero-inner{position:relative!important;z-index:3!important}
+.hero .hero-copy,.hero h1,.hero .hero-sub,.hero .ctas,.hero .hero-media{position:relative!important;z-index:4!important}
+@media(max-width:900px){.hero-fiber-field{inset:-18% -36% -14% 18%!important}.fiber-bundle use{stroke-width:.58}.bundle-b use{stroke-width:.54}}
+@media(prefers-reduced-motion:reduce){.fiber-bundle,.bundle-b,.fiber-haze{animation:none!important}}
 </style>
 </head>
 <body>
@@ -2041,66 +1947,32 @@ body.viewing-product .page{display:none}
   <svg class="hero-fiber-svg" viewBox="0 0 1600 760" preserveAspectRatio="none">
     <defs>
       <linearGradient id="fiberColorA" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#8C3D91" stop-opacity="0"/>
-        <stop offset="28%" stop-color="#9F318D" stop-opacity=".40"/>
-        <stop offset="55%" stop-color="#C95BA8" stop-opacity=".96"/>
-        <stop offset="82%" stop-color="#8C6BC5" stop-opacity=".74"/>
-        <stop offset="100%" stop-color="#B9D3F7" stop-opacity=".04"/>
+        <stop offset="0%" stop-color="#B9D3F7" stop-opacity=".04"/>
+        <stop offset="28%" stop-color="#9F318D" stop-opacity=".34"/>
+        <stop offset="50%" stop-color="#C95BA8" stop-opacity=".72"/>
+        <stop offset="74%" stop-color="#8C6BC5" stop-opacity=".54"/>
+        <stop offset="100%" stop-color="#8C3D91" stop-opacity=".04"/>
       </linearGradient>
       <linearGradient id="fiberColorB" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#B9D3F7" stop-opacity="0"/>
-        <stop offset="33%" stop-color="#7563B7" stop-opacity=".30"/>
-        <stop offset="66%" stop-color="#C95BA8" stop-opacity=".78"/>
-        <stop offset="100%" stop-color="#9F318D" stop-opacity=".16"/>
+        <stop offset="0%" stop-color="#B9D3F7" stop-opacity=".03"/>
+        <stop offset="35%" stop-color="#7563B7" stop-opacity=".24"/>
+        <stop offset="58%" stop-color="#C95BA8" stop-opacity=".58"/>
+        <stop offset="84%" stop-color="#9F318D" stop-opacity=".20"/>
+        <stop offset="100%" stop-color="#B9D3F7" stop-opacity=".03"/>
       </linearGradient>
       <filter id="fiberGlowSoft" x="-20%" y="-30%" width="140%" height="160%">
-        <feGaussianBlur stdDeviation="7"/>
+        <feGaussianBlur stdDeviation="5.5"/>
       </filter>
-      <filter id="fiberGlow" x="-20%" y="-20%" width="140%" height="140%">
-        <feGaussianBlur stdDeviation="2.4"/>
-      </filter>
-      <path id="heroFiberA" d="M250 -80 C560 20 700 180 900 290 C1130 418 1300 540 1710 820"/>
-      <path id="heroFiberB" d="M470 -70 C760 60 820 190 1040 305 C1260 420 1370 480 1715 255"/>
-      <path id="heroFiberC" d="M350 35 C700 140 810 270 1040 400 C1250 525 1390 660 1710 840"/>
-      <path id="heroFiberD" d="M620 -40 C870 85 980 230 1150 335 C1320 430 1460 500 1715 335"/>
+      <path id="xArmA" d="M-90 -40 C150 55 360 165 560 300 C660 367 725 405 800 410 C875 415 945 375 1045 310 C1210 202 1390 105 1690 35"/>
+      <path id="xArmB" d="M-90 800 C170 725 375 620 560 500 C660 435 728 395 800 390 C874 385 945 420 1040 485 C1210 600 1410 700 1690 760"/>
     </defs>
 
-    <use href="#heroFiberA" class="fiber-haze haze-a"/>
-    <use href="#heroFiberB" class="fiber-haze haze-b"/>
+    <!-- Soft silhouette glows echo the rounded, inflated X from the reference. -->
+    <use href="#xArmA" class="fiber-haze haze-a"/>
+    <use href="#xArmB" class="fiber-haze haze-b"/>
 
-    <g class="fiber-bundle bundle-a">
-      <use href="#heroFiberA"/><use href="#heroFiberA" transform="translate(0 5)"/><use href="#heroFiberA" transform="translate(0 10)"/>
-      <use href="#heroFiberA" transform="translate(0 15)"/><use href="#heroFiberA" transform="translate(0 20)"/><use href="#heroFiberA" transform="translate(0 25)"/>
-      <use href="#heroFiberA" transform="translate(0 30)"/><use href="#heroFiberA" transform="translate(0 35)"/><use href="#heroFiberA" transform="translate(0 40)"/>
-      <use href="#heroFiberA" transform="translate(0 45)"/><use href="#heroFiberA" transform="translate(0 50)"/><use href="#heroFiberA" transform="translate(0 55)"/>
-      <use href="#heroFiberA" transform="translate(0 60)"/><use href="#heroFiberA" transform="translate(0 -5)"/><use href="#heroFiberA" transform="translate(0 -10)"/>
-      <use href="#heroFiberA" transform="translate(0 -15)"/><use href="#heroFiberA" transform="translate(0 -20)"/><use href="#heroFiberA" transform="translate(0 -25)"/>
-      <use href="#heroFiberA" transform="translate(0 -30)"/><use href="#heroFiberA" transform="translate(0 -35)"/><use href="#heroFiberA" transform="translate(0 -40)"/>
-      <use href="#heroFiberA" transform="translate(0 -45)"/><use href="#heroFiberA" transform="translate(0 -50)"/><use href="#heroFiberA" transform="translate(0 -55)"/>
-      <use href="#heroFiberA" transform="translate(0 -60)"/>
-    </g>
-
-    <g class="fiber-bundle bundle-b">
-      <use href="#heroFiberB"/><use href="#heroFiberB" transform="translate(0 6)"/><use href="#heroFiberB" transform="translate(0 12)"/>
-      <use href="#heroFiberB" transform="translate(0 18)"/><use href="#heroFiberB" transform="translate(0 24)"/><use href="#heroFiberB" transform="translate(0 30)"/>
-      <use href="#heroFiberB" transform="translate(0 36)"/><use href="#heroFiberB" transform="translate(0 42)"/><use href="#heroFiberB" transform="translate(0 -6)"/>
-      <use href="#heroFiberB" transform="translate(0 -12)"/><use href="#heroFiberB" transform="translate(0 -18)"/><use href="#heroFiberB" transform="translate(0 -24)"/>
-      <use href="#heroFiberB" transform="translate(0 -30)"/><use href="#heroFiberB" transform="translate(0 -36)"/><use href="#heroFiberB" transform="translate(0 -42)"/>
-    </g>
-
-    <g class="fiber-fine">
-      <use href="#heroFiberC" transform="translate(0 18)"/><use href="#heroFiberC" transform="translate(0 -18)"/>
-      <use href="#heroFiberC" transform="translate(0 36)"/><use href="#heroFiberC" transform="translate(0 -36)"/>
-      <use href="#heroFiberD" transform="translate(0 15)"/><use href="#heroFiberD" transform="translate(0 -15)"/>
-      <use href="#heroFiberD" transform="translate(0 30)"/><use href="#heroFiberD" transform="translate(0 -30)"/>
-    </g>
-
-    <g class="fiber-highlight">
-      <use href="#heroFiberA" transform="translate(0 8)"/>
-      <use href="#heroFiberB" transform="translate(0 -7)"/>
-      <use href="#heroFiberC" transform="translate(0 5)"/>
-      <use href="#heroFiberD" transform="translate(0 -4)"/>
-    </g>
+    <g class="fiber-bundle bundle-a"></g>
+    <g class="fiber-bundle bundle-b"></g>
   </svg>
 </div>
 <div class="hero-spot" aria-hidden="true"></div>
@@ -3692,6 +3564,29 @@ document.getElementById('backToTop').addEventListener('click', function(){
       }
     }, {threshold:0.18});
     io.observe(detailEl);
+  }
+})();
+</script>
+<script>
+(function(){
+  const svg=document.querySelector('.hero-fiber-svg');
+  const a=svg?.querySelector('.bundle-a');
+  const b=svg?.querySelector('.bundle-b');
+  if(!svg||!a||!b) return;
+  const ns='http://www.w3.org/2000/svg';
+  const count=240;
+  for(let i=0;i<count;i++){
+    const t=(i-(count-1)/2)/(count-1);
+    const spread=230;
+    const wiggle=Math.sin(i*0.71)*2.2;
+    const pa=document.createElementNS(ns,'use');
+    pa.setAttribute('href','#xArmA');
+    pa.setAttribute('transform',`translate(${wiggle} ${t*spread})`);
+    a.appendChild(pa);
+    const pb=document.createElementNS(ns,'use');
+    pb.setAttribute('href','#xArmB');
+    pb.setAttribute('transform',`translate(${-wiggle} ${t*spread})`);
+    b.appendChild(pb);
   }
 })();
 </script>
