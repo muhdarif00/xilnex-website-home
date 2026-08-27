@@ -96,13 +96,12 @@ h1,h2,h3,h4,p{margin-top:0}
 .header-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
 .logo{width:138px;height:auto;display:block}
 .nav{height:100%;display:flex;align-items:center;gap:26px;font-size:13.5px;font-weight:500}
-.login + .nav-login{margin-left:-18px}
 .nav-link{height:100%;display:flex;align-items:center;position:relative;background:none;border:0;padding:0;color:inherit}
 .nav-link:hover,.nav-link.active{color:var(--purple)}
 .nav-contact{color:inherit}
 .nav-link.active:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--purple)}
-.login{padding:9px 20px;border-radius:20px;background:var(--purple);color:#fff;font-size:13px;font-weight:700;letter-spacing:-.01em;transition:background .2s,transform .2s}
-.login:hover{background:var(--purple-deep);transform:translateY(-1px)}
+.nav-login{display:inline-flex;align-items:center;justify-content:center;padding:9px 20px;border-radius:20px;background:var(--purple);color:#fff;font-size:13px;font-weight:700;letter-spacing:-.01em;transition:background .2s,transform .2s}
+.nav-login:hover{background:var(--purple-deep);transform:translateY(-1px)}
 .menu-button{display:none;border:0;background:none;padding:8px;font-size:22px;line-height:1}
 
 /* ---- Mega menus ---- */
@@ -742,34 +741,24 @@ h1,h2,h3,h4,p{margin-top:0}
 
 /* control sits in the band, no card around it */
 .sizer-box{position:relative;background:none;border:0;border-radius:0;box-shadow:none;padding:0}
-/* ---- Shopfront scene ---- */
-/* In flow as the right-hand item of .sizer-head, opposite the readout. Absolute
-   positioning could not clear both the lead paragraph and the slider at every
-   width, because the lead wraps to different depths. */
-.sizer-scene{flex:0 0 auto;align-self:flex-end;width:clamp(160px,18vw,236px);height:auto;
-  pointer-events:none}
-.sizer-scene .sf{opacity:.16;transition:opacity .45s ease}
-.sizer-scene .sf.on{opacity:1}
-.sf-awn{fill:rgba(255,255,255,.28)}
-.sf-body{fill:rgba(255,255,255,.14)}
-.sf-win,.sf-sign{fill:rgba(255,255,255,.5)}
-.sf-door{fill:rgba(255,255,255,.3)}
-.sf-ground{stroke:rgba(255,255,255,.22);stroke-width:1.5;fill:none}
-.sizer-scene .sf.on .sf-awn{fill:#EC9FD9}
-.sizer-scene .sf.on .sf-body{fill:rgba(255,255,255,.30)}
-.sizer-scene .sf.on .sf-win,.sizer-scene .sf.on .sf-sign{fill:#fff}
-.sizer-scene .sf.on .sf-door{fill:rgba(255,255,255,.55)}
-/* each unit drifts on its own cycle, so the row never pulses in unison */
-.sizer-scene .sf{animation:sfFloat 6s ease-in-out infinite alternate}
-.sizer-scene .sf[data-i="1"]{animation-duration:7.2s}
-.sizer-scene .sf[data-i="2"]{animation-duration:5.4s}
-.sizer-scene .sf[data-i="3"]{animation-duration:8.1s}
-.sizer-scene .sf[data-i="4"]{animation-duration:6.6s}
-.sizer-scene .sf[data-i="5"]{animation-duration:7.8s}
-.sizer-scene .sf[data-i="6"]{animation-duration:5.9s}
-.sizer-scene .sf[data-i="7"]{animation-duration:6.9s}
-@keyframes sfFloat{to{transform:translateY(-3px)}}
-@media (prefers-reduced-motion:reduce){.sizer-scene .sf{animation:none}}
+/* ---- Outlet dots ---- */
+.sizer-scene{flex:0 0 auto;align-self:flex-end;width:clamp(240px,30vw,420px);height:auto;
+  pointer-events:none;overflow:visible}
+.sizer-scene .store-icon{
+  fill:rgba(255,255,255,.22);
+  opacity:.28;
+  transform-box:fill-box;
+  transform-origin:center;
+  transition:opacity .32s ease,transform .32s var(--ease),fill .32s ease;
+}
+.sizer-scene .store-icon.on{
+  fill:#EC9FD9;
+  opacity:1;
+  transform:scale(1.22);
+}
+@media (prefers-reduced-motion:reduce){
+  .sizer-scene .store-icon{transition:none}
+}
 @media(max-width:900px){.sizer-scene{display:none}}
 
 .sizer-head{display:flex;align-items:flex-start;justify-content:space-between;gap:30px;
@@ -1636,7 +1625,8 @@ body.viewing-product .page{display:none}
 .trust-record-main{position:relative;padding-top:0}
 .trust-record-kicker{margin:0 0 12px;font-size:10px;letter-spacing:.22em;color:#8b8490;font-weight:700;font-family:var(--font)}
 .trust-record-title{font-size:clamp(34px,3.7vw,52px);line-height:1.02;letter-spacing:-.05em;margin:0 0 24px;max-width:14ch}
-.trust-record-copy{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:620px}
+.trust-record-copy{display:grid;grid-template-columns:minmax(180px,220px) 1fr;gap:24px;max-width:620px}
+.trust-record-copy > div:first-child p{max-width:220px}
 .trust-record-copy span,.trust-record-meta span{display:block;margin-bottom:10px;color:#8a8390;font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-family:var(--font)}
 .trust-record-copy p{margin:0;font-size:17px;line-height:1.4;color:#4f5059}
 .trust-record-seal{position:absolute;right:16px;top:170px;width:116px;height:116px;display:grid;place-items:center;opacity:.68}
@@ -2035,7 +2025,6 @@ body.viewing-product .page{display:none}
       </div>
 
       <a class="nav-link nav-contact" href="/contact/">Contact</a>
-      <a class="login" href="/contact/">Request a Demo</a>
       <a class="nav-login" href="https://portal2.xilnex.com/">Login</a>
     </nav>
 
@@ -2485,10 +2474,29 @@ body.viewing-product .page{display:none}
             <label class="sizer-label" for="sizerRange">How many outlets do you run?</label>
             <div class="sizer-readout" aria-hidden="true"><b class="sizer-num"></b><span class="sizer-unit">outlets</span></div>
           </div>
-          <!-- Outlets as shopfronts: they light up as the scale moves, so the
-               control has a consequence you can see. In flow rather than
-               absolutely positioned, so it can never collide with the copy. -->
-          <svg class="sizer-scene" viewBox="0 0 264 162" aria-hidden="true"><g transform="translate(0,0)"><g class="sf" data-i="0"><rect class="sf-sign" x="14" y="12" width="32" height="6" rx="3"/><path class="sf-awn" d="M2 20 H58 L54 30 H6 Z"/><rect class="sf-body" x="6" y="30" width="48" height="42" rx="3"/><rect class="sf-win" x="12" y="37" width="16" height="13" rx="2"/><rect class="sf-door" x="34" y="37" width="14" height="35" rx="2"/></g></g><g transform="translate(66,0)"><g class="sf" data-i="1"><rect class="sf-sign" x="14" y="12" width="32" height="6" rx="3"/><path class="sf-awn" d="M2 20 H58 L54 30 H6 Z"/><rect class="sf-body" x="6" y="30" width="48" height="42" rx="3"/><rect class="sf-win" x="12" y="37" width="16" height="13" rx="2"/><rect class="sf-door" x="34" y="37" width="14" height="35" rx="2"/></g></g><g transform="translate(132,0)"><g class="sf" data-i="2"><rect class="sf-sign" x="14" y="12" width="32" height="6" rx="3"/><path class="sf-awn" d="M2 20 H58 L54 30 H6 Z"/><rect class="sf-body" x="6" y="30" width="48" height="42" rx="3"/><rect class="sf-win" x="12" y="37" width="16" height="13" rx="2"/><rect class="sf-door" x="34" y="37" width="14" height="35" rx="2"/></g></g><g transform="translate(198,0)"><g class="sf" data-i="3"><rect class="sf-sign" x="14" y="12" width="32" height="6" rx="3"/><path class="sf-awn" d="M2 20 H58 L54 30 H6 Z"/><rect class="sf-body" x="6" y="30" width="48" height="42" rx="3"/><rect class="sf-win" x="12" y="37" width="16" height="13" rx="2"/><rect class="sf-door" x="34" y="37" width="14" height="35" rx="2"/></g></g><g transform="translate(0,84)"><g class="sf" data-i="4"><rect class="sf-sign" x="14" y="12" width="32" height="6" rx="3"/><path class="sf-awn" d="M2 20 H58 L54 30 H6 Z"/><rect class="sf-body" x="6" y="30" width="48" height="42" rx="3"/><rect class="sf-win" x="12" y="37" width="16" height="13" rx="2"/><rect class="sf-door" x="34" y="37" width="14" height="35" rx="2"/></g></g><g transform="translate(66,84)"><g class="sf" data-i="5"><rect class="sf-sign" x="14" y="12" width="32" height="6" rx="3"/><path class="sf-awn" d="M2 20 H58 L54 30 H6 Z"/><rect class="sf-body" x="6" y="30" width="48" height="42" rx="3"/><rect class="sf-win" x="12" y="37" width="16" height="13" rx="2"/><rect class="sf-door" x="34" y="37" width="14" height="35" rx="2"/></g></g><g transform="translate(132,84)"><g class="sf" data-i="6"><rect class="sf-sign" x="14" y="12" width="32" height="6" rx="3"/><path class="sf-awn" d="M2 20 H58 L54 30 H6 Z"/><rect class="sf-body" x="6" y="30" width="48" height="42" rx="3"/><rect class="sf-win" x="12" y="37" width="16" height="13" rx="2"/><rect class="sf-door" x="34" y="37" width="14" height="35" rx="2"/></g></g><g transform="translate(198,84)"><g class="sf" data-i="7"><rect class="sf-sign" x="14" y="12" width="32" height="6" rx="3"/><path class="sf-awn" d="M2 20 H58 L54 30 H6 Z"/><rect class="sf-body" x="6" y="30" width="48" height="42" rx="3"/><rect class="sf-win" x="12" y="37" width="16" height="13" rx="2"/><rect class="sf-door" x="34" y="37" width="14" height="35" rx="2"/></g></g><path class="sf-ground" d="M0 158 H264"/></svg>
+          <!-- One dot represents one outlet. Dots activate from left to right. -->
+          <svg class="sizer-scene" viewBox="0 0 396 36" aria-hidden="true">
+            <circle class="store-icon" data-i="0" cx="8" cy="18" r="4"/>
+            <circle class="store-icon" data-i="1" cx="28" cy="18" r="4"/>
+            <circle class="store-icon" data-i="2" cx="48" cy="18" r="4"/>
+            <circle class="store-icon" data-i="3" cx="68" cy="18" r="4"/>
+            <circle class="store-icon" data-i="4" cx="88" cy="18" r="4"/>
+            <circle class="store-icon" data-i="5" cx="108" cy="18" r="4"/>
+            <circle class="store-icon" data-i="6" cx="128" cy="18" r="4"/>
+            <circle class="store-icon" data-i="7" cx="148" cy="18" r="4"/>
+            <circle class="store-icon" data-i="8" cx="168" cy="18" r="4"/>
+            <circle class="store-icon" data-i="9" cx="188" cy="18" r="4"/>
+            <circle class="store-icon" data-i="10" cx="208" cy="18" r="4"/>
+            <circle class="store-icon" data-i="11" cx="228" cy="18" r="4"/>
+            <circle class="store-icon" data-i="12" cx="248" cy="18" r="4"/>
+            <circle class="store-icon" data-i="13" cx="268" cy="18" r="4"/>
+            <circle class="store-icon" data-i="14" cx="288" cy="18" r="4"/>
+            <circle class="store-icon" data-i="15" cx="308" cy="18" r="4"/>
+            <circle class="store-icon" data-i="16" cx="328" cy="18" r="4"/>
+            <circle class="store-icon" data-i="17" cx="348" cy="18" r="4"/>
+            <circle class="store-icon" data-i="18" cx="368" cy="18" r="4"/>
+            <circle class="store-icon" data-i="19" cx="388" cy="18" r="4"/>
+          </svg>
         </div>
 
         <div class="sizer-control">
@@ -2558,13 +2566,22 @@ body.viewing-product .page{display:none}
     <div class="trust-record-list reveal" aria-label="Xilnex trust records">
       <div class="trust-record-list-head">
         <span>PROOF POINTS</span>
-        <span>02 RECORDS</span>
+        <span>05 RECORDS</span>
       </div>
       <button class="trust-record-item is-active" type="button" data-trust="0" data-autoplay="true">
         <span class="trust-no">01</span><strong>ISO/IEC 27001:2022</strong><small>SECURITY</small>
       </button>
       <button class="trust-record-item" type="button" data-trust="1" data-autoplay="true">
         <span class="trust-no">02</span><strong>e-Invoice / LHDN compliant</strong><small>COMPLIANCE</small>
+      </button>
+      <button class="trust-record-item" type="button" data-trust="2" data-autoplay="true">
+        <span class="trust-no">03</span><strong>Open APIs for 3rd Party integrations</strong><small>INTEGRATION</small>
+      </button>
+      <button class="trust-record-item" type="button" data-trust="3" data-autoplay="true">
+        <span class="trust-no">04</span><strong>Online to Offline Management</strong><small>RELIABILITY</small>
+      </button>
+      <button class="trust-record-item" type="button" data-trust="4" data-autoplay="true">
+        <span class="trust-no">05</span><strong>Connected retail &amp; F&amp;B ecosystem</strong><small>ECOSYSTEM</small>
       </button>
     </div>
   </div>
@@ -2712,7 +2729,7 @@ body.viewing-product .page{display:none}
           <a href="tel:+6046110162">+604 611 0162</a>
         </div>
 
-        <a class="contact-editorial-btn" href="mailto:marketing@xilnex.com?subject=Xilnex%20Enquiry">
+        <a class="contact-editorial-btn" href="/contact/">
           <span>START AN ENQUIRY</span><span aria-hidden="true">&rarr;</span>
         </a>
       </div>
@@ -3129,20 +3146,20 @@ document.addEventListener('keydown', function(e){
   var q = function(s){ return out.querySelector(s); };
   var cur = -1;
 
-  var COUNT = [1, 3, 6, 8];              /* shopfronts lit per tier */
+  var COUNT = [1, 5, 10, 20];             /* outlet dots lit per tier */
   var LABEL = ['1', '2<i>\u2013</i>5', '6<i>\u2013</i>20', '20+'];
   var num = document.querySelector('.sizer-num');
   var unit = document.querySelector('.sizer-unit');
-  var fronts = [].slice.call(document.querySelectorAll('.sizer-scene .sf'));
+  var stores = [].slice.call(document.querySelectorAll('.sizer-scene .store-icon'));
 
   function paint(i, animate){
     r.style.setProperty('--fill', (i/3*100) + '%');
     ticks.forEach(function(b,n){ b.setAttribute('aria-pressed', n===i ? 'true':'false'); });
     num.innerHTML = LABEL[i];
     unit.textContent = i === 0 ? 'outlet' : 'outlets';
-    fronts.forEach(function(el, n){
+    stores.forEach(function(el, n){
       var on = n < COUNT[i];
-      /* stagger only what is switching on, so the row fills instead of blinking */
+      /* stagger the dots as they switch on, so the count fills naturally */
       el.style.transitionDelay = (on && animate ? n * 55 : 0) + 'ms';
       el.classList.toggle('on', on);
     });
@@ -3578,7 +3595,10 @@ document.getElementById('backToTop').addEventListener('click', function(){
 (function(){
   var data = [
     {k:'INFORMATION SECURITY',t:'ISO/IEC 27001:2022',s:'Information security management',st:'Certified',m1:'Security',m2:'ISO 27001:2022',m3:'Current',f:'ISO/IEC 27001:2022 certified. Issued by IRQS under NABCB accreditation and recognised by the IAF.'},
-    {k:'COMPLIANCE',t:'e-Invoice / LHDN compliant',s:'e-Invoice readiness for Malaysian businesses',st:'Compliant',m1:'Compliance',m2:'LHDN',m3:'e-Invoice',f:'Xilnex supports e-Invoice compliance in line with LHDN requirements.'}
+    {k:'COMPLIANCE',t:'e-Invoice / LHDN compliant',s:'e-Invoice readiness for Malaysian businesses',st:'Compliant',m1:'Compliance',m2:'LHDN',m3:'e-Invoice',f:'Xilnex supports e-Invoice compliance in line with LHDN requirements.'},
+    {k:'INTEGRATION',t:'Open APIs for 3rd Party integrations',s:'Connect Xilnex with the tools you already use',st:'Connected',m1:'Integration',m2:'Open APIs',m3:'3rd Party',f:'Xilnex provides Open APIs for 3rd Party integrations, helping operators connect the POS with their wider technology stack.'},
+    {k:'RELIABILITY',t:'Online to Offline Management',s:'Keep operations moving across connected and offline environments',st:'Resilient',m1:'Operations',m2:'Online / Offline',m3:'Continuity',f:'Xilnex supports Online to Offline Management so operations can continue across changing connectivity conditions.'},
+    {k:'ECOSYSTEM',t:'Connected retail & F&B ecosystem',s:'Connect retail, F&B and customer-facing operations in one ecosystem',st:'Connected',m1:'Business',m2:'Retail + F&B',m3:'Ecosystem',f:'Xilnex brings retail, F&B and connected operational tools together in one ecosystem for multi-outlet operators.'}
   ];
 
   var items = document.querySelectorAll('.trust-record-item');
