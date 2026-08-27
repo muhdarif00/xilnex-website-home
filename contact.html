@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en-MY">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact Xilnex | Talk to Our Team</title>
+<meta name="description" content="Talk to Xilnex about POS, customer engagement, business intelligence and workforce tools for multi-outlet retail and F&B businesses.">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"Organization","name":"Xilnex Holdings Sdn Bhd","url":"https://xilnex.com/","email":"marketing@xilnex.com","telephone":"+604 611 0162"},
+    {"@type":"ContactPage","name":"Contact Xilnex | Book a POS Demo for Retail & F&B","url":"https://xilnex.com/contact-us/","description":"Tell us what you need, sales, media, or support, and Xilnex routes you to the right team fast."},
+    {"@type":"LocalBusiness","name":"Xilnex Holdings Sdn Bhd — Headquarters","telephone":"+604 611 0162","address":{"@type":"PostalAddress","streetAddress":"1A-21-01 & 02, Lilitan Sungai Tiram, GBS @ Penang Airport","postalCode":"11900","addressLocality":"Bayan Lepas","addressRegion":"Penang","addressCountry":"MY"}},
+    {"@type":"LocalBusiness","name":"Xilnex Holdings Sdn Bhd — Regional Office","telephone":"+603 7931 3266","address":{"@type":"PostalAddress","streetAddress":"G-21, PJ Midtown, Jalan Kemajuan, Seksyen 13","postalCode":"46200","addressLocality":"Petaling Jaya","addressRegion":"Selangor","addressCountry":"MY"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Why does the form ask me to pick a category first?","acceptedAnswer":{"@type":"Answer","text":"It routes your enquiry straight to the right team, sales, media or support, without manual triage, and asks for details like outlet count or urgency along the way instead of all at once."}},
+      {"@type":"Question","name":"Can I get a live demo before committing?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose Sales & Product Enquiries and the team can schedule a walkthrough tailored to retail or F&B operations."}},
+      {"@type":"Question","name":"Does Xilnex support businesses across Southeast Asia, or just Malaysia?","acceptedAnswer":{"@type":"Answer","text":"Xilnex operates across Malaysia, Indonesia, Thailand, Cambodia, Vietnam and Singapore, serving businesses throughout the region."}}
+    ]}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b0b0f;
+  --muted:#62636d;
+  --line:#e7e7ec;
+  --soft:#f7f7f9;
+  --purple:#9f318d;
+  --purple-2:#c95ba8;
+  --purple-deep:#76216d;
+  --pink:#dc7fc7;
+  --blue:#b9d3f7;
+  --max:1280px;
+  --radius:18px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font-family:Inter,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea,label{font:inherit;font-family:Inter,Arial,sans-serif}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+.wrap{width:min(var(--max),calc(100% - 72px));margin:0 auto}
+
+
+/* ============================ Announcement ============================ */
+.announce{height:36px;background:linear-gradient(90deg,#7c256f,#a63491 48%,#df91d1);color:#fff;display:flex;align-items:center;overflow:hidden;font-size:11px}
+.announce-track{display:flex;align-items:center;white-space:nowrap;animation:marquee 28s linear infinite}
+.announce:hover .announce-track,.announce:focus-within .announce-track{animation-play-state:paused}
+.announce-item{padding:0 24px;border-right:1px solid rgba(255,255,255,.28);font-weight:500}
+.announce-item strong{font-weight:700}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============================ Header ============================ */
+.header{height:64px;border-bottom:1px solid rgba(15,15,20,.07);background:rgba(255,255,255,.9);backdrop-filter:blur(18px);position:sticky;top:0;z-index:100}
+.header-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{width:138px;height:auto;display:block}
+.nav{height:100%;display:flex;align-items:center;gap:26px;font-size:13.5px;font-weight:500}
+.login + .nav-login{margin-left:-18px}
+.nav-link{height:100%;display:flex;align-items:center;position:relative;background:none;border:0;padding:0;color:inherit}
+.nav-link:hover,.nav-link.active{color:var(--purple)}
+.nav-contact{color:var(--purple)}
+.nav-link.active:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--purple)}
+.login{padding:9px 20px;border-radius:20px;background:var(--purple);color:#fff;font-size:13px;font-weight:700;letter-spacing:-.01em;transition:background .2s,transform .2s}
+.login:hover{background:var(--purple-deep);transform:translateY(-1px)}
+.menu-button{display:none;border:0;background:none;padding:8px;font-size:22px;line-height:1}
+
+/* ---- Mega menus ---- */
+/* The mega is full-bleed, so it must resolve against the sticky .header,
+   not against the nav item. Centring it on the nav item pushed it ~173px
+   past the viewport at desktop widths and created a horizontal scrollbar. */
+.nav-group{height:100%}
+.mega{position:absolute;left:0;right:0;top:calc(100% - 1px);background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);box-shadow:0 22px 50px rgba(20,15,25,.08);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .18s var(--ease),transform .18s var(--ease),visibility .18s;pointer-events:none;z-index:90}
+.mega:before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+.nav-group:hover .mega,.nav-group:focus-within .mega,.nav-group.open .mega{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+.mega-inner{padding:30px 0 34px;display:grid;grid-template-columns:1.1fr 2fr;gap:50px}
+.mega-intro{padding-right:30px;border-right:1px solid var(--line)}
+.mega-intro 
+.mega-intro h3{font-size:25px;letter-spacing:-.04em;margin:0 0 10px}
+.mega-intro p{font-size:12px;line-height:1.7;color:var(--muted);max-width:310px;margin:0}
+.mega-links{display:grid;grid-template-columns:1fr 1fr;gap:23px 45px}
+.mega-col h4{font-size:11px;color:var(--purple);letter-spacing:.07em;text-transform:uppercase;margin:0 0 9px}
+.mega-col a{display:block;font-size:14px;padding:5px 0;color:#33343b}
+.mega-col a:hover{color:var(--purple)}
+.mega-col small{display:block;color:#8a8b94;font-size:10px;line-height:1.4}
+
+/* Bright Xilnex hero + motion system */
+.contact-hero{position:relative;overflow:hidden;color:var(--ink);background:#f7f3f9;min-height:530px}
+.contact-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(48% 44% at 50% 46%,rgba(255,255,255,.84),transparent 72%);z-index:2;pointer-events:none}
+.contact-hero:after{content:"";position:absolute;inset:-18%;pointer-events:none;background:radial-gradient(34% 28% at 18% 38%,rgba(159,49,141,.24),transparent 72%),radial-gradient(28% 36% at 78% 24%,rgba(220,127,199,.28),transparent 70%),radial-gradient(32% 30% at 62% 78%,rgba(185,211,247,.28),transparent 72%);filter:blur(22px);transform:translate3d(-6%,0,0) scale(1.08);animation:contactFlow 12s ease-in-out infinite alternate;z-index:1}
+.hero-fiber-field{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+.hero-fiber-svg{width:100%;height:100%;display:block;opacity:.58}
+.hero-fiber-svg path,.hero-fiber-svg use{fill:none;stroke:transparent;stroke-width:2}
+.hero-fiber-svg .fiber-haze{stroke:#b7439f;stroke-width:28;opacity:.08;filter:url(#fiberBlur)}
+.hero-fiber-svg .fiber-bundle use{stroke:url(#fiberGradient);stroke-width:1.7;opacity:.22;vector-effect:non-scaling-stroke}
+.hero-fiber-svg .fiber-fine use{stroke:#8e3e9c;stroke-width:1;opacity:.16;vector-effect:non-scaling-stroke}
+.hero-fiber-svg .fiber-highlight use{stroke:url(#fiberGradient);stroke-width:2.3;opacity:.42;vector-effect:non-scaling-stroke}
+.hero-orbit{position:absolute;width:640px;height:640px;border-radius:50%;right:-260px;top:-250px;border:1px solid rgba(159,49,141,.17);box-shadow:0 0 0 54px rgba(159,49,141,.04),0 0 0 110px rgba(185,211,247,.035);z-index:4;animation:orbitDrift 18s ease-in-out infinite alternate}
+.hero-orbit:before,.hero-orbit:after{content:"";position:absolute;border-radius:50%;background:#fff;box-shadow:0 0 0 7px rgba(159,49,141,.08),0 0 22px rgba(159,49,141,.20)}
+.hero-orbit:before{width:9px;height:9px;left:84px;top:178px;animation:dotFloat 6s ease-in-out infinite}
+.hero-orbit:after{width:6px;height:6px;right:122px;bottom:174px;animation:dotFloat 8s ease-in-out -2s infinite}
+.hero-particle{position:absolute;z-index:5;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,#9f318d,#dc7fc7);box-shadow:0 0 0 6px rgba(159,49,141,.08),0 6px 20px rgba(159,49,141,.18);animation:particleFloat 7s ease-in-out infinite}
+.hero-particle.p1{left:12%;top:24%;animation-delay:-1.2s}.hero-particle.p2{left:18%;bottom:18%;width:6px;height:6px;animation-duration:9s;animation-delay:-3s}.hero-particle.p3{right:14%;top:38%;width:5px;height:5px;animation-duration:8s;animation-delay:-4s}
+.hero-inner{position:relative;z-index:10;padding:94px 0 112px;display:grid;grid-template-columns:1.08fr .92fr;gap:84px;align-items:end}
+.hero h1{font-size:clamp(54px,6.2vw,88px);line-height:.93;letter-spacing:-.06em;margin:0 0 30px;max-width:10ch}
+.hero h1 em{font-style:normal;background:linear-gradient(95deg,#8f2b7e,#c45bb0 58%,#7ca9df);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% 100%;animation:headlineShift 9s ease-in-out infinite alternate}
+.hero-copy p{font-size:18px;line-height:1.7;color:var(--muted);max-width:620px;margin:0}
+.hero-side{padding-bottom:4px;max-width:470px}
+.hero-side-label{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:#8b8490;margin-bottom:14px}
+.hero-side p{font-size:16px;line-height:1.72;color:#5f606b;max-width:440px;margin:0 0 28px}
+.hero-side .jump{display:inline-flex;gap:10px;align-items:center;font-size:13px;font-weight:700;padding:13px 16px;border:1px solid #d9d2df;border-radius:999px;background:rgba(255,255,255,.7);backdrop-filter:blur(12px);box-shadow:0 12px 24px rgba(45,22,53,.06);transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s}
+.hero-side .jump:hover{transform:translateY(-2px);box-shadow:0 18px 30px rgba(45,22,53,.10);border-color:#c39abb}
+.hero-side .jump span{font-size:16px}
+@keyframes contactFlow{0%{transform:translate3d(-7%,-2%,0) scale(1.08) rotate(-1deg)}50%{transform:translate3d(5%,4%,0) scale(1.15) rotate(2deg)}100%{transform:translate3d(8%,-4%,0) scale(1.18) rotate(1deg)}}
+@keyframes orbitDrift{to{transform:translate3d(-22px,18px,0) rotate(8deg)}}
+@keyframes dotFloat{50%{transform:translate3d(10px,-14px,0) scale(1.15)}100%{transform:translate3d(-4px,8px,0) scale(.92)}}
+@keyframes particleFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(12px,-16px,0)}}
+@keyframes headlineShift{to{background-position:100% 0}}
+@media (prefers-reduced-motion:reduce){.contact-hero:after,.hero-orbit,.hero-particle,.hero-orbit:before,.hero-orbit:after,.hero h1 em{animation:none!important}}
+
+/* Contact workspace */
+.contact-workspace{position:relative;background:linear-gradient(180deg,#fff 0%,#fbf9fc 100%);color:var(--ink);padding:92px 0 106px;border-bottom:1px solid var(--line);overflow:hidden}
+.contact-workspace:before{content:"";position:absolute;width:520px;height:520px;left:-280px;top:110px;border-radius:50%;background:radial-gradient(circle,rgba(220,127,199,.17),transparent 68%);filter:blur(14px);animation:workspaceGlow 12s ease-in-out infinite alternate}
+.contact-workspace:after{content:"";position:absolute;width:420px;height:420px;right:-200px;bottom:-100px;border-radius:50%;background:radial-gradient(circle,rgba(185,211,247,.22),transparent 68%);filter:blur(16px);animation:workspaceGlow 15s ease-in-out -5s infinite alternate}
+.contact-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);gap:74px;align-items:start}
+.form-heading{font-size:clamp(34px,3.4vw,50px);line-height:1;letter-spacing:-.045em;margin:0 0 14px}
+.form-lead{font-size:14px;line-height:1.7;color:var(--muted);max-width:620px;margin:0 0 34px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#89808d;font-weight:700}
+input,select,textarea{width:100%;border:1px solid #ded9e2;background:rgba(255,255,255,.82);color:var(--ink);border-radius:10px;padding:14px 14px;outline:none;transition:border-color .2s,box-shadow .25s,background .25s,transform .25s;box-shadow:0 6px 18px rgba(40,20,45,.03)}
+input::placeholder,textarea::placeholder{color:#9a949e}
+input:hover,select:hover,textarea:hover{transform:translateY(-1px);border-color:#c9b7c8}
+input:focus,select:focus,textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(159,49,141,.10),0 12px 28px rgba(69,30,70,.08);background:#fff;transform:translateY(-1px)}
+textarea{min-height:148px;resize:vertical}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#817882 50%),linear-gradient(135deg,#817882 50%,transparent 50%);background-position:calc(100% - 17px) 19px,calc(100% - 12px) 19px;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:38px}
+.form-actions{grid-column:1/-1;display:flex;align-items:center;gap:16px;margin-top:6px;flex-wrap:wrap}
+.submit{border:0;background:linear-gradient(100deg,#842875,#c55ab1);color:#fff;padding:15px 22px;border-radius:8px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;box-shadow:0 14px 34px rgba(142,45,127,.20);transition:.22s var(--ease);position:relative;overflow:hidden}
+.submit:before{content:"";position:absolute;top:-80%;left:-30%;width:22%;height:260%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.44),transparent);transform:skewX(-18deg);animation:buttonSweep 4.5s ease-in-out infinite}
+.submit:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(142,45,127,.27)}
+.form-note{font-size:11px;color:#89848d}
+.contact-info{padding-top:6px}
+.info-rule{height:1px;background:var(--line);margin-bottom:38px}
+.info-block{padding:0 0 32px;margin:0 0 32px;border-bottom:1px solid var(--line)}
+.info-label{display:block;font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:#89808d;font-weight:700;margin-bottom:10px}
+.info-link{font-size:clamp(22px,2.2vw,30px);line-height:1.1;letter-spacing:-.035em;color:var(--ink);display:inline-block;transition:color .2s,transform .2s var(--ease)}
+.info-link:hover{color:var(--purple);transform:translateX(4px)}
+.info-text{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
+.office-title{font-size:13px;font-weight:700;color:var(--ink);margin:0 0 8px}
+.office-meta{font-size:12px;line-height:1.65;color:#6f6d76;margin:0}
+.quick-links{display:grid;gap:11px;margin-top:6px}
+.quick-link{display:flex;align-items:center;justify-content:space-between;padding:13px 0;color:#3f3e46;font-size:12px;border-bottom:1px solid var(--line);transition:padding-left .2s,color .2s}
+.quick-link:hover{padding-left:6px;color:var(--purple)}
+.quick-link span:last-child{color:var(--purple);font-size:17px}
+@keyframes workspaceGlow{to{transform:translate3d(24px,-18px,0) scale(1.08)}}
+@keyframes buttonSweep{0%,58%{transform:translateX(-150%) skewX(-18deg);opacity:0}65%{opacity:1}88%,100%{transform:translateX(650%) skewX(-18deg);opacity:0}}
+
+/* Offices */
+.offices{padding:104px 0 110px;background:linear-gradient(135deg,#f5f6fb 0%,#fff 48%,#f8eef8 100%);border-bottom:1px solid var(--line)}
+.offices-head{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:end;margin-bottom:48px}
+.offices-title{font-size:clamp(40px,4.5vw,62px);line-height:.98;letter-spacing:-.052em;margin:0}
+.offices-lead{font-size:15px;line-height:1.75;color:var(--muted);max-width:560px;margin:0}
+.office-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.office-card{padding:30px 30px 34px;min-height:270px;border-right:1px solid var(--line)}
+.office-card:last-child{border-right:0}
+.office-card h3{font-size:28px;letter-spacing:-.04em;margin:58px 0 10px}
+.office-card p{font-size:14px;line-height:1.75;color:var(--muted);margin:0}
+.office-card a{color:var(--purple);font-weight:700}
+.office-footer-note{font-size:11px;color:#8d8690;margin-top:20px}
+
+
+.office-grid{position:relative}
+.office-card{background:rgba(255,255,255,.62);backdrop-filter:blur(8px);transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s}
+.office-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(57,35,63,.10);border-color:#d3bdd2}
+.office-card h3{transition:color .25s}.office-card:hover h3{color:var(--purple)}
+
+
+/* Footer — matched to the Xilnex homepage */
+.current-footer{position:relative;padding:58px 0 82px;background:#fff;border-top:1px solid var(--line)}
+.current-footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;column-gap:110px;align-items:start}
+.footer-location{font-size:13px;line-height:1.7;color:#08080d}
+.footer-heading{color:var(--purple);font-size:14px;line-height:1.2;margin-bottom:27px;font-weight:600}
+.footer-company{margin-bottom:10px}
+.footer-location > div:not(.footer-heading):not(.footer-company){margin-bottom:7px}
+.footer-location a{display:inline-block;color:var(--purple)}
+.footer-right{position:relative;min-height:245px;display:flex;justify-content:space-between;align-items:flex-start;gap:35px}
+.footer-links-list{display:flex;flex-direction:column;gap:27px}
+.footer-links-list a{color:var(--purple);font-size:14px}
+.footer-socials{display:flex;gap:10px}
+.footer-socials a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#8e2d7f;color:#fff}
+.footer-socials svg{width:18px;height:18px;display:block}
+.footer-top{position:absolute;right:64px;bottom:18px;width:44px;height:44px;border:0;border-radius:6px;background:#a24796;color:#fff;font-size:25px;line-height:1;transition:transform .2s}
+.footer-top:hover{transform:translateY(-2px)}
+
+@media(max-width:960px){
+  .nav{gap:18px}
+  .hero-inner,.contact-grid,.offices-head{grid-template-columns:1fr;gap:48px}
+  .hero-side{padding-bottom:0}
+  .contact-grid{gap:56px}
+  .office-grid{grid-template-columns:1fr}
+  .office-card{border-right:0;border-bottom:1px solid var(--line)}
+  .office-card:last-child{border-bottom:0}
+  .current-footer-grid{grid-template-columns:1fr 1fr;gap:45px 35px}
+  .footer-right{grid-column:1/-1}
+  .footer-top{right:25px}
+}
+@media(max-width:720px){
+  .wrap{width:calc(100% - 30px)}
+  .announce{font-size:10px}
+  .header{height:70px}
+  .logo{width:122px}
+  .nav{display:none}
+  .menu-button{display:block}
+  .hero-inner{padding:72px 0 80px}
+  .hero h1{font-size:clamp(48px,15vw,68px)}
+  .hero-copy p{font-size:16px}
+  .contact-workspace{padding:62px 0 76px}
+  .form{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .form-actions{grid-column:auto}
+  .offices{padding:78px 0}
+  .office-card h3{margin-top:42px}
+  .current-footer{padding:48px 0 85px}
+  .current-footer-grid{grid-template-columns:1fr;gap:38px}
+  .footer-right{grid-column:auto;display:block;min-height:0}
+  .footer-socials{margin-top:30px}
+}
+
+@media(max-width:720px){.announce{font-size:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.announce-track{animation:none}*{transition:none!important}}
+
+/* Entry motion */
+.reveal-in{opacity:0;transform:translateY(24px);animation:revealIn .85s var(--ease) forwards}
+.delay-2{animation-delay:.16s}
+@keyframes revealIn{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.reveal-in{opacity:1;transform:none;animation:none}}
+@media(max-width:900px){.hero-fiber-field{opacity:.45}.hero-orbit{right:-380px}.contact-hero{min-height:auto}.contact-grid{gap:56px}}
+@media(max-width:640px){.hero-fiber-field{opacity:.30}.hero-orbit{width:520px;height:520px;right:-300px;top:-180px}.hero-inner{padding:72px 0 86px}.hero h1{max-width:11ch}.hero-side .jump{padding:12px 15px}.contact-workspace{padding:72px 0 84px}}
+
+
+/* ===== Contact flow: tile-based enquiry experience ===== */
+.flow-intro{max-width:850px;margin-bottom:42px}
+.flow-heading{font-size:clamp(48px,6vw,78px);line-height:.95;letter-spacing:-.06em;margin:0 0 24px;max-width:26ch}
+.flow-heading em{font-style:normal;background:linear-gradient(95deg,#842875,#c95ab0 55%,#7aa4de);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% 100%;animation:headlineShift 9s ease-in-out infinite alternate}
+.flow-lead{font-size:17px;line-height:1.75;color:var(--muted);max-width:720px;margin:0}
+.trust-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:72px}
+.trust-strip>div{padding:24px 28px;border-right:1px solid var(--line)}
+.trust-strip>div:last-child{border-right:0}
+.trust-strip b{display:block;font-size:23px;letter-spacing:-.04em;margin-bottom:4px}
+.trust-strip span{font-size:11px;color:#89808d;text-transform:uppercase;letter-spacing:.12em}
+.enquiry-chooser{margin-bottom:46px}
+.enquiry-tiles{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.enquiry-tile{position:relative;text-align:left;border:0;border-right:1px solid var(--line);background:#fff;padding:28px 26px 30px;min-height:238px;color:var(--ink);transition:transform .35s var(--ease),background .35s var(--ease),box-shadow .35s var(--ease)}
+.enquiry-tile:last-child{border-right:0}
+.enquiry-tile:hover{transform:translateY(-4px);z-index:2;box-shadow:0 20px 45px rgba(45,24,52,.10);background:linear-gradient(180deg,#fff,#fbf5fb)}
+.enquiry-tile.is-active{background:linear-gradient(180deg,#fff,#f8eff8);box-shadow:inset 0 -3px 0 var(--purple)}
+.tile-title{display:block;font-size:25px;line-height:1.05;letter-spacing:-.04em;max-width:14ch;margin-bottom:12px}
+.tile-copy{display:block;font-size:12px;line-height:1.65;color:var(--muted);max-width:31ch}
+.tile-arrow{position:absolute;right:22px;bottom:20px;font-size:22px;color:var(--purple);transition:transform .2s var(--ease)}
+.enquiry-tile:hover .tile-arrow,.enquiry-tile.is-active .tile-arrow{transform:translateX(5px)}
+
+/* Radio-card fields: compact, clickable options that preserve native form semantics. */
+.radio-field{display:flex;flex-direction:column;gap:10px}
+.radio-field > label{display:block}
+.radio-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.radio-option{position:relative;display:flex;align-items:center;gap:11px;min-height:54px;padding:13px 14px;border:1px solid #ded9e2;border-radius:10px;background:rgba(255,255,255,.82);cursor:pointer;transition:border-color .2s,box-shadow .25s,background .25s,transform .2s}
+.radio-option:hover{transform:translateY(-1px);border-color:#c9b7c8;box-shadow:0 6px 18px rgba(40,20,45,.05)}
+.radio-option input{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.radio-dot{width:16px;height:16px;flex:0 0 16px;border:1.5px solid #9f318d;border-radius:50%;background:#fff;display:grid;place-items:center}
+.radio-dot:after{content:"";width:7px;height:7px;border-radius:50%;background:linear-gradient(135deg,#842875,#c55ab1);transform:scale(0);transition:transform .18s cubic-bezier(.22,1,.36,1)}
+.radio-option:has(input:checked){border-color:#b45ba8;background:linear-gradient(180deg,#fff,#fbf3fb);box-shadow:0 0 0 2px rgba(159,49,141,.08)}
+.radio-option:has(input:checked) .radio-dot:after{transform:scale(1)}
+.radio-option strong{font-size:14px;line-height:1.2;font-weight:700;letter-spacing:-.015em}
+@media(max-width:720px){.radio-grid{grid-template-columns:1fr}}
+
+.route-panel{border:1px solid var(--line);background:rgba(255,255,255,.76);box-shadow:0 24px 70px rgba(48,25,54,.07);border-radius:20px;padding:34px;overflow:hidden}
+.route-panel[hidden]{display:none}
+.route-in{animation:routeIn .55s var(--ease) both}
+@keyframes routeIn{from{opacity:.2;transform:translateY(12px)}to{opacity:1;transform:none}}
+.route-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.route-head h3{font-size:clamp(28px,3vw,40px);line-height:1;letter-spacing:-.045em;margin:0}
+.route-form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.route-form .field.full{grid-column:1/-1}
+
+/* Customer support is a content-only route. Keep the same panel language as the enquiry forms. */
+.support-panel{max-width:none}
+.support-detail-list{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.support-detail-row{padding:24px 0;border-bottom:1px solid var(--line)}
+.support-detail-row:nth-child(odd){padding-right:30px;border-right:1px solid var(--line)}
+.support-detail-row:nth-child(even){padding-left:30px}
+.support-detail-row:nth-last-child(-n+2){border-bottom:0}
+.support-detail-row.full{grid-column:1/-1;border-right:0;padding-left:0;padding-right:0}
+.support-detail-label{display:block;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#89808d;font-weight:700;margin-bottom:10px}
+.support-detail-row strong,.support-detail-row a{display:block;font-size:18px;font-weight:700;line-height:1.4;color:var(--ink)}
+.support-detail-row a{color:var(--purple)}
+.support-phones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 34px;margin-top:12px}
+.support-phones a{font-size:14px;line-height:1.4}
+.support-help-link{display:inline-block}
+.support-back{margin-top:28px;padding:12px 18px;border:1px solid #ded9e2;border-radius:10px;background:#fff;color:#34313a;font-weight:600;transition:border-color .2s,transform .2s}
+.support-back:hover{border-color:#c9b7c8;transform:translateY(-1px)}
+@media(max-width:720px){.support-detail-list{grid-template-columns:1fr}.support-detail-row,.support-detail-row:nth-child(odd),.support-detail-row:nth-child(even),.support-detail-row.full{padding:20px 0;border-right:0;border-bottom:1px solid var(--line)}.support-detail-row:last-child{border-bottom:0}.support-phones{grid-template-columns:1fr}}
+
+.support-handoff{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:16px 18px;border-radius:12px;background:linear-gradient(135deg,#f8f2fa,#f2f6fc);border:1px solid #e5dfea}
+.support-handoff div{display:flex;flex-direction:column;gap:4px}.support-handoff strong{font-size:13px}.support-handoff span{font-size:11px;color:var(--muted)}
+.support-handoff a{white-space:nowrap;color:var(--purple);font-size:12px;font-weight:800}
+.form-actions{grid-column:1/-1;display:flex;align-items:center;gap:16px;margin-top:6px;flex-wrap:wrap}
+.after-submit{margin-top:82px;padding-top:34px;border-top:1px solid var(--line)}
+.after-submit h3{font-size:clamp(29px,3.5vw,42px);letter-spacing:-.045em;line-height:1;margin:0}
+.after-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:30px}
+.after-grid>div{padding:24px 24px 12px 0;border-right:1px solid var(--line)}
+.after-grid>div:not(:first-child){padding-left:24px}.after-grid>div:last-child{border-right:0;padding-right:0}
+.after-grid span{display:block;color:var(--purple);font-size:28px;font-weight:800;letter-spacing:-.05em;line-height:1;margin-bottom:30px;font-variant-numeric:tabular-nums}.after-grid b{display:block;font-size:18px;margin-bottom:8px;letter-spacing:-.025em}.after-grid p{font-size:12px;line-height:1.7;color:var(--muted);margin:0}
+.operator-proof{position:relative;overflow:hidden;padding:100px 0 92px;background:linear-gradient(135deg,#f6f4fb 0%,#fff 44%,#fbf2fa 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof-ambient{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.proof-ambient:before{content:"";position:absolute;width:620px;height:620px;right:-250px;top:-300px;border:1px solid rgba(159,49,141,.13);border-radius:50%;box-shadow:0 0 0 54px rgba(159,49,141,.035),0 0 0 112px rgba(185,211,247,.035)}
+.proof-ambient:after{content:"";position:absolute;inset:-20%;background:radial-gradient(36% 34% at 12% 28%,rgba(201,91,168,.11),transparent 72%),radial-gradient(28% 34% at 79% 72%,rgba(185,211,247,.12),transparent 72%);filter:blur(28px);animation:proofDrift 16s ease-in-out infinite alternate}
+.proof-ambient span,.proof-ambient i,.proof-ambient b{position:absolute;border-radius:50%;display:block;width:8px;height:8px;background:var(--purple);box-shadow:0 0 0 7px rgba(159,49,141,.08),0 0 18px rgba(159,49,141,.22)}
+.proof-ambient span{right:11%;top:31%;animation:proofDot 6s ease-in-out infinite}
+.proof-ambient i{right:18%;bottom:15%;width:6px;height:6px;background:#7aa4de;box-shadow:0 0 0 7px rgba(122,164,222,.08),0 0 18px rgba(122,164,222,.20);animation:proofDot 7s ease-in-out -2s infinite}
+.proof-ambient b{left:8%;bottom:15%;width:6px;height:6px;background:#c95ab0;box-shadow:0 0 0 7px rgba(201,90,176,.08),0 0 18px rgba(201,90,176,.20);animation:proofDot 8s ease-in-out -4s infinite}
+@keyframes proofDrift{0%{transform:translate3d(-2%,-1%,0) scale(1)}100%{transform:translate3d(3%,2%,0) scale(1.08)}}
+@keyframes proofDot{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.15)}}
+.proof-reference{position:relative;z-index:2}
+.proof-top{display:grid;grid-template-columns:minmax(360px,.9fr) minmax(420px,1.1fr);gap:90px;align-items:end;padding-bottom:64px}
+.proof-heading h2{font-size:clamp(48px,5.1vw,72px);line-height:.92;letter-spacing:-.058em;margin:0;max-width:9.5ch}
+.proof-copy{max-width:660px;padding-bottom:4px}
+.proof-copy p{font-size:17px;line-height:1.7;color:#5f606b;margin:0 0 20px}
+.proof-copy p:last-child{margin-bottom:0}
+.proof-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(103,79,110,.18);border-bottom:1px solid rgba(103,79,110,.18)}
+.proof-stat{min-height:205px;padding:34px 26px 24px 0;border-right:1px solid rgba(103,79,110,.14)}
+.proof-stat:not(:first-child){padding-left:26px}
+.proof-stat:last-child{border-right:0;padding-right:0}
+.proof-stat strong{display:block;font-size:clamp(42px,4.2vw,64px);line-height:.96;letter-spacing:-.055em;margin:0 0 12px;white-space:nowrap}
+.proof-stat strong > span:not(.countup){font-size:.5em;color:var(--purple);vertical-align:top;position:relative;top:-.1em;letter-spacing:-.02em}
+.countup{font-variant-numeric:tabular-nums;min-width:1ch;display:inline-block}.count-prefix{font-size:.55em;color:var(--purple);vertical-align:top;position:relative;top:.02em;letter-spacing:-.02em}
+.proof-stat small{display:block;font-size:10px;letter-spacing:.17em;font-weight:800;color:#8c8190;margin-bottom:24px}
+.proof-stat p{font-size:13px;line-height:1.65;color:var(--muted);margin:0;max-width:28ch}
+.proof-callout{margin-top:44px;border:1px solid rgba(103,79,110,.14);border-left:2px solid var(--purple);background:rgba(255,255,255,.62);backdrop-filter:blur(10px);padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:32px;box-shadow:0 16px 34px rgba(50,25,55,.035)}
+.proof-callout p{margin:0;font-size:13px;line-height:1.7;color:#66636d;max-width:930px}.proof-callout b{color:#222027}.proof-callout a{flex:0 0 auto;color:var(--purple);font-size:12px;font-weight:800;white-space:nowrap}.proof-callout a span{display:inline-block;transition:transform .2s var(--ease)}.proof-callout a:hover span{transform:translateX(4px)}
+@media(prefers-reduced-motion:reduce){.proof-ambient:after,.proof-ambient span,.proof-ambient i,.proof-ambient b{animation:none!important}}
+@media(max-width:960px){.proof-top{grid-template-columns:1fr;gap:30px;padding-bottom:48px}.proof-stats{grid-template-columns:1fr 1fr}.proof-stat:nth-child(2){border-right:0}.proof-stat:nth-child(n+3){border-top:1px solid rgba(103,79,110,.14)}.proof-stat:nth-child(3){border-right:1px solid rgba(103,79,110,.14)}.proof-callout{align-items:flex-start;flex-direction:column}}
+@media(max-width:640px){.operator-proof{padding:72px 0 74px}.proof-heading h2{max-width:11ch}.proof-copy p{font-size:16px}.proof-stats{grid-template-columns:1fr}.proof-stat,.proof-stat:not(:first-child),.proof-stat:last-child{border-right:0;padding:24px 0}.proof-stat:not(:first-child){border-top:1px solid rgba(103,79,110,.14)}.proof-stat p{max-width:34ch}.proof-callout{padding:18px}.proof-callout a{white-space:normal}}
+.faq-section{padding:110px 0;border-bottom:1px solid var(--line);background:#fff}.faq-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:100px;align-items:start}.faq-layout h2{font-size:clamp(40px,4vw,58px);letter-spacing:-.05em;line-height:.98;margin:0 0 16px}.faq-layout>div:first-child p{font-size:14px;line-height:1.7;color:var(--muted);max-width:420px;margin:0}.faq-list{border-top:1px solid var(--line)}.faq-list details{border-bottom:1px solid var(--line)}.faq-list summary{list-style:none;cursor:pointer;padding:24px 42px 24px 0;position:relative;font-size:18px;line-height:1.3;font-weight:600;letter-spacing:-.02em}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{content:'+';position:absolute;right:0;top:20px;color:var(--purple);font-size:24px;font-weight:400;transition:transform .25s var(--ease)}.faq-list details[open] summary:after{transform:rotate(45deg)}.faq-list p{margin:0;padding:0 40px 24px 0;font-size:13px;line-height:1.75;color:var(--muted)}
+@media(max-width:960px){.enquiry-tiles{grid-template-columns:1fr}.enquiry-tile{border-right:0;border-bottom:1px solid var(--line);min-height:0}.enquiry-tile:last-child{border-bottom:0}.after-grid{grid-template-columns:1fr}.after-grid>div{border-right:0;border-bottom:1px solid var(--line);padding:22px 0!important}.after-grid>div:last-child{border-bottom:0}.proof-grid,.faq-layout{grid-template-columns:1fr;gap:45px}.proof-points{grid-template-columns:1fr 1fr}.route-form{grid-template-columns:1fr}.route-form .field.full{grid-column:auto}.route-form .form-actions{grid-column:auto}.support-handoff{grid-column:auto}.trust-strip{grid-template-columns:1fr}.trust-strip>div{border-right:0;border-bottom:1px solid var(--line)}.trust-strip>div:last-child{border-bottom:0}.faq-layout{gap:40px}}
+@media(max-width:640px){.compact-proof{gap:34px}.proof-points{grid-template-columns:1fr}.proof-explore{grid-column:auto}.proof-orbit{right:-260px;top:-130px;opacity:.7}.flow-heading{font-size:clamp(46px,14vw,64px)}.trust-strip{margin-bottom:56px}.route-panel{padding:22px;border-radius:16px}.route-head{display:block}
+@media(max-width:720px){
+  .header{height:70px}
+  .logo{width:122px}
+  .nav{display:none}
+  .menu-button{display:block}
+  .nav.mobile-open{display:flex;position:absolute;top:70px;left:0;right:0;height:auto;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:10px 20px 20px;border-bottom:1px solid var(--line);box-shadow:0 15px 35px rgba(0,0,0,.06)}
+  .nav.mobile-open .nav-link{height:auto;padding:12px 0}
+  .nav.mobile-open .login{margin-top:8px;text-align:center}
+  .mega{display:none}
+}
+
+</style>
+</head>
+<body>
+
+<div class="announce">
+  <div class="announce-track">
+    <div class="announce-item"><strong>Built for multi-outlet retail &amp; F&amp;B brands</strong></div>
+    <div class="announce-item">Turn visitors into repeat customers</div>
+    <div class="announce-item">Ask us about Xilnex Insights, our signature BI solution</div>
+    <div class="announce-item">Malaysia's leading retail &amp; F&amp;B point-of-sale solutions</div>
+    <div class="announce-item">Experience POS that scales with your business</div>
+    <!-- Exact duplicate set so the -50% marquee loops seamlessly. -->
+    <div class="announce-item" aria-hidden="true"><strong>Built for multi-outlet retail &amp; F&amp;B brands</strong></div>
+    <div class="announce-item" aria-hidden="true">Turn visitors into repeat customers</div>
+    <div class="announce-item" aria-hidden="true">Ask us about Xilnex Insights, our signature BI solution</div>
+    <div class="announce-item" aria-hidden="true">Malaysia's leading retail &amp; F&amp;B point-of-sale solutions</div>
+    <div class="announce-item" aria-hidden="true">Experience POS that scales with your business</div>
+  </div></div>
+
+<header class="header">
+  <div class="wrap header-inner">
+    <a href="./index-menu-content-login-right.html#home" aria-label="Xilnex home"><img class="logo" src="data:image/png;base64,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" alt="Xilnex" width="420" height="126"></a>
+
+    <nav class="nav" id="mainNav" aria-label="Primary">
+      <a class="nav-link" href="./index-menu-content-login-right.html#home">Home</a>
+
+      <div class="nav-group">
+        <a class="nav-link" href="./index-menu-content-login-right.html#solutions">Solutions</a>
+        <div class="mega">
+          <div class="wrap mega-inner">
+            <div class="mega-intro">
+              <h3>One platform, four jobs.</h3>
+              <p>Checkout, customer engagement, reporting and workforce tools, all running off the same back office, across every outlet.</p>
+            </div>
+            <div class="mega-links">
+              <div class="mega-col">
+                <h4>Point of Sale</h4>
+                <a href="./index-menu-content-login-right.html#view-pos-retail">POS for Retail</a>
+                <a href="./index-menu-content-login-right.html#view-pos-fnb">POS for F&amp;B</a>
+                <a href="./index-menu-content-login-right.html#view-pos-ipad">POS for iPad</a>
+                <a href="./index-menu-content-login-right.html#view-kitchen-display-system">Kitchen Display System</a>
+              </div>
+              <div class="mega-col">
+                <h4>Customer Engagement</h4>
+                <a href="./index-menu-content-login-right.html#view-loyalty-programmes">Loyalty Programmes</a>
+                <a href="./index-menu-content-login-right.html#view-self-order-kiosk">Self-Order Kiosk</a>
+                <a href="./index-menu-content-login-right.html#view-online-ordering">Online Ordering</a>
+              </div>
+              <div class="mega-col">
+                <h4>Business Intelligence</h4>
+                <a href="./index-menu-content-login-right.html#view-xilnex-insights">Xilnex Insights</a>
+                <small>Analytics &amp; reporting</small>
+                <h4 style="margin-top:22px">Workforce Tools</h4>
+                <a href="./index-menu-content-login-right.html#view-xilnex-mobility">Xilnex Mobility</a>
+                <small>Built for teams across locations</small>
+              </div>
+              <!-- Industries sits under Solutions to keep the nav at four items, but
+                   is given the most prominent treatment in the dropdown. -->
+              <div class="mega-col mega-col-feature">
+                <h4>Industries</h4>
+                <a href="./index-menu-content-login-right.html#view-retail-chains-franchises">Retail Chains &amp; Franchises</a>
+                <a href="./index-menu-content-login-right.html#view-restaurant-cafe-chains">Restaurant &amp; Cafe Chains</a>
+                <a href="./index-menu-content-login-right.html#view-convenience-store-chains">Convenience Store Chains</a>
+                <a href="./index-menu-content-login-right.html#view-food-courts-mixed-fnb">Food Courts &amp; Mixed F&amp;B</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-link" href="./index-menu-content-login-right.html#behind">Behind the Counter</a>
+        <div class="mega">
+          <div class="wrap mega-inner">
+            <div class="mega-intro">
+              <h3>Check us out first.</h3>
+              <p>Certifications, guides and comparisons, the partners we work with, and the people building it.</p>
+            </div>
+            <div class="mega-links">
+              <div class="mega-col">
+                <h4>Resource Centre</h4>
+                <a href="./index-menu-content-login-right.html#resources">Guides</a>
+                <a href="./index-menu-content-login-right.html#resources">Comparisons</a>
+                <a href="./index-menu-content-login-right.html#resources">Industry Reports / Data</a>
+                <a href="./index-menu-content-login-right.html#resources">Case Studies</a>
+              </div>
+              <div class="mega-col">
+                <h4>Partners</h4>
+                <a href="./index-menu-content-login-right.html#resources">Partner Ecosystem</a>
+                <small>MSME Digital Grant MADANI, Northgate Technologies, etc.</small>
+                <h4 style="margin-top:22px">Careers</h4>
+                <a href="./index-menu-content-login-right.html#behind">Working at Xilnex</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav-link nav-contact active" href="#contact">Contact</a>
+      <a class="login" href="#contact">Request a Demo</a>
+      <a class="nav-login" href="https://portal2.xilnex.com/">Login</a>
+    </nav>
+
+    <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">☰</button>
+  </div>
+</header>
+
+<main id="contact">
+<section class="contact-workspace" id="contact-form">
+  <div class="wrap">
+    <div class="flow-intro reveal-in">
+      <h2 class="flow-heading">Tell us what you need,<br><em>we'll take it from there.</em></h2>
+      <p class="flow-lead">Choose the kind of help you need and we'll only ask for the details that matter to that conversation. Sales, media or support — your enquiry starts with the right route.</p>
+    </div>
+
+    <div class="enquiry-flow">
+      <div class="enquiry-chooser reveal-in">
+        <div class="enquiry-tiles" role="tablist" aria-label="Enquiry type">
+          <button class="enquiry-tile is-active" type="button" role="tab" aria-selected="true" data-route="sales" aria-controls="route-sales"><span class="tile-title">Sales &amp; Product Enquiries</span><span class="tile-copy">Book a demo, scope a rollout, discuss pricing or find the right Xilnex solution.</span><span class="tile-arrow">→</span>
+          </button>
+          <button class="enquiry-tile" type="button" role="tab" aria-selected="false" data-route="media" aria-controls="route-media"><span class="tile-title">Media &amp; Partnerships</span><span class="tile-copy">Press enquiries, interviews, collaborations, partnerships and brand opportunities.</span><span class="tile-arrow">→</span>
+          </button>
+          <button class="enquiry-tile" type="button" role="tab" aria-selected="false" data-route="support" aria-controls="route-support"><span class="tile-title">Customer Support</span><span class="tile-copy">Need help with a live Xilnex setup? Tell us the product and what needs attention.</span><span class="tile-arrow">→</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="route-panel reveal-in" id="route-sales" data-route-panel="sales">
+        <div class="route-head">
+          <div><h3>Let's scope your operation.</h3></div>
+        </div>
+        <form class="route-form" data-form-type="Sales &amp; Product Enquiries">
+          <div class="field"><label for="sales-name">Name</label><input id="sales-name" name="name" type="text" placeholder="Your name" required></div>
+          <div class="field"><label for="sales-company">Company</label><input id="sales-company" name="company" type="text" placeholder="Company name" required></div>
+          <div class="field"><label for="sales-email">Work email</label><input id="sales-email" name="email" type="email" placeholder="you@company.com" required></div>
+          <div class="field"><label for="sales-phone">Telephone</label><input id="sales-phone" name="phone" type="tel" placeholder="+60 ..."></div>
+          <div class="radio-field field full">
+  <label>Business type</label>
+  <div class="radio-grid" role="radiogroup" aria-label="Business type">
+    <label class="radio-option"><input type="radio" name="business" value="Retail" required><span class="radio-dot" aria-hidden="true"></span><strong>Retail</strong></label>
+    <label class="radio-option"><input type="radio" name="business" value="F&amp;B"><span class="radio-dot" aria-hidden="true"></span><strong>F&amp;B</strong></label>
+    <label class="radio-option"><input type="radio" name="business" value="Retail &amp; F&amp;B"><span class="radio-dot" aria-hidden="true"></span><strong>Retail &amp; F&amp;B</strong></label>
+    <label class="radio-option"><input type="radio" name="business" value="Franchise"><span class="radio-dot" aria-hidden="true"></span><strong>Franchise</strong></label>
+    <label class="radio-option"><input type="radio" name="business" value="Other"><span class="radio-dot" aria-hidden="true"></span><strong>Other</strong></label>
+  </div>
+</div>
+          <div class="radio-field field full">
+  <label>Number of outlets</label>
+  <div class="radio-grid" role="radiogroup" aria-label="Number of outlets">
+    <label class="radio-option"><input type="radio" name="outlets" value="1" required><span class="radio-dot" aria-hidden="true"></span><strong>1</strong></label>
+    <label class="radio-option"><input type="radio" name="outlets" value="2–5"><span class="radio-dot" aria-hidden="true"></span><strong>2–5</strong></label>
+    <label class="radio-option"><input type="radio" name="outlets" value="6–20"><span class="radio-dot" aria-hidden="true"></span><strong>6–20</strong></label>
+    <label class="radio-option"><input type="radio" name="outlets" value="21–50"><span class="radio-dot" aria-hidden="true"></span><strong>21–50</strong></label>
+    <label class="radio-option"><input type="radio" name="outlets" value="51–100"><span class="radio-dot" aria-hidden="true"></span><strong>51–100</strong></label>
+    <label class="radio-option"><input type="radio" name="outlets" value="100+"><span class="radio-dot" aria-hidden="true"></span><strong>100+</strong></label>
+  </div>
+</div>
+          <div class="field"><label for="sales-interest">What are you looking for?</label><select id="sales-interest" name="interest" required><option value="">Select one</option><option>Book a POS demo</option><option>Pricing / quotation</option><option>POS for Retail</option><option>POS for F&amp;B</option><option>Customer engagement</option><option>Business intelligence</option><option>Workforce tools</option><option>Other</option></select></div>
+          <div class="field full"><label for="sales-message">Tell us about the operation</label><textarea id="sales-message" name="message" placeholder="Tell us what you run today, what you want to improve, and any rollout or integration context that matters."></textarea></div>
+          <div class="form-actions"><button class="submit" type="submit">Send sales enquiry <span>→</span></button><span class="form-note">Your details go to the Xilnex team for follow-up.</span></div>
+        </form>
+      </div>
+
+      <div class="route-panel" id="route-media" data-route-panel="media" hidden>
+        <div class="route-head">
+          <div><h3>Tell us what you're working on.</h3></div>
+        </div>
+        <form class="route-form" data-form-type="Media &amp; Partnerships">
+          <div class="field"><label for="media-name">Name</label><input id="media-name" name="name" type="text" placeholder="Your name" required></div>
+          <div class="field"><label for="media-org">Organisation</label><input id="media-org" name="organisation" type="text" placeholder="Publication or organisation" required></div>
+          <div class="field"><label for="media-email">Email</label><input id="media-email" name="email" type="email" placeholder="you@company.com" required></div>
+          <div class="field"><label for="media-role">Role</label><input id="media-role" name="role" type="text" placeholder="Editor, journalist, partner, etc."></div>
+          <div class="field full"><label for="media-topic">What is this about?</label><input id="media-topic" name="topic" type="text" placeholder="Story, interview, partnership or collaboration"></div>
+          <div class="field"><label for="media-phone">Telephone</label><input id="media-phone" name="phone" type="tel" placeholder="+60 ..."></div>
+          <div class="field full"><label for="media-message">Details</label><textarea id="media-message" name="message" placeholder="Give us the context, requested spokesperson or partner, and any timing we should know."></textarea></div>
+          <div class="form-actions"><button class="submit" type="submit">Send media enquiry <span>→</span></button><span class="form-note">We'll pass the request to the relevant Xilnex contact.</span></div>
+        </form>
+      </div>
+
+      <div class="route-panel support-panel" id="route-support" data-route-panel="support" hidden>
+        <div class="route-head">
+          <div><h3>Customer Support</h3></div>
+        </div>
+        <div class="support-detail-list">
+          <div class="support-detail-row">
+            <span class="support-detail-label">Working Hours</span>
+            <strong>Mon-Fri (09:00-18:00)</strong>
+          </div>
+          <div class="support-detail-row">
+            <span class="support-detail-label">Main Helpline</span>
+            <a href="https://wa.me/60125350162" target="_blank" rel="noopener">WhatsApp +6012 535 0162</a>
+          </div>
+          <div class="support-detail-row full">
+            <span class="support-detail-label">Regional Helplines</span>
+            <div class="support-phones">
+              <a href="tel:+60392131353">MY +603 9213 1353</a>
+              <a href="tel:+60327123117">MY +603 2712 3117</a>
+              <a href="tel:+6531591413">SG +65 3159 1413</a>
+              <a href="tel:+61285181210">AU +612 8518 1210</a>
+              <a href="tel:+85570666727">KH +855 7066 6727</a>
+            </div>
+          </div>
+          <div class="support-detail-row full">
+            <span class="support-detail-label">Support Help Center</span>
+            <a class="support-help-link" href="https://support.xilnex.com/" target="_blank" rel="noopener">Visit Xilnex Support Help Center ↗</a>
+          </div>
+        </div>
+        <button class="support-back" type="button" data-support-back>← Back</button>
+      </div>
+
+      <div class="after-submit reveal-in">
+      <div><h3>Less triage. More useful first replies.</h3></div>
+      <div class="after-grid">
+        <div><span>01</span><b>You choose the route.</b><p>Sales, media or support — each path is focused on one job.</p></div>
+        <div><span>02</span><b>We get the useful context.</b><p>Only the details relevant to your enquiry are requested.</p></div>
+        <div><span>03</span><b>The right team picks it up.</b><p>We use the context to make the first response more specific.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="operator-proof">
+  <div class="proof-ambient" aria-hidden="true"><span></span><i></i><b></b></div>
+  <div class="wrap proof-reference">
+    <div class="proof-top">
+      <div class="proof-heading">
+        <h2>More outlets.<br>Less to keep track of.</h2>
+      </div>
+      <div class="proof-copy">
+        <p>A connected back office for multi-outlet operators, bringing checkout, customer engagement, reporting and workforce tools into one operating picture.</p>
+        <p>Built for businesses that need consistency across every location, with the scale and trust signals to support the next stage of growth.</p>
+      </div>
+    </div>
+
+    <div class="proof-stats" aria-label="Xilnex at a glance">
+      <div class="proof-stat">
+        <strong class="countup" data-count="30000" data-suffix="+">0<span>+</span></strong>
+        <small>INSTALLATIONS</small>
+        <p>Across multi-outlet retail and F&amp;B operations.</p>
+      </div>
+      <div class="proof-stat">
+        <strong class="countup" data-count="5000" data-suffix="+">0<span>+</span></strong>
+        <small>BUSINESSES</small>
+        <p>Businesses running their operations with Xilnex.</p>
+      </div>
+      <div class="proof-stat">
+        <strong><span class="count-prefix">USD&nbsp;</span><span class="countup" data-count="2" data-suffix="B">0</span></strong>
+        <small>GMV</small>
+        <p>Transaction volume moving through the platform.</p>
+      </div>
+      <div class="proof-stat">
+        <strong class="countup" data-count="19" data-suffix=" yrs">0<span> yrs</span></strong>
+        <small>IN MARKET</small>
+        <p>Experience serving operators since 2007.</p>
+      </div>
+    </div>
+
+    <div class="proof-callout">
+      <p><b>One back office.</b> Keep pricing, customers, reporting and day-to-day outlet operations connected as the network grows.</p>
+      <a href="./index%20(1).html#solutions">Explore Xilnex <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="wrap faq-layout">
+    <div><h2>Before you hit send.</h2><p>Common questions about why we ask for an enquiry type, demos and regional coverage.</p></div>
+    <div class="faq-list">
+      <details open><summary>Why does the form ask me to pick a category first?</summary><p>It routes your enquiry straight to the right team, sales, media or support, without manual triage, and asks for details like outlet count or urgency along the way instead of all at once.</p></details>
+      <details><summary>Can I get a live demo before committing?</summary><p>Yes. Choose Sales &amp; Product Enquiries and the team can schedule a walkthrough tailored to retail or F&amp;B operations.</p></details>
+      <details><summary>Does Xilnex support businesses across Southeast Asia, or just Malaysia?</summary><p>Xilnex operates across Malaysia, Indonesia, Thailand, Cambodia, Vietnam and Singapore, serving businesses throughout the region.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="offices">
+  <div class="wrap">
+    <div class="offices-head">
+      <div>
+        <h2 class="offices-title">Two offices.<br>One connected team.</h2>
+      </div>
+      <p class="offices-lead">Our headquarters are in Penang, with a regional office in Petaling Jaya. Reach us directly or use the enquiry form above and we'll route your request to the right team.</p>
+    </div>
+
+    <div class="office-grid">
+      <article class="office-card">
+        <h3>Penang</h3>
+        <p>Xilnex Holdings Sdn Bhd<br>(200701041800)<br>1A-21-01 &amp; 02, Lilitan Sungai Tiram, GBS @<br>Penang Airport, 11900 Bayan Lepas, Penang</p>
+        <p style="margin-top:18px"><a href="tel:+6046110162">+604 611 0162</a> · <a href="mailto:marketing@xilnex.com">marketing@xilnex.com</a></p>
+      </article>
+      <article class="office-card">
+        <h3>Petaling Jaya</h3>
+        <p>Xilnex Holdings Sdn Bhd<br>(200701041800)<br>G-21, PJ Midtown, Jalan Kemajuan, Seksyen 13,<br>46200 Petaling Jaya, Selangor</p>
+        <p style="margin-top:18px"><a href="tel:+60379313266">+603 7931 3266</a> · <a href="mailto:marketing@xilnex.com">marketing@xilnex.com</a></p>
+      </article>
+    </div>
+    <div class="office-footer-note">For product, implementation and commercial enquiries, start with the form above or email the sales team directly.</div>
+  </div>
+</section>
+</main>
+
+<footer class="current-footer">
+  <div class="wrap current-footer-grid">
+    <div class="footer-location">
+      <div class="footer-heading">Headquarters</div>
+      <div class="footer-company">Xilnex Holdings Sdn Bhd</div>
+      <div>(200701041800)</div>
+      <div>1A-21-01 &amp; 02, Lilitan Sungai Tiram, GBS @<br>Penang Airport, 11900 Bayan Lepas, Penang</div>
+      <div><a href="tel:+6046110162">+604 611 0162</a></div>
+      <a href="mailto:marketing@xilnex.com">marketing@xilnex.com</a>
+    </div>
+
+    <div class="footer-location">
+      <div class="footer-heading">Regional Office</div>
+      <div class="footer-company">Xilnex Holdings Sdn Bhd</div>
+      <div>(200701041800)</div>
+      <div>G-21, PJ Midtown, Jalan Kemajuan, Seksyen 13,<br>46200 Petaling Jaya, Selangor</div>
+      <div><a href="tel:+60379313266">+603 7931 3266</a></div>
+      <a href="mailto:marketing@xilnex.com">marketing@xilnex.com</a>
+    </div>
+
+    <div class="footer-right">
+      <div class="footer-links-list">
+        <a href="https://support.xilnex.com/" target="_blank" rel="noopener">Product FAQs</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/termsandconditions/">Terms and Conditions</a>
+      </div>
+
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/xilnex/" aria-label="Xilnex on Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8.5V6.8c0-.7.2-1.1 1.2-1.1H17V3h-2.6c-2.6 0-3.6 1.5-3.6 3.6v1.9H9V11h1.8v9H14v-9h2.3l.4-2.5H14z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/xilnexholdings/" aria-label="Xilnex on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="16.9" cy="7.1" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/xilnex/" aria-label="Xilnex on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.9 8.6H4.2V20h2.7V8.6zM5.5 4a1.6 1.6 0 100 3.2 1.6 1.6 0 000-3.2zM20 13.6c0-3-1.6-4.4-3.8-4.4-1.7 0-2.5.95-2.9 1.6V8.6H10.6c.04.77 0 11.4 0 11.4h2.7v-6.4c0-.24.02-.48.09-.65.19-.48.63-.98 1.37-.98.97 0 1.35.73 1.35 1.8V20H20v-6.4z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <button class="footer-top" type="button" id="backToTop" aria-label="Back to top">⌃</button>
+</footer>
+
+<script>
+(function(){
+  const buttons=[...document.querySelectorAll('.enquiry-tile')];
+  const panels=[...document.querySelectorAll('[data-route-panel]')];
+  const refHint=document.getElementById('referrerHint');
+
+  function showRoute(route){
+    buttons.forEach(btn=>{
+      const active=btn.dataset.route===route;
+      btn.classList.toggle('is-active',active);
+      btn.setAttribute('aria-selected',active?'true':'false');
+    });
+    panels.forEach(panel=>{
+      const active=panel.dataset.routePanel===route;
+      panel.hidden=!active;
+      if(active){ requestAnimationFrame(()=>panel.classList.add('route-in')); }
+      else panel.classList.remove('route-in');
+    });
+  }
+  buttons.forEach(btn=>btn.addEventListener('click',()=>showRoute(btn.dataset.route)));
+  document.querySelector('[data-support-back]')?.addEventListener('click',()=>showRoute('sales'));
+
+  // Light contextual cue based on where the visitor came from.
+  const ref=(document.referrer||'').toLowerCase();
+  if(ref.includes('restaurant')||ref.includes('fnb')||ref.includes('food')){
+    refHint.textContent='Coming from F&B? Compare POS for F&B and restaurant & cafe chains.';
+  }else if(ref.includes('retail')||ref.includes('franchise')||ref.includes('store')){
+    refHint.textContent='Coming from retail? Compare Retail POS and retail chain workflows.';
+  }
+
+  document.querySelectorAll('.route-form').forEach(form=>{
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      const data=new FormData(form);
+      const type=form.dataset.formType||'Xilnex Enquiry';
+      const lines=['Enquiry type: '+type];
+      for(const [key,value] of data.entries()) lines.push(key.replace(/[-_]/g,' ').replace(/\b\w/g,m=>m.toUpperCase())+': '+value);
+      const subject='Xilnex — '+type;
+      const href='mailto:marketing@xilnex.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));
+      window.location.href=href;
+      const note=form.querySelector('.form-note');
+      if(note) note.textContent='Your email app should open with the enquiry details. Complete the send from there.';
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  const stats=[...document.querySelectorAll('.countup')];
+  if(!stats.length) return;
+
+  const format=n=>n.toLocaleString('en-MY');
+
+  function animate(el){
+    if(el.dataset.animated==='true') return;
+    el.dataset.animated='true';
+    const target=Number(el.dataset.count||0);
+    const suffix=el.dataset.suffix||'';
+    const duration=1500;
+    const start=performance.now();
+
+    function tick(now){
+      const progress=Math.min(1,(now-start)/duration);
+      const eased=1-Math.pow(1-progress,3);
+      const value=Math.round(target*eased);
+      el.textContent=format(value)+suffix;
+      if(progress<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          stats.forEach(animate);
+          observer.disconnect();
+        }
+      });
+    },{threshold:.25});
+    const section=document.querySelector('.proof-stats');
+    if(section) observer.observe(section);
+  }else{
+    stats.forEach(animate);
+  }
+})();
+</script>
+
+<script>
+document.getElementById('backToTop')?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+
+<script>
+(function(){
+  var nav=document.getElementById('mainNav');
+  var menuButton=document.getElementById('menuButton');
+  if(!nav || !menuButton) return;
+  menuButton.addEventListener('click',function(){
+    var open=nav.classList.toggle('mobile-open');
+    menuButton.setAttribute('aria-expanded',open?'true':'false');
+    menuButton.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape') return;
+    document.querySelectorAll('.nav-group.open').forEach(function(g){g.classList.remove('open')});
+    if(nav.classList.contains('mobile-open')){
+      nav.classList.remove('mobile-open');
+      menuButton.setAttribute('aria-expanded','false');
+      menuButton.setAttribute('aria-label','Open menu');
+      menuButton.focus();
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
