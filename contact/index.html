@@ -11,8 +11,8 @@
   "@graph":[
     {"@type":"Organization","name":"Xilnex Holdings Sdn Bhd","url":"https://xilnex.com/","email":"marketing@xilnex.com","telephone":"+604 611 0162"},
     {"@type":"ContactPage","name":"Contact Xilnex | Book a POS Demo for Retail & F&B","url":"https://xilnex.com/contact-us/","description":"Tell us what you need, sales, media, or support, and Xilnex routes you to the right team fast."},
-    {"@type":"LocalBusiness","name":"Xilnex Holdings Sdn Bhd - Headquarters","telephone":"+604 611 0162","address":{"@type":"PostalAddress","streetAddress":"1A-21-01 & 02, Lilitan Sungai Tiram, GBS @ Penang Airport","postalCode":"11900","addressLocality":"Bayan Lepas","addressRegion":"Penang","addressCountry":"MY"}},
-    {"@type":"LocalBusiness","name":"Xilnex Holdings Sdn Bhd - Regional Office","telephone":"+603 7931 3266","address":{"@type":"PostalAddress","streetAddress":"G-21, PJ Midtown, Jalan Kemajuan, Seksyen 13","postalCode":"46200","addressLocality":"Petaling Jaya","addressRegion":"Selangor","addressCountry":"MY"}},
+    {"@type":"LocalBusiness","name":"Xilnex Holdings Sdn Bhd — Headquarters","telephone":"+604 611 0162","address":{"@type":"PostalAddress","streetAddress":"1A-21-01 & 02, Lilitan Sungai Tiram, GBS @ Penang Airport","postalCode":"11900","addressLocality":"Bayan Lepas","addressRegion":"Penang","addressCountry":"MY"}},
+    {"@type":"LocalBusiness","name":"Xilnex Holdings Sdn Bhd — Regional Office","telephone":"+603 7931 3266","address":{"@type":"PostalAddress","streetAddress":"G-21, PJ Midtown, Jalan Kemajuan, Seksyen 13","postalCode":"46200","addressLocality":"Petaling Jaya","addressRegion":"Selangor","addressCountry":"MY"}},
     {"@type":"FAQPage","mainEntity":[
       {"@type":"Question","name":"Why does the form ask me to pick a category first?","acceptedAnswer":{"@type":"Answer","text":"It routes your enquiry straight to the right team, sales, media or support, without manual triage, and asks for details like outlet count or urgency along the way instead of all at once."}},
       {"@type":"Question","name":"Can I get a live demo before committing?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose Sales & Product Enquiries and the team can schedule a walkthrough tailored to retail or F&B operations."}},
@@ -182,7 +182,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
 .office-card h3{transition:color .25s}.office-card:hover h3{color:var(--purple)}
 
 
-/* Footer - matched to the Xilnex homepage */
+/* Footer — matched to the Xilnex homepage */
 .current-footer{position:relative;padding:58px 0 82px;background:#fff;border-top:1px solid var(--line)}
 .current-footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;column-gap:110px;align-items:start}
 .footer-location{font-size:13px;line-height:1.7;color:#08080d}
@@ -490,7 +490,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
   <div class="wrap">
     <div class="flow-intro reveal-in">
       <h2 class="flow-heading">Tell us what you need,<br><em>we'll take it from there.</em></h2>
-      <p class="flow-lead">Choose the kind of help you need and we'll only ask for the details that matter to that conversation. Sales, media or support - your enquiry starts with the right route.</p>
+      <p class="flow-lead">Choose the kind of help you need and we'll only ask for the details that matter to that conversation. Sales, media or support — your enquiry starts with the right route.</p>
     </div>
 
     <div class="enquiry-flow">
@@ -538,7 +538,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
 
               <div class="field full">
                 <label for="sales-message">Tell us about the operation</label>
-                <textarea id="sales-message" name="message" placeholder="Tell us what you run today, what you want to improve, and any rollout or integration context that matters."></textarea>
+                <textarea id="sales-message" name="message" placeholder="What do we need to know to help you better? Tell us about your pain points or what you're trying to solve."></textarea>
               </div>
             </div>
 
@@ -647,8 +647,8 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
             </div>
           </div>
           <div class="support-detail-row full">
-            <span class="support-detail-label">Support Help Centre</span>
-            <a class="support-help-link" href="https://support.xilnex.com/" target="_blank" rel="noopener">Visit Xilnex Support Help Centre ↗</a>
+            <span class="support-detail-label">Support Help Center</span>
+            <a class="support-help-link" href="https://support.xilnex.com/" target="_blank" rel="noopener">Visit Xilnex Support Help Center ↗</a>
           </div>
         </div>
         <button class="support-back" type="button" data-support-back>← Back</button>
@@ -657,7 +657,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
       <div class="after-submit reveal-in">
       <div><h3>Less triage. More useful first replies.</h3></div>
       <div class="after-grid">
-        <div><span>01</span><b>You choose the route.</b><p>Sales, media or support - each path is focused on one job.</p></div>
+        <div><span>01</span><b>You choose the route.</b><p>Sales, media or support — each path is focused on one job.</p></div>
         <div><span>02</span><b>We get the useful context.</b><p>Only the details relevant to your enquiry are requested.</p></div>
         <div><span>03</span><b>The right team picks it up.</b><p>We use the context to make the first response more specific.</p></div>
       </div>
@@ -844,7 +844,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
       const keys=['name','company','email','phone','business','outlets','interest','message'];
       const review=salesForm.querySelector('[data-sales-review]');
       review.innerHTML=keys.map(key=>{
-        const val=valueFor(key) || 'Not provided';
+        const val=valueFor(key) || '—';
         return '<div class="review-item"><span class="review-label">'+labelMap[key]+'</span><span class="review-value">'+String(val).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')+'</span></div>';
       }).join('');
     };
@@ -869,7 +869,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
       const data=new FormData(salesForm);
       const lines=['Enquiry type: Sales & Product Enquiries'];
       for(const [key,value] of data.entries()) lines.push((labelMap[key]||key)+': '+value);
-      const subject='Xilnex - Sales & Product Enquiries';
+      const subject='Xilnex — Sales & Product Enquiries';
       const href='mailto:marketing@xilnex.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));
       window.location.href=href;
       const submit=salesForm.querySelector('button[type="submit"]');
@@ -908,7 +908,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
       if(!review) return;
       const items=[['category','Collaboration type'],['message','Anything else'],['name','Given name'],['family_name','Family name'],['company','Business name'],['phone','Mobile number'],['email','Work email']];
       review.innerHTML=items.map(([key,label])=>{
-        const val=valueFor(key)||'Not provided';
+        const val=valueFor(key)||'—';
         const safe=String(val).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
         return '<div class="review-item"><span class="review-label">'+label+'</span><span class="review-value">'+safe+'</span></div>';
       }).join('');
@@ -929,7 +929,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
       const labels={category:'Collaboration type',message:'Anything else',name:'Given name',family_name:'Family name',company:'Business name',phone:'Mobile number',email:'Work email'};
       const lines=['Enquiry type: Media & Partnerships'];
       for(const [key,value] of data.entries()) lines.push((labels[key]||key)+': '+value);
-      window.location.href='mailto:marketing@xilnex.com?subject='+encodeURIComponent('Xilnex - Media & Partnerships')+'&body='+encodeURIComponent(lines.join('\n'));
+      window.location.href='mailto:marketing@xilnex.com?subject='+encodeURIComponent('Xilnex — Media & Partnerships')+'&body='+encodeURIComponent(lines.join('\n'));
     });
   }
 
@@ -940,7 +940,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
       const type=form.dataset.formType||'Xilnex Enquiry';
       const lines=['Enquiry type: '+type];
       for(const [key,value] of data.entries()) lines.push(key.replace(/[-_]/g,' ').replace(/\b\w/g,m=>m.toUpperCase())+': '+value);
-      const subject='Xilnex - '+type;
+      const subject='Xilnex — '+type;
       const href='mailto:marketing@xilnex.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));
       window.location.href=href;
       const note=form.querySelector('.form-note');
