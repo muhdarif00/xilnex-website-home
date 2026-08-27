@@ -261,15 +261,16 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
 
 /* ===== Contact flow: tile-based enquiry experience ===== */
 .flow-intro{max-width:850px;margin-bottom:42px}
-.flow-heading{font-size:clamp(48px,6vw,78px);line-height:.95;letter-spacing:-.06em;margin:0 0 24px;max-width:26ch}
-.flow-heading em{font-style:normal;background:linear-gradient(95deg,#842875,#c95ab0 55%,#7aa4de);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% 100%;animation:headlineShift 9s ease-in-out infinite alternate}
+.flow-heading{font-size:clamp(48px,6vw,78px);line-height:1.22;letter-spacing:-.06em;overflow:visible;margin:0 0 36px;max-width:26ch;padding:0 0 .12em}
+.flow-heading em{font-style:normal;display:inline-block;line-height:1.22;padding:0 0 .08em;background:linear-gradient(95deg,#842875,#c95ab0 55%,#7aa4de);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% 100%;animation:headlineShift 9s ease-in-out infinite alternate}
 .flow-lead{font-size:17px;line-height:1.75;color:var(--muted);max-width:720px;margin:0}
 .trust-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:72px}
 .trust-strip>div{padding:24px 28px;border-right:1px solid var(--line)}
 .trust-strip>div:last-child{border-right:0}
 .trust-strip b{display:block;font-size:23px;letter-spacing:-.04em;margin-bottom:4px}
 .trust-strip span{font-size:11px;color:#89808d;text-transform:uppercase;letter-spacing:.12em}
-.enquiry-chooser{margin-bottom:46px}
+.enquiry-chooser{margin-bottom:46px;transition:opacity .28s ease,transform .4s var(--ease)}
+.enquiry-chooser.is-hidden{opacity:0;transform:translateY(-12px);pointer-events:none}
 .enquiry-tiles{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .enquiry-tile{position:relative;text-align:left;border:0;border-right:1px solid var(--line);background:#fff;padding:28px 26px 30px;min-height:238px;color:var(--ink);transition:transform .35s var(--ease),background .35s var(--ease),box-shadow .35s var(--ease)}
 .enquiry-tile:last-child{border-right:0}
@@ -292,10 +293,20 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
 .radio-option:has(input:checked){border-color:#b45ba8;background:linear-gradient(180deg,#fff,#fbf3fb);box-shadow:0 0 0 2px rgba(159,49,141,.08)}
 .radio-option:has(input:checked) .radio-dot:after{transform:scale(1)}
 .radio-option strong{font-size:14px;line-height:1.2;font-weight:700;letter-spacing:-.015em}
+.choice-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.choice-chip{position:relative;display:inline-flex;align-items:center;cursor:pointer}
+.choice-chip input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.choice-chip span{display:inline-flex;align-items:center;min-height:38px;padding:9px 14px;border:1px solid #ded9e2;border-radius:999px;background:#fff;color:#413c48;font-size:13px;font-weight:600;transition:background .2s,border-color .2s,color .2s,transform .2s}
+.choice-chip:hover span{transform:translateY(-1px);border-color:#c9b7c8}
+.choice-chip:has(input:checked) span{background:linear-gradient(100deg,#842875,#c55ab1);border-color:transparent;color:#fff;box-shadow:0 10px 24px rgba(142,45,127,.16)}
+.char-count{text-align:right;font-size:10px;color:#8d8791;margin-top:5px}
 @media(max-width:720px){.radio-grid{grid-template-columns:1fr}}
 
 .route-panel{border:1px solid var(--line);background:rgba(255,255,255,.76);box-shadow:0 24px 70px rgba(48,25,54,.07);border-radius:20px;padding:34px;overflow:hidden}
 .route-panel[hidden]{display:none}
+.flow-back{margin-top:22px;padding:11px 18px;border:1px solid #ded9e2;border-radius:8px;background:#fff;color:#4f4a55;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 6px 18px rgba(40,20,45,.03);transition:color .2s,border-color .2s,background .2s,transform .2s var(--ease),box-shadow .2s}
+.flow-back:hover{color:var(--purple);border-color:#c9b7c8;background:#fff;transform:translateY(-1px);box-shadow:0 10px 24px rgba(40,20,45,.06)}
+.sales-steps{position:relative}.sales-step[hidden]{display:none}.step-kicker{font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:var(--purple);font-weight:800;margin-bottom:10px}.step-lead{font-size:13px;line-height:1.6;color:var(--muted);margin:10px 0 0;max-width:620px}.step-actions{display:flex;align-items:center;justify-content:flex-end;gap:16px;margin-top:28px}.step-actions-split{justify-content:space-between}.step-actions .flow-back{margin-top:0}.review-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.review-item{padding:18px 20px 18px 0;border-bottom:1px solid var(--line)}.review-item:nth-child(even){padding-left:20px;padding-right:0;border-left:1px solid var(--line)}.review-item:nth-last-child(-n+2){border-bottom:0}.review-label{display:block;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#89808d;font-weight:700;margin-bottom:7px}.review-value{display:block;font-size:14px;line-height:1.5;color:var(--ink);white-space:pre-wrap}.review-note{text-align:right;margin-top:12px}.media-success{text-align:center;padding:18px 0 6px}.media-success .step-lead{margin-left:auto;margin-right:auto}.success-icon{width:72px;height:72px;margin:0 auto 22px;border-radius:16px;background:linear-gradient(135deg,#842875,#c55ab1);color:#fff;display:grid;place-items:center;font-size:38px;font-weight:800;box-shadow:0 16px 34px rgba(142,45,127,.22)}.media-success .review-grid{margin-top:24px;text-align:left}.media-success .flow-back{margin-top:24px}.sales-step .route-head{margin-bottom:30px}@media(max-width:720px){.review-grid{grid-template-columns:1fr}.review-item:nth-child(even){padding-left:0;border-left:0}.review-item:nth-last-child(-n+2){border-bottom:1px solid var(--line)}.review-item:last-child{border-bottom:0}.step-actions,.step-actions-split{align-items:stretch}.step-actions-split{flex-direction:column-reverse}.step-actions .submit{width:100%}.review-note{text-align:left}}
 .route-in{animation:routeIn .55s var(--ease) both}
 @keyframes routeIn{from{opacity:.2;transform:translateY(12px)}to{opacity:1;transform:none}}
 .route-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid var(--line)}
@@ -331,7 +342,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
 .after-grid>div{padding:24px 24px 12px 0;border-right:1px solid var(--line)}
 .after-grid>div:not(:first-child){padding-left:24px}.after-grid>div:last-child{border-right:0;padding-right:0}
 .after-grid span{display:block;color:var(--purple);font-size:28px;font-weight:800;letter-spacing:-.05em;line-height:1;margin-bottom:30px;font-variant-numeric:tabular-nums}.after-grid b{display:block;font-size:18px;margin-bottom:8px;letter-spacing:-.025em}.after-grid p{font-size:12px;line-height:1.7;color:var(--muted);margin:0}
-.operator-proof{position:relative;overflow:hidden;padding:100px 0 92px;background:linear-gradient(135deg,#f6f4fb 0%,#fff 44%,#fbf2fa 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.operator-proof{position:relative;overflow:hidden;padding:104px 0 110px;background:linear-gradient(135deg,#f6f4fb 0%,#fff 44%,#fbf2fa 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .proof-ambient{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .proof-ambient:before{content:"";position:absolute;width:620px;height:620px;right:-250px;top:-300px;border:1px solid rgba(159,49,141,.13);border-radius:50%;box-shadow:0 0 0 54px rgba(159,49,141,.035),0 0 0 112px rgba(185,211,247,.035)}
 .proof-ambient:after{content:"";position:absolute;inset:-20%;background:radial-gradient(36% 34% at 12% 28%,rgba(201,91,168,.11),transparent 72%),radial-gradient(28% 34% at 79% 72%,rgba(185,211,247,.12),transparent 72%);filter:blur(28px);animation:proofDrift 16s ease-in-out infinite alternate}
@@ -360,7 +371,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
 .proof-callout p{margin:0;font-size:13px;line-height:1.7;color:#66636d;max-width:930px}.proof-callout b{color:#222027}.proof-callout a{flex:0 0 auto;color:var(--purple);font-size:12px;font-weight:800;white-space:nowrap}.proof-callout a span{display:inline-block;transition:transform .2s var(--ease)}.proof-callout a:hover span{transform:translateX(4px)}
 @media(prefers-reduced-motion:reduce){.proof-ambient:after,.proof-ambient span,.proof-ambient i,.proof-ambient b{animation:none!important}}
 @media(max-width:960px){.proof-top{grid-template-columns:1fr;gap:30px;padding-bottom:48px}.proof-stats{grid-template-columns:1fr 1fr}.proof-stat:nth-child(2){border-right:0}.proof-stat:nth-child(n+3){border-top:1px solid rgba(103,79,110,.14)}.proof-stat:nth-child(3){border-right:1px solid rgba(103,79,110,.14)}.proof-callout{align-items:flex-start;flex-direction:column}}
-@media(max-width:640px){.operator-proof{padding:72px 0 74px}.proof-heading h2{max-width:11ch}.proof-copy p{font-size:16px}.proof-stats{grid-template-columns:1fr}.proof-stat,.proof-stat:not(:first-child),.proof-stat:last-child{border-right:0;padding:24px 0}.proof-stat:not(:first-child){border-top:1px solid rgba(103,79,110,.14)}.proof-stat p{max-width:34ch}.proof-callout{padding:18px}.proof-callout a{white-space:normal}}
+@media(max-width:640px){.operator-proof{padding:78px 0 82px}.proof-heading h2{max-width:11ch}.proof-copy p{font-size:16px}.proof-stats{grid-template-columns:1fr}.proof-stat,.proof-stat:not(:first-child),.proof-stat:last-child{border-right:0;padding:24px 0}.proof-stat:not(:first-child){border-top:1px solid rgba(103,79,110,.14)}.proof-stat p{max-width:34ch}.proof-callout{padding:18px}.proof-callout a{white-space:normal}}
 .faq-section{padding:110px 0;border-bottom:1px solid var(--line);background:#fff}.faq-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:100px;align-items:start}.faq-layout h2{font-size:clamp(40px,4vw,58px);letter-spacing:-.05em;line-height:.98;margin:0 0 16px}.faq-layout>div:first-child p{font-size:14px;line-height:1.7;color:var(--muted);max-width:420px;margin:0}.faq-list{border-top:1px solid var(--line)}.faq-list details{border-bottom:1px solid var(--line)}.faq-list summary{list-style:none;cursor:pointer;padding:24px 42px 24px 0;position:relative;font-size:18px;line-height:1.3;font-weight:600;letter-spacing:-.02em}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{content:'+';position:absolute;right:0;top:20px;color:var(--purple);font-size:24px;font-weight:400;transition:transform .25s var(--ease)}.faq-list details[open] summary:after{transform:rotate(45deg)}.faq-list p{margin:0;padding:0 40px 24px 0;font-size:13px;line-height:1.75;color:var(--muted)}
 @media(max-width:960px){.enquiry-tiles{grid-template-columns:1fr}.enquiry-tile{border-right:0;border-bottom:1px solid var(--line);min-height:0}.enquiry-tile:last-child{border-bottom:0}.after-grid{grid-template-columns:1fr}.after-grid>div{border-right:0;border-bottom:1px solid var(--line);padding:22px 0!important}.after-grid>div:last-child{border-bottom:0}.proof-grid,.faq-layout{grid-template-columns:1fr;gap:45px}.proof-points{grid-template-columns:1fr 1fr}.route-form{grid-template-columns:1fr}.route-form .field.full{grid-column:auto}.route-form .form-actions{grid-column:auto}.support-handoff{grid-column:auto}.trust-strip{grid-template-columns:1fr}.trust-strip>div{border-right:0;border-bottom:1px solid var(--line)}.trust-strip>div:last-child{border-bottom:0}.faq-layout{gap:40px}}
 @media(max-width:640px){.compact-proof{gap:34px}.proof-points{grid-template-columns:1fr}.proof-explore{grid-column:auto}.proof-orbit{right:-260px;top:-130px;opacity:.7}.flow-heading{font-size:clamp(46px,14vw,64px)}.trust-strip{margin-bottom:56px}.route-panel{padding:22px;border-radius:16px}.route-head{display:block}
@@ -485,14 +496,14 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
 <section class="contact-workspace" id="contact-form">
   <div class="wrap">
     <div class="flow-intro reveal-in">
-      <h2 class="flow-heading">Tell us what you need,<br><em>we'll take it from there.</em></h2>
-      <p class="flow-lead">Choose the kind of help you need and we'll only ask for the details that matter to that conversation. Sales, media or support — your enquiry starts with the right route.</p>
+      <h2 class="flow-heading">What can we help<br><em>you with?</em></h2>
+      <p class="flow-lead">Start by choosing what you want to enquire about. We'll take you to the next step and only ask for the information relevant to your request.</p>
     </div>
 
-    <div class="enquiry-flow">
-      <div class="enquiry-chooser reveal-in">
+    <div class="enquiry-flow" id="enquiryFlow">
+      <div class="enquiry-chooser reveal-in" id="enquiryChooser">
         <div class="enquiry-tiles" role="tablist" aria-label="Enquiry type">
-          <button class="enquiry-tile is-active" type="button" role="tab" aria-selected="true" data-route="sales" aria-controls="route-sales"><span class="tile-title">Sales &amp; Product Enquiries</span><span class="tile-copy">Book a demo, scope a rollout, discuss pricing or find the right Xilnex solution.</span><span class="tile-arrow">→</span>
+          <button class="enquiry-tile" type="button" role="tab" aria-selected="false" data-route="sales" aria-controls="route-sales"><span class="tile-title">Sales &amp; Product Enquiries</span><span class="tile-copy">Book a demo, scope a rollout, discuss pricing or find the right Xilnex solution.</span><span class="tile-arrow">→</span>
           </button>
           <button class="enquiry-tile" type="button" role="tab" aria-selected="false" data-route="media" aria-controls="route-media"><span class="tile-title">Media &amp; Partnerships</span><span class="tile-copy">Press enquiries, interviews, collaborations, partnerships and brand opportunities.</span><span class="tile-arrow">→</span>
           </button>
@@ -501,56 +512,162 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
         </div>
       </div>
 
-      <div class="route-panel reveal-in" id="route-sales" data-route-panel="sales">
-        <div class="route-head">
-          <div><h3>Let's scope your operation.</h3></div>
-        </div>
-        <form class="route-form" data-form-type="Sales &amp; Product Enquiries">
-          <div class="field"><label for="sales-name">Name</label><input id="sales-name" name="name" type="text" placeholder="Your name" required></div>
-          <div class="field"><label for="sales-company">Company</label><input id="sales-company" name="company" type="text" placeholder="Company name" required></div>
-          <div class="field"><label for="sales-email">Work email</label><input id="sales-email" name="email" type="email" placeholder="you@company.com" required></div>
-          <div class="field"><label for="sales-phone">Telephone</label><input id="sales-phone" name="phone" type="tel" placeholder="+60 ..."></div>
-          <div class="radio-field field full">
-  <label>Business type</label>
-  <div class="radio-grid" role="radiogroup" aria-label="Business type">
-    <label class="radio-option"><input type="radio" name="business" value="Retail" required><span class="radio-dot" aria-hidden="true"></span><strong>Retail</strong></label>
-    <label class="radio-option"><input type="radio" name="business" value="F&amp;B"><span class="radio-dot" aria-hidden="true"></span><strong>F&amp;B</strong></label>
-    <label class="radio-option"><input type="radio" name="business" value="Retail &amp; F&amp;B"><span class="radio-dot" aria-hidden="true"></span><strong>Retail &amp; F&amp;B</strong></label>
-    <label class="radio-option"><input type="radio" name="business" value="Franchise"><span class="radio-dot" aria-hidden="true"></span><strong>Franchise</strong></label>
-    <label class="radio-option"><input type="radio" name="business" value="Other"><span class="radio-dot" aria-hidden="true"></span><strong>Other</strong></label>
-  </div>
-</div>
-          <div class="radio-field field full">
-  <label>Number of outlets</label>
-  <div class="radio-grid" role="radiogroup" aria-label="Number of outlets">
-    <label class="radio-option"><input type="radio" name="outlets" value="1" required><span class="radio-dot" aria-hidden="true"></span><strong>1</strong></label>
-    <label class="radio-option"><input type="radio" name="outlets" value="2–5"><span class="radio-dot" aria-hidden="true"></span><strong>2–5</strong></label>
-    <label class="radio-option"><input type="radio" name="outlets" value="6–20"><span class="radio-dot" aria-hidden="true"></span><strong>6–20</strong></label>
-    <label class="radio-option"><input type="radio" name="outlets" value="21–50"><span class="radio-dot" aria-hidden="true"></span><strong>21–50</strong></label>
-    <label class="radio-option"><input type="radio" name="outlets" value="51–100"><span class="radio-dot" aria-hidden="true"></span><strong>51–100</strong></label>
-    <label class="radio-option"><input type="radio" name="outlets" value="100+"><span class="radio-dot" aria-hidden="true"></span><strong>100+</strong></label>
-  </div>
-</div>
-          <div class="field"><label for="sales-interest">What are you looking for?</label><select id="sales-interest" name="interest" required><option value="">Select one</option><option>Book a POS demo</option><option>Pricing / quotation</option><option>POS for Retail</option><option>POS for F&amp;B</option><option>Customer engagement</option><option>Business intelligence</option><option>Workforce tools</option><option>Other</option></select></div>
-          <div class="field full"><label for="sales-message">Tell us about the operation</label><textarea id="sales-message" name="message" placeholder="Tell us what you run today, what you want to improve, and any rollout or integration context that matters."></textarea></div>
-          <div class="form-actions"><button class="submit" type="submit">Send sales enquiry <span>→</span></button><span class="form-note">Your details go to the Xilnex team for follow-up.</span></div>
+      <div class="route-panel reveal-in" id="route-sales" data-route-panel="sales" hidden>
+        <form class="sales-steps sales-form" id="salesForm" data-form-type="Sales &amp; Product Enquiries">
+          <div class="sales-step is-active" data-step="1">
+            <div class="route-head">
+              <div>
+                <div class="step-kicker">Since you're after Xilnex Solutions</div>
+                <h3>Tell us about your business</h3>
+                <p class="step-lead">A little more context helps us recommend the right fit.</p>
+              </div>
+            </div>
+            <div class="route-form">
+              <div class="radio-field field full">
+                <label>How many outlets does your business have?</label>
+                <div class="radio-grid" role="radiogroup" aria-label="How many outlets does your business have?">
+                  <label class="radio-option"><input type="radio" name="outlets" value="1–9" required><span class="radio-dot" aria-hidden="true"></span><strong>1–9</strong></label>
+                  <label class="radio-option"><input type="radio" name="outlets" value="10–19"><span class="radio-dot" aria-hidden="true"></span><strong>10–19</strong></label>
+                  <label class="radio-option"><input type="radio" name="outlets" value="20–49"><span class="radio-dot" aria-hidden="true"></span><strong>20–49</strong></label>
+                  <label class="radio-option"><input type="radio" name="outlets" value="50+"><span class="radio-dot" aria-hidden="true"></span><strong>50+</strong></label>
+                </div>
+              </div>
+
+              <div class="radio-field field full">
+                <label>What industry are you in?</label>
+                <div class="radio-grid" role="radiogroup" aria-label="What industry are you in?">
+                  <label class="radio-option"><input type="radio" name="business" value="Retail" required><span class="radio-dot" aria-hidden="true"></span><strong>Retail</strong></label>
+                  <label class="radio-option"><input type="radio" name="business" value="F&amp;B"><span class="radio-dot" aria-hidden="true"></span><strong>F&amp;B</strong></label>
+                </div>
+              </div>
+
+              <div class="field full">
+                <label>What would you like to improve? <span style="font-weight:500;text-transform:none;letter-spacing:0">(select all that apply)</span></label>
+                <div class="choice-chips" role="group" aria-label="What would you like to improve?">
+                  <label class="choice-chip"><input type="checkbox" name="focus" value="Inventory &amp; stock management"><span>Inventory &amp; stock management</span></label>
+                  <label class="choice-chip"><input type="checkbox" name="focus" value="Sales reporting &amp; visibility"><span>Sales reporting &amp; visibility</span></label>
+                  <label class="choice-chip"><input type="checkbox" name="focus" value="Speed &amp; reliability at checkout"><span>Speed &amp; reliability at checkout</span></label>
+                  <label class="choice-chip"><input type="checkbox" name="focus" value="Multi-outlet operations"><span>Multi-outlet operations</span></label>
+                  <label class="choice-chip"><input type="checkbox" name="focus" value="Compliance (e-invoice / SST)"><span>Compliance (e-invoice / SST)</span></label>
+                  <label class="choice-chip"><input type="checkbox" name="focus" value="General Inquiry"><span>General Inquiry</span></label>
+                  <label class="choice-chip"><input type="checkbox" name="focus" value="Other"><span>Other</span></label>
+                </div>
+              </div>
+
+              <div class="field full">
+                <label for="sales-message">Anything else you'd like to share? <span style="font-weight:500;text-transform:none;letter-spacing:0">(optional)</span></label>
+                <textarea id="sales-message" name="message" maxlength="180" placeholder="Add a few details about what you need..."></textarea>
+                <div class="char-count" id="salesMessageCount">0 / 180</div>
+              </div>
+            </div>
+            <div class="step-actions"><button class="submit" type="button" data-next-step>Continue <span>→</span></button></div>
+          </div>
+
+          <div class="sales-step" data-step="2" hidden>
+            <div class="route-head">
+              <div>
+                <div class="step-kicker">Get started</div>
+                <h3>Tell us about yourself</h3>
+                <p class="step-lead">A few details first, then we'll guide you through the rest.</p>
+              </div>
+            </div>
+            <div class="route-form">
+              <div class="field"><label for="sales-name">Given name</label><input id="sales-name" name="name" type="text" placeholder="Your first name" required></div>
+              <div class="field"><label for="sales-family-name">Family name</label><input id="sales-family-name" name="family_name" type="text" placeholder="Your last name" required></div>
+              <div class="field full"><label for="sales-phone">Mobile number</label><input id="sales-phone" name="phone" type="tel" placeholder="Enter your mobile number" required></div>
+              <div class="field full"><label for="sales-email">Work email</label><input id="sales-email" name="email" type="email" placeholder="you@company.com" required></div>
+              <div class="field full"><label for="sales-company">Business name</label><input id="sales-company" name="company" type="text" placeholder="Enter your company name" required></div>
+            </div>
+            <div class="step-actions step-actions-split"><button class="flow-back" type="button" data-sales-prev>← Previous</button><button class="submit" type="button" data-next-step>Continue <span>→</span></button></div>
+          </div>
+
+          <div class="sales-step" data-step="3" hidden>
+            <div class="route-head">
+              <div>
+                <div class="step-kicker">Step 3 of 3</div>
+                <h3>Ready to send your enquiry?</h3>
+                <p class="step-lead">Review your request, then send it to the Xilnex Sales team.</p>
+              </div>
+            </div>
+            <div class="review-grid" id="salesReview"></div>
+            <div class="step-actions step-actions-split"><button class="flow-back" type="button" data-sales-prev>← Previous</button><button class="submit" type="submit">Send sales enquiry <span>→</span></button></div>
+          </div>
         </form>
+        <button class="flow-back" type="button" data-flow-back>← Back to enquiry type</button>
       </div>
 
       <div class="route-panel" id="route-media" data-route-panel="media" hidden>
-        <div class="route-head">
-          <div><h3>Tell us what you're working on.</h3></div>
-        </div>
-        <form class="route-form" data-form-type="Media &amp; Partnerships">
-          <div class="field"><label for="media-name">Name</label><input id="media-name" name="name" type="text" placeholder="Your name" required></div>
-          <div class="field"><label for="media-org">Organisation</label><input id="media-org" name="organisation" type="text" placeholder="Publication or organisation" required></div>
-          <div class="field"><label for="media-email">Email</label><input id="media-email" name="email" type="email" placeholder="you@company.com" required></div>
-          <div class="field"><label for="media-role">Role</label><input id="media-role" name="role" type="text" placeholder="Editor, journalist, partner, etc."></div>
-          <div class="field full"><label for="media-topic">What is this about?</label><input id="media-topic" name="topic" type="text" placeholder="Story, interview, partnership or collaboration"></div>
-          <div class="field"><label for="media-phone">Telephone</label><input id="media-phone" name="phone" type="tel" placeholder="+60 ..."></div>
-          <div class="field full"><label for="media-message">Details</label><textarea id="media-message" name="message" placeholder="Give us the context, requested spokesperson or partner, and any timing we should know."></textarea></div>
-          <div class="form-actions"><button class="submit" type="submit">Send media enquiry <span>→</span></button><span class="form-note">We'll pass the request to the relevant Xilnex contact.</span></div>
+        <form class="sales-steps media-form" id="mediaForm" data-form-type="Media &amp; Partnerships">
+          <div class="sales-step is-active" data-media-step="1">
+            <div class="route-head">
+              <div>
+                <div class="step-kicker">Since you're after Media &amp; Partnerships</div>
+                <h3>What are you looking to collaborate on?</h3>
+                <p class="step-lead">Choose the closest match and we'll direct it to the right team.</p>
+              </div>
+            </div>
+            <div class="route-form">
+              <div class="radio-field field full">
+                <label>Collaboration type</label>
+                <div class="radio-grid" role="radiogroup" aria-label="Collaboration type">
+                  <label class="radio-option"><input type="radio" name="category" value="Media" required><span class="radio-dot" aria-hidden="true"></span><strong>Media</strong></label>
+                  <label class="radio-option"><input type="radio" name="category" value="Distributor"><span class="radio-dot" aria-hidden="true"></span><strong>Distributor</strong></label>
+                  <label class="radio-option"><input type="radio" name="category" value="Hardware"><span class="radio-dot" aria-hidden="true"></span><strong>Hardware</strong></label>
+                  <label class="radio-option"><input type="radio" name="category" value="Software"><span class="radio-dot" aria-hidden="true"></span><strong>Software</strong></label>
+                  <label class="radio-option"><input type="radio" name="category" value="Events"><span class="radio-dot" aria-hidden="true"></span><strong>Events</strong></label>
+                </div>
+              </div>
+
+              <div class="field full">
+                <label for="media-message">Anything else you'd like to share? <span style="font-weight:500;text-transform:none;letter-spacing:0">(optional)</span></label>
+                <textarea id="media-message" name="message" maxlength="180" placeholder="Add a few details about what you need..."></textarea>
+                <div class="char-count" id="mediaMessageCount">0 / 180</div>
+              </div>
+            </div>
+            <div class="step-actions"><button class="submit" type="button" data-media-next>Continue <span>→</span></button></div>
+          </div>
+
+          <div class="sales-step" data-media-step="2" hidden>
+            <div class="route-head">
+              <div>
+                <div class="step-kicker">Get started</div>
+                <h3>Tell us about yourself</h3>
+                <p class="step-lead">A few details first, then we'll guide you through the rest.</p>
+              </div>
+            </div>
+            <div class="route-form">
+              <div class="field"><label for="media-name">Given name</label><input id="media-name" name="name" type="text" placeholder="Your first name" required></div>
+              <div class="field"><label for="media-family-name">Family name</label><input id="media-family-name" name="family_name" type="text" placeholder="Your last name" required></div>
+              <div class="field full"><label for="media-phone">Mobile number</label><input id="media-phone" name="phone" type="tel" placeholder="Enter your mobile number" required></div>
+              <div class="field full"><label for="media-email">Work email</label><input id="media-email" name="email" type="email" placeholder="you@company.com" required></div>
+              <div class="field full"><label for="media-company">Business name</label><input id="media-company" name="company" type="text" placeholder="Enter your company name" required></div>
+            </div>
+            <div class="step-actions step-actions-split"><button class="flow-back" type="button" data-media-prev>← Previous</button><button class="submit" type="button" data-media-next>Continue <span>→</span></button></div>
+          </div>
+
+          <div class="sales-step" data-media-step="3" hidden>
+            <div class="route-head">
+              <div>
+                <div class="step-kicker">Step 3 of 3</div>
+                <h3>Ready to send your enquiry?</h3>
+                <p class="step-lead">Review your request, then send it to the Xilnex BD &amp; Partnerships team.</p>
+              </div>
+            </div>
+            <div class="review-grid" id="mediaReview"></div>
+            <div class="step-actions step-actions-split"><button class="flow-back" type="button" data-media-prev>← Previous</button><button class="submit" type="submit">Send media enquiry <span>→</span></button></div>
+          </div>
+
+          <div class="media-success" id="mediaSuccess" hidden>
+            <div class="success-icon" aria-hidden="true">✓</div>
+            <div class="step-kicker">Request received</div>
+            <h3 id="mediaSuccessTitle">You're all set!</h3>
+            <p class="step-lead">We've received your request. The BD &amp; Partnerships team will contact you within 2 business days.</p>
+            <div class="review-grid" id="mediaSuccessReview"></div>
+            <p class="review-note">Thanks for reaching out. We look forward to speaking with you.</p>
+            <button class="flow-back" type="button" data-media-reset>Submit another request</button>
+          </div>
         </form>
+        <button class="flow-back" type="button" data-flow-back>← Back to enquiry type</button>
       </div>
 
       <div class="route-panel support-panel" id="route-support" data-route-panel="support" hidden>
@@ -581,7 +698,7 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
             <a class="support-help-link" href="https://support.xilnex.com/" target="_blank" rel="noopener">Visit Xilnex Support Help Center ↗</a>
           </div>
         </div>
-        <button class="support-back" type="button" data-support-back>← Back</button>
+        <button class="flow-back" type="button" data-flow-back>← Back to enquiry type</button>
       </div>
 
       <div class="after-submit reveal-in">
@@ -631,10 +748,6 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
       </div>
     </div>
 
-    <div class="proof-callout">
-      <p><b>One back office.</b> Keep pricing, customers, reporting and day-to-day outlet operations connected as the network grows.</p>
-      <a href="./index%20(1).html#solutions">Explore Xilnex <span aria-hidden="true">→</span></a>
-    </div>
   </div>
 </section>
 
@@ -719,50 +832,350 @@ select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8
 </footer>
 
 <script>
-(function(){
+document.addEventListener('DOMContentLoaded',function(){
   const buttons=[...document.querySelectorAll('.enquiry-tile')];
   const panels=[...document.querySelectorAll('[data-route-panel]')];
+  const chooser=document.getElementById('enquiryChooser');
+  const contactForm=document.getElementById('contact-form');
+  const salesForm=document.getElementById('salesForm');
+  const salesSteps=[...document.querySelectorAll('#salesForm .sales-step')];
+  const salesReview=document.getElementById('salesReview');
+  const mediaForm=document.getElementById('mediaForm');
+  const mediaSteps=[...document.querySelectorAll('#mediaForm .sales-step')];
+  const mediaReview=document.getElementById('mediaReview');
+  const mediaSuccess=document.getElementById('mediaSuccess');
+  const mediaSuccessReview=document.getElementById('mediaSuccessReview');
+  const mediaSuccessTitle=document.getElementById('mediaSuccessTitle');
   const refHint=document.getElementById('referrerHint');
+  let salesStep=1;
+  let mediaStep=1;
+
+  function scrollToContact(){
+    if(contactForm) contactForm.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function currentSalesStep(){
+    return salesSteps.find(step=>!step.hidden) || salesSteps[0];
+  }
+
+  function validateSalesStep(){
+    const step=currentSalesStep();
+    if(!step) return true;
+    for(const field of step.querySelectorAll('input,select,textarea')){
+      if(!field.checkValidity()){
+        field.reportValidity();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function setSalesStep(next){
+    salesStep=Math.max(1,Math.min(3,next));
+    salesSteps.forEach(step=>{
+      const active=Number(step.dataset.step)===salesStep;
+      step.hidden=!active;
+      step.classList.toggle('is-active',active);
+    });
+    if(salesStep===3) updateReview();
+  }
+
+  function currentMediaStep(){
+    return mediaSteps.find(step=>!step.hidden) || mediaSteps[0];
+  }
+
+  function validateMediaStep(){
+    const step=currentMediaStep();
+    if(!step) return true;
+    for(const field of step.querySelectorAll('input,select,textarea')){
+      if(!field.checkValidity()){
+        field.reportValidity();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function setMediaStep(next){
+    mediaStep=Math.max(1,Math.min(3,next));
+    if(mediaSuccess) mediaSuccess.hidden=true;
+    mediaSteps.forEach(step=>{
+      const active=Number(step.dataset.mediaStep)===mediaStep;
+      step.hidden=!active;
+      step.classList.toggle('is-active',active);
+    });
+    if(mediaStep===3) updateMediaReview();
+  }
+
+  function buildMediaReview(target){
+    if(!mediaForm || !target) return;
+    const data=new FormData(mediaForm);
+    const labels={
+      name:'Given name',
+      family_name:'Family name',
+      company:'Business name',
+      phone:'Mobile number',
+      email:'Work email',
+      category:'Collaboration type',
+      message:"Anything else you'd like to share"
+    };
+    const order=['name','family_name','company','phone','email','category','message'];
+    target.innerHTML=order.map(key=>{
+      const value=data.get(key)||'—';
+      const safe=String(value)
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/\n/g,'<br>');
+      return '<div class="review-item"><span class="review-label">'+labels[key]+'</span><span class="review-value">'+safe+'</span></div>';
+    }).join('');
+  }
+
+  function updateMediaReview(){
+    buildMediaReview(mediaReview);
+  }
+
+  function showMediaSuccess(){
+    mediaSteps.forEach(step=>step.hidden=true);
+    if(mediaSuccess){
+      mediaSuccess.hidden=false;
+      buildMediaReview(mediaSuccessReview);
+      const data=new FormData(mediaForm);
+      const given=(data.get('name')||'').trim();
+      if(mediaSuccessTitle){
+        mediaSuccessTitle.textContent=given ? "You're all set, "+given+"!" : "You're all set!";
+      }
+    }
+  }
+
+  function showSelection(scroll=true){
+    if(chooser){
+      chooser.hidden=false;
+      chooser.classList.remove('is-hidden');
+    }
+    buttons.forEach(btn=>{
+      btn.classList.remove('is-active');
+      btn.setAttribute('aria-selected','false');
+    });
+    panels.forEach(panel=>{
+      panel.hidden=true;
+      panel.classList.remove('route-in');
+    });
+    if(scroll) scrollToContact();
+  }
 
   function showRoute(route){
+    if(chooser){
+      chooser.hidden=true;
+      chooser.classList.add('is-hidden');
+    }
+
     buttons.forEach(btn=>{
       const active=btn.dataset.route===route;
       btn.classList.toggle('is-active',active);
       btn.setAttribute('aria-selected',active?'true':'false');
     });
+
     panels.forEach(panel=>{
       const active=panel.dataset.routePanel===route;
       panel.hidden=!active;
-      if(active){ requestAnimationFrame(()=>panel.classList.add('route-in')); }
-      else panel.classList.remove('route-in');
+      panel.classList.toggle('route-in',active);
     });
-  }
-  buttons.forEach(btn=>btn.addEventListener('click',()=>showRoute(btn.dataset.route)));
-  document.querySelector('[data-support-back]')?.addEventListener('click',()=>showRoute('sales'));
 
-  // Light contextual cue based on where the visitor came from.
-  const ref=(document.referrer||'').toLowerCase();
-  if(ref.includes('restaurant')||ref.includes('fnb')||ref.includes('food')){
-    refHint.textContent='Coming from F&B? Compare POS for F&B and restaurant & cafe chains.';
-  }else if(ref.includes('retail')||ref.includes('franchise')||ref.includes('store')){
-    refHint.textContent='Coming from retail? Compare Retail POS and retail chain workflows.';
+    const activePanel=document.querySelector('[data-route-panel="'+route+'"]');
+    if(activePanel){
+      requestAnimationFrame(()=>activePanel.scrollIntoView({behavior:'smooth',block:'start'}));
+    }
+
+    if(route==='sales'){
+      setSalesStep(1);
+    }
+    if(route==='media'){
+      mediaStep=1;
+      if(mediaForm) mediaForm.reset();
+      setMediaStep(1);
+    }
   }
 
-  document.querySelectorAll('.route-form').forEach(form=>{
-    form.addEventListener('submit',function(e){
+  function updateReview(){
+    if(!salesForm || !salesReview) return;
+    const data=new FormData(salesForm);
+    const labels={
+      name:'Given name',
+      family_name:'Family name',
+      phone:'Mobile number',
+      email:'Work email',
+      company:'Business name',
+      outlets:'Number of outlets',
+      business:'Industry',
+      focus:'Focus areas',
+      message:"Anything else you'd like to share"
+    };
+    const order=['name','family_name','phone','email','company','outlets','business','focus','message'];
+    salesReview.innerHTML=order.map(key=>{
+      const value=key==='focus' ? (data.getAll('focus').join(', ')||'—') : (data.get(key)||'—');
+      const safe=String(value)
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/\n/g,'<br>');
+      return '<div class="review-item"><span class="review-label">'+labels[key]+'</span><span class="review-value">'+safe+'</span></div>';
+    }).join('');
+  }
+
+  buttons.forEach(btn=>{
+    btn.addEventListener('click',function(e){
       e.preventDefault();
-      const data=new FormData(form);
-      const type=form.dataset.formType||'Xilnex Enquiry';
-      const lines=['Enquiry type: '+type];
-      for(const [key,value] of data.entries()) lines.push(key.replace(/[-_]/g,' ').replace(/\b\w/g,m=>m.toUpperCase())+': '+value);
-      const subject='Xilnex — '+type;
-      const href='mailto:marketing@xilnex.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));
-      window.location.href=href;
-      const note=form.querySelector('.form-note');
-      if(note) note.textContent='Your email app should open with the enquiry details. Complete the send from there.';
+      showRoute(btn.dataset.route);
     });
   });
-})();
+
+  document.querySelectorAll('[data-next-step]').forEach(btn=>{
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      if(validateSalesStep()){
+        setSalesStep(salesStep+1);
+        const activeStep=currentSalesStep();
+        if(activeStep) requestAnimationFrame(()=>activeStep.scrollIntoView({behavior:'smooth',block:'start'}));
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-sales-prev]').forEach(btn=>{
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      setSalesStep(salesStep-1);
+      const activeStep=currentSalesStep();
+      if(activeStep) requestAnimationFrame(()=>activeStep.scrollIntoView({behavior:'smooth',block:'start'}));
+    });
+  });
+
+  document.querySelectorAll('[data-flow-back]').forEach(btn=>{
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      setSalesStep(1);
+      showSelection(true);
+    });
+  });
+
+  document.querySelectorAll('[data-media-next]').forEach(btn=>{
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      if(validateMediaStep()){
+        setMediaStep(mediaStep+1);
+        const activeStep=currentMediaStep();
+        if(activeStep) requestAnimationFrame(()=>activeStep.scrollIntoView({behavior:'smooth',block:'start'}));
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-media-prev]').forEach(btn=>{
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      setMediaStep(mediaStep-1);
+      const activeStep=currentMediaStep();
+      if(activeStep) requestAnimationFrame(()=>activeStep.scrollIntoView({behavior:'smooth',block:'start'}));
+    });
+  });
+
+  mediaForm?.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    if(mediaStep!==3){
+      if(validateMediaStep()){
+        setMediaStep(mediaStep+1);
+        const activeStep=currentMediaStep();
+        if(activeStep) requestAnimationFrame(()=>activeStep.scrollIntoView({behavior:'smooth',block:'start'}));
+      }
+      return;
+    }
+
+    const data=new FormData(mediaForm);
+    const lines=['Enquiry type: Media & Partnerships'];
+    const grouped={};
+    for(const [key,value] of data.entries()){
+      if(!grouped[key]) grouped[key]=[];
+      grouped[key].push(value);
+    }
+    Object.entries(grouped).forEach(([key,values])=>{
+      lines.push(key.replace(/[-_]/g,' ').replace(/\b\w/g,m=>m.toUpperCase())+': '+values.join(', '));
+    });
+
+    const href='mailto:marketing@xilnex.com?subject='+encodeURIComponent('Xilnex — Media & Partnerships')+'&body='+encodeURIComponent(lines.join('\n'));
+    window.location.href=href;
+    showMediaSuccess();
+    requestAnimationFrame(()=>document.getElementById('route-media')?.scrollIntoView({behavior:'smooth',block:'start'}));
+  });
+
+  document.querySelector('[data-media-reset]')?.addEventListener('click',function(e){
+    e.preventDefault();
+    if(mediaForm) mediaForm.reset();
+    mediaStep=1;
+    setMediaStep(1);
+    if(mediaSuccess) mediaSuccess.hidden=true;
+    const activeStep=currentMediaStep();
+    if(activeStep) activeStep.hidden=false;
+    requestAnimationFrame(()=>document.getElementById('route-media')?.scrollIntoView({behavior:'smooth',block:'start'}));
+  });
+
+  const mediaMessage=document.getElementById('media-message');
+  const mediaMessageCount=document.getElementById('mediaMessageCount');
+  if(mediaMessage && mediaMessageCount){
+    const updateCount=()=>{mediaMessageCount.textContent=mediaMessage.value.length+' / 180';};
+    mediaMessage.addEventListener('input',updateCount);
+    updateCount();
+  }
+
+  if(salesForm){
+    salesForm.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(salesStep!==3){
+        if(validateSalesStep()){
+          setSalesStep(salesStep+1);
+          const activeStep=currentSalesStep();
+          if(activeStep) requestAnimationFrame(()=>activeStep.scrollIntoView({behavior:'smooth',block:'start'}));
+        }
+        return;
+      }
+
+      const data=new FormData(salesForm);
+      const lines=['Enquiry type: Sales & Product Enquiries'];
+      const grouped={};
+      for(const [key,value] of data.entries()){
+        if(!grouped[key]) grouped[key]=[];
+        grouped[key].push(value);
+      }
+      Object.entries(grouped).forEach(([key,values])=>{
+        lines.push(key.replace(/[-_]/g,' ').replace(/\b\w/g,m=>m.toUpperCase())+': '+values.join(', '));
+      });
+
+      const subject='Xilnex — Sales & Product Enquiries';
+      const href='mailto:marketing@xilnex.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n'));
+      window.location.href=href;
+      const note=salesForm.querySelector('.form-note');
+      if(note) note.textContent='Your email app should open with the enquiry details ready to send.';
+    });
+  }
+
+  const salesMessage=document.getElementById('sales-message');
+  const salesMessageCount=document.getElementById('salesMessageCount');
+  if(salesMessage && salesMessageCount){
+    const updateCount=()=>{salesMessageCount.textContent=salesMessage.value.length+' / 180';};
+    salesMessage.addEventListener('input',updateCount);
+    updateCount();
+  }
+
+  showSelection(false);
+
+  const ref=(document.referrer||'').toLowerCase();
+  if(refHint){
+    if(ref.includes('restaurant')||ref.includes('fnb')||ref.includes('food')){
+      refHint.textContent='Coming from F&B? Compare POS for F&B and restaurant & cafe chains.';
+    }else if(ref.includes('retail')||ref.includes('franchise')||ref.includes('store')){
+      refHint.textContent='Coming from retail? Compare Retail POS and retail chain workflows.';
+    }
+  }
+});
 </script>
 
 <script>
