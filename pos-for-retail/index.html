@@ -397,15 +397,14 @@ h1 em{font-family:inherit}
   background:radial-gradient(ellipse at center,rgba(159,49,141,.08),transparent 68%);
   filter:blur(18px);animation:heroProductGlow 6s ease-in-out infinite;pointer-events:none}
 .pr-hero-product-image{position:relative;width:112%;max-width:760px;transform:translate3d(2%,-1%,0) rotate(-1.2deg);
-  animation:heroProductFloat 6s ease-in-out infinite;will-change:transform}
+  will-change:auto}
 .pr-hero-product-image img{width:100%;height:auto;display:block;border:0;border-radius:0;background:transparent;box-shadow:none;filter:drop-shadow(0 28px 36px rgba(31,20,36,.18))}
 @keyframes heroProductAmbient{0%{transform:translate3d(-2%,-1%,0) scale(1)}100%{transform:translate3d(3%,2%,0) scale(1.07)}}
 @keyframes heroProductGlow{0%,100%{transform:scale(.96);opacity:.6}50%{transform:scale(1.04);opacity:.95}}
-@keyframes heroProductFloat{0%,100%{transform:translate3d(2%,-1%,0) rotate(-1.2deg)}50%{transform:translate3d(2%,-14px,0) rotate(.3deg)}}
 @media(max-width:1000px){.pr-hero-product{min-height:430px}.pr-hero-product-image{width:94%;transform:none}}
 @media(max-width:640px){.pr-hero-product{min-height:330px;border-radius:22px}.pr-hero-product-image{width:112%}}
 @media(prefers-reduced-motion:reduce){
-  .pr-hero-product:before,.pr-hero-product-glow,.pr-hero-product-image{animation:none}
+  .pr-hero-product:before,.pr-hero-product-glow{animation:none}
 }
 
 /* ---- Shared section furniture ------------------------------------------ */
