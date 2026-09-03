@@ -218,7 +218,6 @@ img{max-width:100%;display:block}
 .nav-group:hover .mega,.nav-group:focus-within .mega,.nav-group.open .mega{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
 .mega-inner{padding:30px 0 34px;display:grid;grid-template-columns:1.1fr 2fr;gap:50px}
 .mega-intro{padding-right:30px;border-right:1px solid var(--line)}
-.mega-intro 
 .mega-intro h3{font-size:25px;letter-spacing:-.04em;margin:0 0 10px}
 .mega-intro p{font-size:12px;line-height:1.7;color:var(--muted);max-width:310px;margin:0}
 .mega-links{display:grid;grid-template-columns:1fr 1fr;gap:23px 45px}
@@ -714,6 +713,48 @@ h1 em{font-family:inherit}
 }
 </style>
 
+
+<style id="proof-strip-black-text">
+  .pr-proof-wrap,
+  .pr-proof-wrap .pr-proof,
+  .pr-proof-wrap .pr-proof li,
+  .pr-proof-wrap .pr-proof li b,
+  .pr-proof-wrap .pr-proof li span {
+    color: #000 !important;
+    opacity: 1 !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    text-shadow: none !important;
+  }
+</style>
+
+
+<style id="proof-strip-final">
+.pr-proof-wrap .pr-proof li b,
+.pr-proof-wrap .pr-proof li span {
+  color:#000 !important;
+  opacity:1 !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+  text-shadow:none !important;
+}
+</style>
+
+
+<style id="hero-demo-purple">
+.pr-actions .pr-btn-primary{
+  background:#9f318d !important;
+  color:#fff !important;
+  border-color:#9f318d !important;
+  box-shadow:0 14px 34px rgba(126,43,111,.26);
+}
+.pr-actions .pr-btn-primary:hover{
+  background:#76216d !important;
+  border-color:#76216d !important;
+  color:#fff !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -854,7 +895,7 @@ h1 em{font-family:inherit}
   <div class="pr-proof-wrap">
     <div class="wrap">
       <ul class="pr-proof">
-      <li><b>Offline-capable</b><span>Sells through an outage, syncs on reconnect</span></li>
+      <li><b style="color:#000!important">Offline-capable</b><span style="color:#000!important">Sells through an outage, syncs on reconnect</span></li>
       <li><b>ShopeeFood &amp; GrabFood</b><span>Orders land against one catalogue</span></li>
       <li><b>ISO/IEC 27001:2022</b><span>Certified by IRQS under NABCB</span></li>
         <li><b>e-Invoice ready</b><span>LHDN submission, included at no cost</span></li>
